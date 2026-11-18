@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Aloha Lounge 🌺</title>
+<meta name="description" content="A glowing Y2K tiki lounge: meet Kai the bartender, get a random tropical cocktail, and hear a cheesy island joke." />
+<meta name="theme-color" content="#0b1033" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌺</text></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Kavoon&family=Pacifico&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --midnight: #070b2a;
+  --night: #141a4d;
+  --deep-teal: #075e66;
+  --teal: #0fb5ae;
+  --turq: #45ead9;
+  --pink: #ff4fa3;
+  --hot-pink: #ff2e88;
+  --orchid: #b45cff;
+  --gold: #f2c14e;
+  --bamboo: #d9a441;
+  --cream: #fff4d6;
+  --wood: #6a3814;
+  --display: "Kavoon", "Pacifico", cursive;
+  --script: "Pacifico", cursive;
+  --text: "Nunito", system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--text);
+  color: var(--cream);
+  background: var(--midnight);
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+button { font-family: inherit; }
+
+/* ================= NIGHT BACKGROUND ================= */
+.scene-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  background: linear-gradient(180deg, #050826 0%, #0e1450 35%, #2a1d6e 58%, #6b2a7a 68%, #b0477e 72%, #0a3a5c 72.2%, #04182e 100%);
+}
+.stars { position: absolute; inset: 0 0 30% 0; }
+.star {
+  position: absolute;
+  width: 2px; height: 2px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 6px #fff;
+  animation: twinkle var(--d, 3s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+@keyframes twinkle { 0%,100% { opacity: .2; transform: scale(.7); } 50% { opacity: 1; transform: scale(1.2); } }
+
+.moon {
+  position: absolute;
+  top: 9%;
+  right: 14%;
+  width: clamp(80px, 12vw, 140px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 35%, rgba(200,190,150,.35) 0 8%, transparent 9%),
+    radial-gradient(circle at 62% 60%, rgba(200,190,150,.3) 0 11%, transparent 12%),
+    radial-gradient(circle at 70% 28%, rgba(200,190,150,.25) 0 6%, transparent 7%),
+    radial-gradient(circle at 40% 40%, #fffdf0, #fff1c4 55%, #f3d98f);
+  box-shadow: 0 0 40px 10px rgba(255,240,190,.55), 0 0 120px 40px rgba(255,170,220,.25), 0 0 220px 90px rgba(180,92,255,.15);
+  animation: moonGlow 6s ease-in-out infinite;
+}
+@keyframes moonGlow { 50% { box-shadow: 0 0 55px 14px rgba(255,240,190,.7), 0 0 150px 50px rgba(255,170,220,.32), 0 0 260px 110px rgba(180,92,255,.2); } }
+
+.island { position: absolute; left: 0; right: 0; bottom: 27.6%; width: 100%; height: 9%; }
+
+.sea { position: absolute; left: 0; right: 0; bottom: 0; height: 28%; overflow: hidden; }
+.reflection {
+  position: absolute;
+  top: 0;
+  right: 14%;
+  width: clamp(80px, 12vw, 140px);
+  height: 100%;
+  display: flex; flex-direction: column; align-items: center; gap: 7px;
+  padding-top: 6px;
+}
+.reflection span {
+  display: block;
+  height: 3px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, transparent, #fff6cf, #ffd1ec, transparent);
+  animation: shimmer var(--d, 2.4s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+@keyframes shimmer { 0%,100% { opacity: .25; transform: scaleX(.6) translateX(-6px); } 50% { opacity: .95; transform: scaleX(1.15) translateX(6px); } }
+.wave {
+  position: absolute; left: 0; right: 0; height: 14px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='14' viewBox='0 0 120 14'%3E%3Cpath d='M0 7 Q15 0 30 7 T60 7 T90 7 T120 7' fill='none' stroke='%237ff5ea' stroke-width='1.6'/%3E%3C/svg%3E") repeat-x;
+  background-size: 120px 14px;
+  animation: waveMove var(--d, 9s) linear infinite;
+  opacity: var(--o, .3);
+}
+@keyframes waveMove { to { background-position-x: 120px; } }
+
+.palm { position: absolute; bottom: 0; height: min(78vh, 640px); pointer-events: none; }
+.palm svg { height: 100%; width: auto; overflow: visible; }
+.palm .fronds { transform-origin: 105px 112px; animation: frondSway 7s ease-in-out infinite; }
+.palm .trunk-g { transform-origin: 100px 400px; animation: trunkSway 9s ease-in-out infinite; }
+.palm-left { left: -40px; }
+.palm-left2 { left: 70px; height: min(52vh, 430px); opacity: .85; }
+.palm-right { right: -50px; transform: scaleX(-1); }
+@keyframes frondSway { 0%,100% { transform: rotate(-3deg); } 50% { transform: rotate(4deg); } }
+@keyframes trunkSway { 0%,100% { transform: rotate(-1deg); } 50% { transform: rotate(1.2deg); } }
+.sand { position: absolute; bottom: -40px; width: 55vw; height: 120px; background: #050d1c; border-radius: 50%; }
+
+/* floating hibiscus */
+.float-flower {
+  position: fixed;
+  bottom: -60px;
+  width: var(--s, 34px);
+  height: var(--s, 34px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: .75;
+  filter: drop-shadow(0 0 8px rgba(255,79,163,.6));
+  animation: floatUp var(--d, 22s) linear infinite;
+  animation-delay: var(--delay, 0s);
+}
+@keyframes floatUp {
+  0% { transform: translate(0, 0) rotate(0); opacity: 0; }
+  10% { opacity: .75; }
+  50% { transform: translate(var(--x, 40px), -55vh) rotate(180deg); }
+  90% { opacity: .6; }
+  100% { transform: translate(calc(var(--x, 40px) * -1), -115vh) rotate(360deg); opacity: 0; }
+}
+
+/* ================= STRING LIGHTS ================= */
+.lights { position: absolute; left: 0; right: 0; top: 0; height: 60px; pointer-events: none; z-index: 8; }
+.lights svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.bulb {
+  position: absolute;
+  width: 11px; height: 15px;
+  margin-left: -5.5px;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  background: var(--c);
+  box-shadow: 0 0 10px 3px var(--c), 0 0 24px 6px color-mix(in srgb, var(--c) 40%, transparent);
+  animation: bulbTwinkle var(--d, 2.5s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+.bulb::before {
+  content: "";
+  position: absolute; top: -5px; left: 3px;
+  width: 5px; height: 6px; border-radius: 2px;
+  background: #2b2b2b;
+}
+@keyframes bulbTwinkle { 0%,100% { opacity: 1; filter: brightness(1.15); } 50% { opacity: .55; filter: brightness(.8); } }
+
+/* ================= TEXTURES ================= */
+.bamboo {
+  background-color: #c99a3e;
+  background-image:
+    repeating-linear-gradient(180deg, transparent 0 86px, rgba(90,55,15,.55) 86px 89px, rgba(255,235,170,.35) 89px 91px, transparent 91px 140px),
+    linear-gradient(90deg, #7a5718 0%, #d9ad55 18%, #f7dd93 38%, #e2b862 60%, #a87c2c 85%, #5e4110 100%);
+  background-size: 100% 140px, 42px 100%;
+}
+.thatch {
+  position: relative;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.25), transparent 40%),
+    repeating-linear-gradient(97deg, #e8be66 0 3px, #b48536 3px 5px, #d8a94f 5px 9px, #94692a 9px 10px, #f0cd7c 10px 12px);
+}
+.thatch::after {
+  content: "";
+  position: absolute; left: 0; right: 0; bottom: -32px; height: 34px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='34' viewBox='0 0 60 34'%3E%3Cpath d='M0 0H60V10L57 30L52 12L47 33L42 11L37 28L32 13L27 32L22 10L17 29L12 12L7 31L3 11L0 26Z' fill='%23c99a45'/%3E%3Cpath d='M7 0L7 31M17 0L17 29M27 0L27 32M37 0L37 28M47 0L47 33M57 0L57 30M2 0L3 20M12 0L12 22M22 0L22 18M32 0L32 24M42 0L42 20M52 0L52 22' stroke='%238a6426' stroke-width='1.2'/%3E%3C/svg%3E") repeat-x;
+  background-size: 60px 34px;
+  filter: drop-shadow(0 6px 6px rgba(0,0,0,.35));
+}
+
+/* ================= HEADER ================= */
+.site-header { position: relative; padding-top: 40px; z-index: 2; }
+.roof { height: 54px; border-bottom: 3px solid #7a5420; z-index: 3; }
+.banner {
+  position: relative;
+  margin: 0 auto;
+  padding: 58px 20px 46px;
+  text-align: center;
+  border-bottom: 6px solid #5e4110;
+  box-shadow: inset 0 -30px 60px rgba(60,20,40,.45), inset 0 30px 40px rgba(0,0,0,.25), 0 10px 40px rgba(0,0,0,.5);
+  display: flex; align-items: flex-end; justify-content: center; gap: clamp(10px, 4vw, 60px);
+}
+.banner::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 60%, rgba(255,79,163,.35), transparent 60%);
+  pointer-events: none;
+}
+.title-plaque {
+  position: relative;
+  padding: 18px clamp(18px, 4vw, 44px) 20px;
+  border-radius: 26px;
+  background:
+    repeating-linear-gradient(176deg, rgba(0,0,0,.12) 0 2px, transparent 2px 10px),
+    linear-gradient(180deg, #7b4519, #4d260b);
+  border: 3px solid #2d1505;
+  box-shadow: 0 0 0 4px var(--gold), 0 0 30px rgba(255,79,163,.6), 0 14px 30px rgba(0,0,0,.6), inset 0 2px 0 rgba(255,220,160,.3);
+  max-width: 780px;
+}
+.title-plaque h1 {
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(2.3rem, 8vw, 4.6rem);
+  line-height: 1.05;
+  color: #ffe9a8;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 0 var(--hot-pink), 4px 4px 0 var(--orchid), 6px 6px 0 #2a0f3a, 0 0 24px rgba(255,200,120,.7);
+  animation: neon 3.5s ease-in-out infinite;
+}
+.title-plaque h1 .emo { text-shadow: none; display: inline-block; animation: spinFlower 6s ease-in-out infinite; }
+@keyframes spinFlower { 0%,100% { transform: rotate(-12deg) scale(1); } 50% { transform: rotate(12deg) scale(1.12); } }
+@keyframes neon { 0%,100% { filter: brightness(1); } 48% { filter: brightness(1); } 50% { filter: brightness(1.35); } 52% { filter: brightness(.95); } 54% { filter: brightness(1.25); } }
+.tagline {
+  margin: 10px 0 0;
+  font-family: var(--script);
+  font-size: clamp(1rem, 3vw, 1.35rem);
+  color: var(--turq);
+  text-shadow: 0 0 10px rgba(69,234,217,.7);
+}
+
+/* tiki torches */
+.torch { position: relative; width: 46px; display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+.torch .glow {
+  position: absolute; top: -40px; left: 50%;
+  width: 180px; height: 180px; margin-left: -90px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,170,60,.45), rgba(255,79,163,.12) 45%, transparent 70%);
+  animation: glowPulse 1.4s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+@keyframes glowPulse { from { opacity: .7; transform: scale(.92); } to { opacity: 1; transform: scale(1.08); } }
+.flame {
+  position: relative;
+  width: 30px; height: 44px;
+  margin-bottom: -6px;
+  transform-origin: 50% 100%;
+  animation: flicker .5s ease-in-out infinite alternate;
+  z-index: 1;
+}
+.flame::before, .flame::after {
+  content: "";
+  position: absolute; left: 50%; bottom: 0;
+  border-radius: 50% 0 50% 50%;
+  transform: translateX(-50%) rotate(-45deg);
+}
+.flame::before { width: 28px; height: 28px; background: radial-gradient(circle at 60% 40%, #ffe066, #ff8a1f 55%, #e8174f); box-shadow: 0 0 20px 6px rgba(255,120,40,.7); }
+.flame::after { width: 14px; height: 14px; bottom: 3px; background: radial-gradient(circle, #fffbe0, #ffd84a); }
+@keyframes flicker {
+  0% { transform: scale(1, 1) skewX(0); }
+  33% { transform: scale(.94, 1.1) skewX(3deg); }
+  66% { transform: scale(1.05, .95) skewX(-4deg); }
+  100% { transform: scale(.97, 1.08) skewX(2deg); }
+}
+.torch-head {
+  width: 38px; height: 30px;
+  clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
+  background:
+    repeating-linear-gradient(45deg, #5a3a12 0 3px, transparent 3px 7px),
+    repeating-linear-gradient(-45deg, #5a3a12 0 3px, transparent 3px 7px),
+    #c79a45;
+}
+.torch-pole {
+  width: 13px; height: 150px;
+  border-radius: 3px;
+  background:
+    repeating-linear-gradient(180deg, transparent 0 34px, #5e4110 34px 37px),
+    linear-gradient(90deg, #7a5718, #f2d488 45%, #a87c2c);
+}
+
+/* ================= LAYOUT ================= */
+main { position: relative; z-index: 1; padding: 30px 16px 40px; }
+section { max-width: 920px; margin: 0 auto 60px; }
+.section-title {
+  text-align: center;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(1.9rem, 6vw, 2.8rem);
+  margin: 0 0 6px;
+  color: #ffe9a8;
+  text-shadow: 2px 2px 0 var(--hot-pink), 4px 4px 0 #2a0f3a, 0 0 18px rgba(255,79,163,.6);
+}
+.section-sub {
+  text-align: center;
+  margin: 0 auto 22px;
+  max-width: 520px;
+  color: #d9e9ff;
+  font-size: 1.02rem;
+  line-height: 1.5;
+}
+
+/* ================= BUTTONS ================= */
+.btn {
+  position: relative;
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 15px 30px;
+  border: 3px solid var(--gold);
+  border-radius: 999px;
+  font-family: var(--display);
+  font-size: clamp(1.1rem, 4vw, 1.35rem);
+  letter-spacing: .5px;
+  color: #fff;
+  cursor: pointer;
+  background: linear-gradient(180deg, #ff7cc0 0%, var(--hot-pink) 45%, var(--orchid) 100%);
+  box-shadow: 0 6px 0 #6a1f6e, 0 10px 24px rgba(0,0,0,.45), 0 0 26px rgba(255,79,163,.55), inset 0 -4px 10px rgba(80,0,90,.35);
+  text-shadow: 0 2px 0 rgba(90,0,60,.6);
+  overflow: hidden;
+  transition: transform .18s cubic-bezier(.3,1.6,.6,1), box-shadow .18s, filter .18s;
+}
+.btn::before {
+  content: "";
+  position: absolute; left: 8%; right: 8%; top: 3px; height: 45%;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255,255,255,.65), rgba(255,255,255,0));
+  pointer-events: none;
+}
+.btn::after {
+  content: "";
+  position: absolute; top: 0; left: -60%; width: 40%; height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255,255,255,.55), transparent);
+  transform: skewX(-20deg);
+  transition: left .6s;
+  pointer-events: none;
+}
+.btn:hover, .btn:focus-visible {
+  transform: translateY(-4px) scale(1.04);
+  filter: brightness(1.08) saturate(1.1);
+  box-shadow: 0 10px 0 #6a1f6e, 0 16px 30px rgba(0,0,0,.45), 0 0 44px rgba(255,79,163,.85), inset 0 -4px 10px rgba(80,0,90,.35);
+  outline: none;
+}
+.btn:hover::after, .btn:focus-visible::after { left: 130%; }
+.btn:hover .btn-emo { animation: wiggle .5s ease-in-out infinite; }
+.btn:active { transform: translateY(4px) scale(.98); box-shadow: 0 2px 0 #6a1f6e, 0 4px 10px rgba(0,0,0,.4), 0 0 20px rgba(255,79,163,.5); }
+.btn[disabled] { cursor: wait; filter: saturate(.7) brightness(.9); }
+.btn-emo { display: inline-block; }
+.btn.teal {
+  background: linear-gradient(180deg, #7ffbef 0%, var(--teal) 45%, #08707a 100%);
+  box-shadow: 0 6px 0 #04454c, 0 10px 24px rgba(0,0,0,.45), 0 0 26px rgba(69,234,217,.5), inset 0 -4px 10px rgba(0,50,60,.35);
+  text-shadow: 0 2px 0 rgba(0,60,70,.7);
+}
+.btn.teal:hover, .btn.teal:focus-visible { box-shadow: 0 10px 0 #04454c, 0 16px 30px rgba(0,0,0,.45), 0 0 44px rgba(69,234,217,.85); }
+.btn.teal:active { box-shadow: 0 2px 0 #04454c, 0 0 20px rgba(69,234,217,.5); }
+@keyframes wiggle { 0%,100% { transform: rotate(0); } 25% { transform: rotate(-18deg) scale(1.15); } 75% { transform: rotate(18deg) scale(1.15); } }
+.btn-row { display: flex; justify-content: center; margin: 26px 0 22px; }
+
+/* ================= TIKI BAR ================= */
+.bar {
+  position: relative;
+  height: 460px;
+  max-width: 820px;
+  margin: 0 auto;
+  border-radius: 24px 24px 18px 18px;
+  overflow: hidden;
+  box-shadow: 0 0 0 4px #3a2208, 0 0 0 7px var(--gold), 0 0 60px rgba(255,79,163,.45), 0 30px 60px rgba(0,0,0,.6);
+}
+.bar-wall { position: absolute; inset: 0; z-index: 1; }
+.bar-wall::after {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 15% 30%, rgba(255,140,60,.35), transparent 40%),
+    radial-gradient(ellipse at 85% 30%, rgba(255,79,163,.35), transparent 40%),
+    radial-gradient(ellipse at 50% 50%, rgba(255,230,160,.25), transparent 55%),
+    linear-gradient(180deg, rgba(40,10,50,.45), rgba(10,40,60,.35));
+}
+.bar-roof { position: absolute; left: -10px; right: -10px; top: 0; height: 62px; z-index: 6; border-bottom: 3px solid #6e4b19; }
+.bar-sign {
+  position: absolute; top: 104px; left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+  z-index: 9;
+  padding: 5px 18px 7px;
+  font-family: var(--script);
+  font-size: clamp(.95rem, 3vw, 1.2rem);
+  color: #ffe9a8;
+  background: linear-gradient(180deg, #5a2e10, #3d1d07);
+  border: 2px solid var(--gold);
+  border-radius: 10px;
+  box-shadow: 0 0 18px rgba(255,79,163,.6), 0 6px 10px rgba(0,0,0,.5);
+  text-shadow: 0 0 8px rgba(255,79,163,.9);
+  white-space: nowrap;
+  animation: signSwing 5s ease-in-out infinite;
+  transform-origin: 50% -20px;
+}
+@keyframes signSwing { 0%,100% { transform: translateX(-50%) rotate(-2deg); } 50% { transform: translateX(-50%) rotate(2deg); } }
+
+.shelf { position: absolute; left: 6%; right: 6%; height: 10px; z-index: 2; border-radius: 3px;
+  background: linear-gradient(180deg, #8a5a22, #4a2a0a); box-shadow: 0 6px 10px rgba(0,0,0,.45); }
+.shelf-1 { top: 162px; }
+.shelf-2 { top: 252px; }
+.bottles { position: absolute; left: 0; right: 0; bottom: 10px; display: flex; justify-content: space-around; align-items: flex-end; padding: 0 2%; }
+.bottle {
+  position: relative;
+  width: var(--w, 18px);
+  height: var(--h, 46px);
+  border-radius: 6px 6px 4px 4px;
+  background: linear-gradient(90deg, rgba(255,255,255,.05), rgba(255,255,255,.55) 25%, transparent 45%), var(--c);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--c) 70%, transparent), inset 0 -6px 8px rgba(0,0,0,.25);
+  opacity: .95;
+}
+.bottle::before {
+  content: "";
+  position: absolute; left: 50%; top: calc(var(--neck, 14px) * -1);
+  width: 7px; height: var(--neck, 14px);
+  margin-left: -3.5px;
+  border-radius: 2px 2px 0 0;
+  background: linear-gradient(90deg, rgba(255,255,255,.4), transparent 50%), var(--c);
+  border-top: 3px solid #3a2208;
+}
+.bottle::after {
+  content: "";
+  position: absolute; left: 15%; right: 15%; top: 35%; height: 30%;
+  background: var(--label, #fff4d6);
+  border-radius: 2px;
+  opacity: .85;
+}
+.bottle.tiki-mug { border-radius: 4px; --neck: 0px; }
+.bottle.tiki-mug::before { display: none; }
+.bottle.tiki-mug::after { background: repeating-linear-gradient(180deg, rgba(0,0,0,.4) 0 3px, transparent 3px 7px); top: 20%; height: 50%; }
+
+.lantern {
+  position: absolute; top: 40px; z-index: 7;
+  width: 42px; height: 52px;
+  transform-origin: 50% -40px;
+  animation: lanternSwing var(--d, 4s) ease-in-out infinite;
+}
+.lantern::before {
+  content: "";
+  position: absolute; left: 50%; top: -40px;
+  width: 2px; height: 40px; background: #3a2208;
+}
+.lantern .lamp {
+  position: absolute; inset: 0;
+  border-radius: 46%;
+  background:
+    repeating-linear-gradient(90deg, rgba(0,0,0,.18) 0 2px, transparent 2px 8px),
+    radial-gradient(circle at 50% 45%, #fff6d0, var(--c) 55%, color-mix(in srgb, var(--c) 60%, #000));
+  box-shadow: 0 0 25px 8px color-mix(in srgb, var(--c) 70%, transparent), 0 0 70px 20px color-mix(in srgb, var(--c) 35%, transparent);
+  animation: lampFlicker 3s ease-in-out infinite;
+}
+.lantern .lamp::before, .lantern .lamp::after {
+  content: ""; position: absolute; left: 30%; right: 30%; height: 6px; background: #3a2208; border-radius: 2px;
+}
+.lantern .lamp::before { top: -3px; }
+.lantern .lamp::after { bottom: -3px; }
+@keyframes lanternSwing { 0%,100% { transform: rotate(-5deg); } 50% { transform: rotate(5deg); } }
+@keyframes lampFlicker { 0%,100% { filter: brightness(1); } 40% { filter: brightness(1.15); } 45% { filter: brightness(.85); } 50% { filter: brightness(1.1); } }
+
+.bartender {
+  position: absolute;
+  left: 50%; bottom: 80px;
+  width: 200px;
+  margin-left: -100px;
+  z-index: 3;
+  padding: 0; border: 0; background: none;
+  cursor: pointer;
+  transition: transform .25s cubic-bezier(.3,1.6,.6,1);
+}
+.bartender svg { display: block; width: 100%; height: auto; overflow: visible; }
+.bartender:hover, .bartender:focus-visible { transform: translateY(-8px); outline: none; }
+.bartender:focus-visible svg { filter: drop-shadow(0 0 10px var(--turq)); }
+.bt-body { transform-origin: 100px 270px; animation: sway 4s ease-in-out infinite; }
+.bt-head { transform-origin: 100px 150px; animation: headTilt 5s ease-in-out infinite; }
+.eyes { transform-origin: 100px 106px; animation: blink 4.5s infinite; }
+.mouth-o, .arms-shake { display: none; }
+@keyframes sway { 0%,100% { transform: rotate(-2deg); } 50% { transform: rotate(2deg); } }
+@keyframes headTilt { 0%,100% { transform: rotate(3deg); } 50% { transform: rotate(-4deg); } }
+@keyframes blink { 0%, 90%, 100% { transform: scaleY(1); } 93% { transform: scaleY(.08); } 96% { transform: scaleY(1); } }
+.bartender.shaking .bt-body { animation: shimmy .22s ease-in-out infinite; }
+.bartender.shaking .bt-head { animation: bob .22s ease-in-out infinite; }
+.bartender.shaking .arms-idle, .bartender.shaking .mouth-smile { display: none; }
+.bartender.shaking .arms-shake, .bartender.shaking .mouth-o { display: inline; }
+.bartender.shaking .arms-shake { transform-origin: 140px 190px; animation: shakeIt .16s ease-in-out infinite alternate; }
+@keyframes shimmy { 0%,100% { transform: rotate(-3deg) translateX(-2px); } 50% { transform: rotate(3deg) translateX(2px); } }
+@keyframes bob { 0%,100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-4px) rotate(2deg); } }
+@keyframes shakeIt { from { transform: translate(-4px, 8px) rotate(-6deg); } to { transform: translate(4px, -10px) rotate(6deg); } }
+
+.speech {
+  position: absolute;
+  left: calc(50% + 70px);
+  top: 148px;
+  z-index: 10;
+  max-width: 200px;
+  padding: 10px 14px;
+  border-radius: 18px 18px 18px 4px;
+  background: #fffaf0;
+  color: #5a1f4a;
+  font-weight: 800;
+  font-size: .92rem;
+  line-height: 1.3;
+  box-shadow: 0 0 0 3px var(--pink), 0 8px 20px rgba(0,0,0,.4);
+  transform: scale(0) rotate(-8deg);
+  transform-origin: 0 100%;
+  transition: transform .35s cubic-bezier(.3,1.7,.5,1);
+  pointer-events: none;
+}
+.speech.show { transform: scale(1) rotate(0); }
+
+.counter { position: absolute; left: 0; right: 0; bottom: 0; height: 130px; z-index: 4; }
+.counter-top {
+  position: absolute; left: -10px; right: -10px; top: 0; height: 26px;
+  background: linear-gradient(180deg, #b97a3a 0%, #8a4f1e 40%, #5a2e10 100%);
+  border-top: 2px solid #f0c27a;
+  box-shadow: 0 8px 14px rgba(0,0,0,.5), inset 0 2px 0 rgba(255,230,180,.4);
+}
+.counter-front { position: absolute; left: 0; right: 0; top: 26px; bottom: 0; box-shadow: inset 0 14px 20px rgba(0,0,0,.45); }
+.counter-front .carve {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  padding: 4px 18px;
+  font-family: var(--display);
+  font-size: clamp(1.1rem, 4vw, 1.5rem);
+  color: #ffe9a8;
+  letter-spacing: 4px;
+  background: linear-gradient(180deg, #4d260b, #2d1505);
+  border: 2px solid var(--gold);
+  border-radius: 8px;
+  text-shadow: 0 0 10px rgba(255,79,163,.8);
+  box-shadow: 0 0 16px rgba(255,79,163,.4);
+}
+.on-counter { position: absolute; bottom: 120px; z-index: 5; font-size: 2rem; filter: drop-shadow(0 4px 4px rgba(0,0,0,.5)); }
+.on-counter.pine { left: 6%; animation: bob 3s ease-in-out infinite; }
+.on-counter.coco { left: 14%; font-size: 1.6rem; }
+.shell-lamp { position: absolute; right: 5%; bottom: 118px; z-index: 5; width: 54px; height: 40px; }
+.shell-lamp .shell {
+  position: absolute; left: 0; right: 0; top: 0; height: 32px;
+  border-radius: 54px 54px 6px 6px;
+  background: repeating-conic-gradient(from -90deg at 50% 100%, #ffc0dc 0 9deg, #ff8fc2 9deg 18deg);
+  box-shadow: 0 0 20px 8px rgba(255,120,190,.6), 0 0 60px 20px rgba(255,79,163,.3);
+  animation: lampFlicker 4s ease-in-out infinite;
+}
+.shell-lamp .base { position: absolute; left: 18px; right: 18px; bottom: 0; height: 9px; border-radius: 4px; background: #c99a45; }
+
+.drink-spot {
+  position: absolute;
+  left: calc(50% + 105px);
+  bottom: 112px;
+  width: 112px;
+  z-index: 5;
+}
+.drink { animation: drinkDrop .7s cubic-bezier(.3,1.5,.5,1) both; transform-origin: 50% 100%; }
+.drink svg { display: block; width: 100%; height: auto; overflow: visible; filter: drop-shadow(0 0 12px rgba(255,255,255,.25)) drop-shadow(0 6px 6px rgba(0,0,0,.45)); }
+.drink.leaving { animation: drinkLeave .35s ease-in forwards; }
+@keyframes drinkDrop {
+  0% { transform: translateY(-160px) scale(.4) rotate(-20deg); opacity: 0; }
+  60% { transform: translateY(6px) scale(1.06, .92) rotate(4deg); opacity: 1; }
+  80% { transform: translateY(-6px) scale(.97, 1.04) rotate(-2deg); }
+  100% { transform: translateY(0) scale(1) rotate(0); }
+}
+@keyframes drinkLeave { to { transform: translateX(160px) rotate(15deg); opacity: 0; } }
+.bubble { animation: rise var(--d, 2.6s) ease-in infinite; animation-delay: var(--delay, 0s); }
+@keyframes rise { 0% { transform: translateY(0); opacity: 0; } 15% { opacity: .9; } 100% { transform: translateY(-70px); opacity: 0; } }
+.fire { transform-origin: 60px 40px; animation: flicker .35s ease-in-out infinite alternate; }
+
+.sparkle {
+  position: absolute; z-index: 9;
+  font-size: 1.3rem;
+  pointer-events: none;
+  animation: burst .95s ease-out forwards;
+}
+@keyframes burst {
+  0% { transform: translate(0,0) scale(.3) rotate(0); opacity: 1; }
+  100% { transform: translate(var(--dx), var(--dy)) scale(1.1) rotate(var(--r)); opacity: 0; }
+}
+
+/* drink card */
+.drink-card {
+  position: relative;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 24px clamp(18px, 4vw, 34px) 26px;
+  border-radius: 28px;
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(255,255,255,.18), transparent 50%),
+    linear-gradient(150deg, rgba(180,92,255,.55), rgba(255,79,163,.45) 45%, rgba(15,181,174,.5));
+  border: 2px solid rgba(255,233,168,.75);
+  box-shadow: 0 0 0 5px rgba(255,79,163,.2), 0 0 40px rgba(180,92,255,.4), 0 20px 40px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  text-align: center;
+  overflow: hidden;
+}
+.drink-card::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,.18) 45%, transparent 60%);
+  background-size: 250% 100%;
+  animation: satin 6s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes satin { 0%,100% { background-position: 120% 0; } 50% { background-position: -20% 0; } }
+.drink-card.pop { animation: cardPop .6s cubic-bezier(.3,1.6,.5,1); }
+@keyframes cardPop { 0% { transform: perspective(700px) rotateY(80deg) scale(.85); opacity: 0; } 100% { transform: perspective(700px) rotateY(0) scale(1); opacity: 1; } }
+.drink-kicker { font-family: var(--script); color: #fff; opacity: .9; font-size: 1rem; text-shadow: 0 0 10px rgba(255,79,163,.9); }
+.drink-name {
+  margin: 4px 0 8px;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(1.8rem, 6vw, 2.5rem);
+  color: #fff8de;
+  text-shadow: 2px 2px 0 var(--hot-pink), 4px 4px 0 #3a0f4a, 0 0 18px rgba(255,255,255,.5);
+}
+.drink-desc { margin: 0 auto 14px; max-width: 480px; font-size: 1.05rem; line-height: 1.55; color: #fff; text-shadow: 0 1px 2px rgba(40,0,40,.6); }
+.chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.chip {
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: .85rem; font-weight: 800;
+  color: #3a0f4a;
+  background: linear-gradient(180deg, #fffaf0, #ffe1f0);
+  border: 2px solid #fff;
+  box-shadow: 0 3px 0 rgba(90,0,60,.35), 0 0 10px rgba(255,255,255,.35);
+  animation: chipIn .4s cubic-bezier(.3,1.6,.5,1) both;
+  animation-delay: calc(var(--i) * 60ms + 250ms);
+}
+@keyframes chipIn { from { transform: scale(0) translateY(10px); } to { transform: scale(1); } }
+.glass-note { margin: 14px 0 0; font-size: .85rem; opacity: .9; font-style: italic; }
+.drink-count { margin-top: 10px; font-size: .8rem; color: #ffe9a8; letter-spacing: 1px; text-transform: uppercase; opacity: .85; }
+
+/* ================= JOKES ================= */
+.sign-wrap { position: relative; max-width: 640px; margin: 0 auto; padding-top: 46px; perspective: 900px; }
+.rope { position: absolute; top: 0; width: 6px; height: 56px; background: repeating-linear-gradient(160deg, #c99a45 0 4px, #8a6426 4px 7px); border-radius: 3px; z-index: 0; }
+.rope.l { left: 18%; transform: rotate(-8deg); }
+.rope.r { right: 18%; transform: rotate(8deg); }
+.rope::before { content: ""; position: absolute; top: -8px; left: -5px; width: 16px; height: 16px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #ffe9a8, #b8862a); }
+.joke-sign {
+  position: relative;
+  z-index: 1;
+  padding: 34px clamp(54px, 10vw, 84px) 30px;
+  border-radius: 22px 30px 26px 34px / 30px 22px 34px 26px;
+  background:
+    repeating-linear-gradient(176deg, rgba(0,0,0,.14) 0 2px, transparent 2px 9px),
+    repeating-linear-gradient(183deg, rgba(255,220,160,.09) 0 1px, transparent 1px 14px),
+    radial-gradient(ellipse at 30% 40%, rgba(40,15,0,.35) 0 6%, transparent 7%),
+    linear-gradient(180deg, #92562a, #6a3814 55%, #55290c);
+  border: 4px solid #2d1505;
+  box-shadow: 0 0 0 3px #b8862a, 0 0 40px rgba(255,140,60,.35), 0 22px 40px rgba(0,0,0,.6), inset 0 3px 0 rgba(255,220,160,.35), inset 0 -10px 20px rgba(0,0,0,.35);
+  text-align: center;
+  min-height: 230px;
+  display: flex; flex-direction: column; justify-content: center;
+  transform-style: preserve-3d;
+}
+.joke-sign::before {
+  content: "";
+  position: absolute; inset: 10px;
+  border: 2px dashed rgba(255,220,160,.35);
+  border-radius: 16px 24px 20px 28px / 24px 16px 28px 20px;
+  pointer-events: none;
+}
+.joke-sign.flip { animation: signFlip .7s ease-in-out; }
+@keyframes signFlip {
+  0% { transform: rotateX(0); }
+  45% { transform: rotateX(90deg); }
+  55% { transform: rotateX(-90deg); }
+  80% { transform: rotateX(12deg); }
+  100% { transform: rotateX(0); }
+}
+.tiki-face { position: absolute; top: 50%; width: clamp(34px, 7vw, 50px); transform: translateY(-50%); filter: drop-shadow(0 2px 0 rgba(255,220,160,.25)); }
+.tiki-face.l { left: clamp(10px, 2.5vw, 20px); }
+.tiki-face.r { right: clamp(10px, 2.5vw, 20px); }
+.joke-label { font-family: var(--script); color: var(--gold); font-size: .95rem; opacity: .9; margin-bottom: 8px; }
+.joke-q {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(1.25rem, 4.2vw, 1.75rem);
+  line-height: 1.3;
+  color: #ffe9b8;
+  text-shadow: 0 -1px 0 rgba(0,0,0,.6), 0 2px 0 rgba(255,220,160,.2);
+}
+.joke-a {
+  margin: 16px 0 0;
+  font-weight: 800;
+  font-size: clamp(1.05rem, 3.5vw, 1.25rem);
+  color: #fff;
+  background: linear-gradient(90deg, var(--hot-pink), var(--orchid));
+  display: inline-block;
+  align-self: center;
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: 2px solid #ffe9a8;
+  box-shadow: 0 0 18px rgba(255,79,163,.6);
+  transform: scale(0) rotate(-6deg);
+  transition: transform .45s cubic-bezier(.3,1.8,.5,1);
+}
+.joke-a.show { transform: scale(1) rotate(-1.5deg); }
+.joke-a:empty { display: none; }
+.stamp {
+  position: absolute; top: -22px; right: -14px; z-index: 2;
+  width: 82px; padding: 6px 4px 5px;
+  text-align: center;
+  background: #fff4d6;
+  color: #b02a6b;
+  font-family: var(--display);
+  font-size: .62rem;
+  line-height: 1.1;
+  transform: rotate(10deg);
+  border: 3px dotted #fff4d6;
+  outline: 2px solid #d94f8f;
+  outline-offset: -6px;
+  box-shadow: 0 6px 12px rgba(0,0,0,.45);
+}
+.stamp svg { display: block; width: 34px; height: 34px; margin: 2px auto; }
+
+/* ================= FOOTER ================= */
+footer {
+  position: relative; z-index: 1;
+  padding: 50px 16px 34px;
+  text-align: center;
+  background: linear-gradient(180deg, transparent, rgba(3,12,26,.9) 40%);
+}
+.footer-palms { display: flex; justify-content: center; align-items: flex-end; gap: 6px; height: 90px; margin-bottom: 8px; }
+.footer-palms svg { height: 100%; width: auto; }
+.footer-palms svg:nth-child(2) { height: 70%; }
+.footer-palms svg:nth-child(4) { height: 60%; transform: scaleX(-1); }
+.footer-palms svg:nth-child(5) { height: 85%; transform: scaleX(-1); }
+.footer-palms .fronds { transform-origin: 105px 112px; animation: frondSway 6s ease-in-out infinite; }
+footer p { margin: 0; font-family: var(--script); font-size: clamp(1.3rem, 4vw, 1.7rem); color: #ffe9a8; text-shadow: 0 0 12px rgba(255,79,163,.8); }
+footer small { display: block; margin-top: 8px; color: #8fb6d9; font-size: .82rem; }
+.footer-wave { height: 14px; margin: 18px auto 0; max-width: 300px; position: relative; overflow: hidden; }
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 640px) {
+  .site-header { padding-top: 34px; }
+  .banner { padding: 50px 10px 36px; gap: 8px; }
+  .torch { width: 30px; transform: scale(.72); transform-origin: bottom center; margin: 0 -6px; }
+  .torch-pole { height: 110px; }
+  .bar { height: 400px; }
+  .bartender { width: 156px; margin-left: -96px; bottom: 85px; }
+  .bar-sign { top: 96px; }
+  .lantern.mid { display: none; }
+  .shelf-1 { top: 150px; }
+  .shelf-2 { top: 228px; }
+  .drink-spot { left: calc(50% + 52px); width: 86px; bottom: 114px; }
+  .speech { left: auto; right: 8px; top: 112px; max-width: 150px; font-size: .8rem; }
+  .on-counter.coco { display: none; }
+  .shell-lamp { right: 3%; transform: scale(.8); }
+  .counter { height: 124px; }
+  .lantern { width: 32px; height: 40px; }
+  .stamp { right: -6px; transform: rotate(10deg) scale(.85); }
+}
+@media (max-width: 380px) {
+  .drink-spot { left: calc(50% + 44px); width: 78px; }
+  .bartender { width: 140px; margin-left: -92px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  .float-flower { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- Reusable SVG symbols -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="hibiscus" viewBox="-50 -50 100 100">
+      <g fill="currentColor">
+        <path d="M0 0 C-20 -16 -22 -46 0 -48 C22 -46 20 -16 0 0Z" />
+        <path d="M0 0 C-20 -16 -22 -46 0 -48 C22 -46 20 -16 0 0Z" transform="rotate(72)" />
+        <path d="M0 0 C-20 -16 -22 -46 0 -48 C22 -46 20 -16 0 0Z" transform="rotate(144)" />
+        <path d="M0 0 C-20 -16 -22 -46 0 -48 C22 -46 20 -16 0 0Z" transform="rotate(216)" />
+        <path d="M0 0 C-20 -16 -22 -46 0 -48 C22 -46 20 -16 0 0Z" transform="rotate(288)" />
+      </g>
+      <circle r="11" fill="#000" opacity=".22" />
+      <path d="M0 0 L10 -32" stroke="#ffe066" stroke-width="3" stroke-linecap="round" />
+      <circle cx="10" cy="-33" r="3" fill="#ffe066" /><circle cx="6" cy="-36" r="2.4" fill="#ffd23f" /><circle cx="14" cy="-30" r="2.4" fill="#ffd23f" />
+    </symbol>
+    <symbol id="palm" viewBox="0 0 220 400">
+      <g class="trunk-g">
+        <path d="M100 400 C96 320 120 220 106 112" fill="none" stroke="#040d1d" stroke-width="15" stroke-linecap="round" />
+        <path d="M100 400 C96 320 120 220 106 112" fill="none" stroke="#0d1f3a" stroke-width="15" stroke-dasharray="3 14" />
+        <g class="fronds" fill="#040d1d">
+          <path d="M106 112 Q60 70 4 112 Q54 88 104 120Z" />
+          <path d="M106 112 Q70 40 20 40 Q72 60 102 116Z" />
+          <path d="M106 112 Q110 30 150 12 Q118 52 110 114Z" />
+          <path d="M106 112 Q160 50 214 82 Q160 74 110 118Z" />
+          <path d="M106 112 Q170 110 206 168 Q160 126 108 120Z" />
+          <path d="M106 112 Q50 120 22 182 Q60 134 104 122Z" />
+          <circle cx="102" cy="122" r="6" /><circle cx="112" cy="124" r="6" /><circle cx="107" cy="130" r="6" />
+        </g>
+      </g>
+    </symbol>
+    <symbol id="tiki" viewBox="0 0 50 80">
+      <rect x="4" y="2" width="42" height="76" rx="10" fill="#3d1d07" />
+      <rect x="4" y="2" width="42" height="12" rx="6" fill="#2d1505" />
+      <rect x="9" y="20" width="12" height="9" rx="3" fill="#ffe066" opacity=".9" />
+      <rect x="29" y="20" width="12" height="9" rx="3" fill="#ffe066" opacity=".9" />
+      <path d="M8 17 H22 M28 17 H42" stroke="#1a0a02" stroke-width="3" stroke-linecap="round" />
+      <path d="M25 30 L20 44 H30Z" fill="#1a0a02" />
+      <rect x="10" y="50" width="30" height="16" rx="5" fill="#1a0a02" />
+      <path d="M14 50 V66 M19 50 V66 M24 50 V66 M29 50 V66 M34 50 V66" stroke="#f2d9a8" stroke-width="2" />
+    </symbol>
+  </defs>
+</svg>
+
+<!-- Moonlit background -->
+<div class="scene-bg" aria-hidden="true">
+  <div class="stars" id="stars"></div>
+  <div class="moon"></div>
+  <svg class="island" viewBox="0 0 1000 90" preserveAspectRatio="none">
+    <path d="M0 90 L0 70 Q80 50 160 66 Q240 40 300 62 L340 70 Q420 30 520 68 L1000 72 L1000 90Z" fill="#081332" />
+    <path d="M600 90 Q700 40 760 58 Q820 20 880 54 Q940 44 1000 60 L1000 90Z" fill="#0a173c" />
+  </svg>
+  <div class="sea">
+    <div class="reflection" id="reflection"></div>
+    <div class="wave" style="top:6%;--o:.25;--d:12s"></div>
+    <div class="wave" style="top:22%;--o:.3;--d:9s;background-size:90px 12px"></div>
+    <div class="wave" style="top:42%;--o:.35;--d:7s"></div>
+    <div class="wave" style="top:64%;--o:.4;--d:10s;background-size:150px 16px"></div>
+    <div class="wave" style="top:84%;--o:.45;--d:6s"></div>
+  </div>
+  <div class="sand" style="left:-14vw"></div>
+  <div class="sand" style="right:-18vw"></div>
+  <div class="palm palm-left"><svg viewBox="0 0 220 400"><use href="#palm" /></svg></div>
+  <div class="palm palm-left2"><svg viewBox="0 0 220 400"><use href="#palm" /></svg></div>
+  <div class="palm palm-right"><svg viewBox="0 0 220 400"><use href="#palm" /></svg></div>
+</div>
+<div id="flowers" aria-hidden="true"></div>
+
+<!-- ================= HEADER ================= -->
+<header class="site-header">
+  <div class="lights" id="topLights"></div>
+  <div class="roof thatch"></div>
+  <div class="banner bamboo">
+    <div class="torch" aria-hidden="true"><div class="glow"></div><div class="flame"></div><div class="torch-head"></div><div class="torch-pole"></div></div>
+    <div class="title-plaque">
+      <h1>Aloha <span style="white-space:nowrap">Lounge <span class="emo">🌺</span></span></h1>
+      <p class="tagline">Grab a stool — the torches are lit &amp; the moon is full</p>
+    </div>
+    <div class="torch" aria-hidden="true"><div class="glow"></div><div class="flame"></div><div class="torch-head"></div><div class="torch-pole"></div></div>
+  </div>
+</header>
+
+<main>
+  <!-- ================= TIKI BAR ================= -->
+  <section id="bar" aria-labelledby="bar-title">
+    <h2 class="section-title" id="bar-title">The Tiki Bar 🍹</h2>
+    <p class="section-sub">Meet Kai, our resident mixologist. Give him a tap (or hit the button) and he'll shake up a tropical surprise.</p>
+
+    <div class="bar">
+      <div class="bar-wall bamboo"></div>
+      <div class="shelf shelf-1"><div class="bottles" id="shelf1"></div></div>
+      <div class="shelf shelf-2"><div class="bottles" id="shelf2"></div></div>
+
+      <div class="bar-roof thatch"></div>
+      <div class="lights" id="barLights" style="top:58px;height:46px"></div>
+      <div class="bar-sign">~ Kai's Tiki Tiki Bar ~</div>
+      <div class="lantern" style="left:9%;--c:#ff8a3c;--d:4.2s"><div class="lamp"></div></div>
+      <div class="lantern" style="right:9%;--c:#ff4fa3;--d:3.6s"><div class="lamp"></div></div>
+      <div class="lantern mid" style="left:30%;top:52px;width:30px;height:38px;--c:#45ead9;--d:5s"><div class="lamp"></div></div>
+      <div class="lantern mid" style="right:30%;top:52px;width:30px;height:38px;--c:#b45cff;--d:4.6s"><div class="lamp"></div></div>
+
+      <button class="bartender" id="bartender" type="button" aria-label="Kai the bartender. Click to mix a drink">
+        <svg viewBox="0 0 200 270" aria-hidden="true">
+          <defs>
+            <pattern id="aloha" width="38" height="38" patternUnits="userSpaceOnUse" patternTransform="rotate(14)">
+              <rect width="38" height="38" fill="#0fa3a0" />
+              <path d="M2 34 Q8 20 22 22 Q14 30 2 34Z" fill="#086b5c" />
+              <path d="M24 36 Q30 28 38 30 Q32 36 24 36Z" fill="#086b5c" />
+              <use href="#hibiscus" x="17" y="1" width="18" height="18" style="color:#ff5fae" />
+              <use href="#hibiscus" x="1" y="4" width="11" height="11" style="color:#ffd84a" />
+              <circle cx="30" cy="27" r="2" fill="#fff3c4" />
+            </pattern>
+            <radialGradient id="skin" cx=".4" cy=".35" r=".7">
+              <stop offset="0" stop-color="#f7c697" /><stop offset="1" stop-color="#d48a55" />
+            </radialGradient>
+            <linearGradient id="steel" x1="0" x2="1">
+              <stop offset="0" stop-color="#8a96a8" /><stop offset=".35" stop-color="#ffffff" /><stop offset=".6" stop-color="#c3ccd8" /><stop offset="1" stop-color="#6b7688" />
+            </linearGradient>
+          </defs>
+          <g class="bt-body">
+            <rect x="88" y="140" width="24" height="32" rx="8" fill="#d99460" />
+            <path d="M38 270 L45 198 Q52 168 100 164 Q148 168 155 198 L162 270Z" fill="url(#aloha)" stroke="#06504e" stroke-width="2.5" />
+            <path d="M100 186 V270" stroke="#06504e" stroke-width="1.5" />
+            <circle cx="100" cy="206" r="2.6" fill="#fff3c4" /><circle cx="100" cy="230" r="2.6" fill="#fff3c4" /><circle cx="100" cy="254" r="2.6" fill="#fff3c4" />
+            <path d="M80 167 L100 192 L90 164Z" fill="#14c7c1" stroke="#06504e" stroke-width="1.5" />
+            <path d="M120 167 L100 192 L110 164Z" fill="#14c7c1" stroke="#06504e" stroke-width="1.5" />
+            <g id="lei"></g>
+            <rect x="118" y="206" width="28" height="13" rx="3" fill="#fff4d6" stroke="#c98a1b" stroke-width="1.5" />
+            <text x="132" y="215.5" font-size="8" text-anchor="middle" font-family="Kavoon, cursive" fill="#b02a6b">KAI</text>
+
+            <g class="arms-idle">
+              <path d="M52 190 Q34 198 28 216 L48 222 Q52 208 62 202Z" fill="url(#aloha)" stroke="#06504e" stroke-width="2" />
+              <circle cx="34" cy="220" r="10" fill="url(#skin)" />
+              <path d="M148 190 Q166 198 172 216 L152 222 Q148 208 138 202Z" fill="url(#aloha)" stroke="#06504e" stroke-width="2" />
+              <circle cx="166" cy="220" r="10" fill="url(#skin)" />
+            </g>
+            <g class="arms-shake">
+              <path d="M148 192 Q168 182 170 160 L154 156 Q150 172 138 180Z" fill="url(#aloha)" stroke="#06504e" stroke-width="2" />
+              <path d="M54 192 Q84 172 122 160 L126 174 Q92 184 66 202Z" fill="url(#aloha)" stroke="#06504e" stroke-width="2" />
+              <g>
+                <rect x="139" y="104" width="24" height="48" rx="6" fill="url(#steel)" stroke="#5b6577" stroke-width="1.5" />
+                <rect x="142" y="94" width="18" height="13" rx="3" fill="url(#steel)" stroke="#5b6577" stroke-width="1.5" />
+                <rect x="146" y="87" width="10" height="8" rx="2" fill="url(#steel)" stroke="#5b6577" stroke-width="1.5" />
+                <rect x="143" y="118" width="16" height="10" rx="2" fill="#ff4fa3" opacity=".85" />
+              </g>
+              <circle cx="160" cy="150" r="10" fill="url(#skin)" />
+              <circle cx="132" cy="122" r="10" fill="url(#skin)" />
+              <path d="M174 100 l8 -6 M178 118 l10 0 M128 96 l-8 -6" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".8" />
+            </g>
+
+            <g class="bt-head">
+              <circle cx="57" cy="112" r="10" fill="#d99460" />
+              <circle cx="143" cy="112" r="10" fill="#d99460" />
+              <circle cx="100" cy="106" r="44" fill="url(#skin)" />
+              <path d="M56 102 Q52 58 100 56 Q148 58 144 102 Q138 80 120 78 Q112 92 96 86 Q80 94 66 84 Q58 92 56 102Z" fill="#3a1f12" />
+              <path d="M78 66 Q96 58 116 64" stroke="#6b3a20" stroke-width="3" fill="none" stroke-linecap="round" opacity=".7" />
+              <use href="#hibiscus" x="124" y="62" width="34" height="34" style="color:#ff4fa3" />
+              <path d="M73 93 Q81 87 90 92" stroke="#3a1f12" stroke-width="3.5" fill="none" stroke-linecap="round" />
+              <path d="M110 92 Q119 87 127 93" stroke="#3a1f12" stroke-width="3.5" fill="none" stroke-linecap="round" />
+              <g class="eyes">
+                <ellipse cx="82" cy="106" rx="5.5" ry="7" fill="#24130a" />
+                <ellipse cx="118" cy="106" rx="5.5" ry="7" fill="#24130a" />
+                <circle cx="84" cy="103" r="2" fill="#fff" /><circle cx="120" cy="103" r="2" fill="#fff" />
+              </g>
+              <ellipse cx="70" cy="122" rx="8" ry="5" fill="#ff6fa0" opacity=".5" />
+              <ellipse cx="130" cy="122" rx="8" ry="5" fill="#ff6fa0" opacity=".5" />
+              <path d="M98 108 Q105 115 98 120" stroke="#a8622f" stroke-width="2.5" fill="none" stroke-linecap="round" />
+              <path class="mouth-smile" d="M84 127 Q100 145 116 127 Q100 134 84 127Z" fill="#7a1f2b" stroke="#5a1520" stroke-width="1.5" stroke-linejoin="round" />
+              <ellipse class="mouth-o" cx="100" cy="133" rx="7" ry="8" fill="#7a1f2b" />
+            </g>
+          </g>
+        </svg>
+      </button>
+      <div class="speech" id="speech" role="status" aria-live="polite"></div>
+
+      <div class="counter">
+        <div class="counter-top"></div>
+        <div class="counter-front bamboo"><span class="carve">MAHALO</span></div>
+      </div>
+      <span class="on-counter pine" aria-hidden="true">🍍</span>
+      <span class="on-counter coco" aria-hidden="true">🥥</span>
+      <div class="shell-lamp" aria-hidden="true"><div class="shell"></div><div class="base"></div></div>
+      <div class="drink-spot" id="drinkSpot"></div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn" id="mixBtn" type="button"><span class="btn-emo">🍹</span> Mix me a drink!</button>
+    </div>
+
+    <div class="drink-card" id="drinkCard" aria-live="polite">
+      <div class="drink-kicker">Tonight's special</div>
+      <h3 class="drink-name" id="drinkName">Your drink awaits…</h3>
+      <p class="drink-desc" id="drinkDesc">Kai's polishing glasses and humming a ukulele tune. Click him or the button above and he'll mix you something tropical from his menu of 18 island cocktails.</p>
+      <div class="chips" id="drinkChips"></div>
+      <p class="glass-note" id="glassNote"></p>
+      <div class="drink-count" id="drinkCount"></div>
+    </div>
+  </section>
+
+  <!-- ================= JOKES ================= -->
+  <section id="jokes" aria-labelledby="jokes-title">
+    <h2 class="section-title" id="jokes-title">Island Giggles 🍍</h2>
+    <p class="section-sub">Our carved joke sign has heard every pun on the island. Some of them twice.</p>
+    <div class="sign-wrap">
+      <span class="rope l"></span><span class="rope r"></span>
+      <div class="stamp" aria-hidden="true">
+        ALOHA<svg viewBox="0 0 34 34"><use href="#hibiscus" width="34" height="34" style="color:#ff4fa3" /></svg>25¢ · 2006
+      </div>
+      <div class="joke-sign" id="jokeSign" aria-live="polite">
+        <svg class="tiki-face l" viewBox="0 0 50 80" aria-hidden="true"><use href="#tiki" /></svg>
+        <svg class="tiki-face r" viewBox="0 0 50 80" aria-hidden="true"><use href="#tiki" /></svg>
+        <div class="joke-label" id="jokeLabel">Greetings from the Joke Shack</div>
+        <p class="joke-q" id="jokeQ">Press the button below for a fresh island funny!</p>
+        <p class="joke-a" id="jokeA"></p>
+      </div>
+    </div>
+    <div class="btn-row">
+      <button class="btn teal" id="jokeBtn" type="button">Tell me a joke <span class="btn-emo">🍍</span></button>
+    </div>
+  </section>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="footer-palms" aria-hidden="true">
+    <svg viewBox="0 0 220 400"><use href="#palm" /></svg>
+    <svg viewBox="0 0 220 400"><use href="#palm" /></svg>
+    <svg viewBox="0 0 50 50" style="height:46px;align-self:center"><use href="#hibiscus" width="50" height="50" style="color:#ff4fa3" /></svg>
+    <svg viewBox="0 0 220 400"><use href="#palm" /></svg>
+    <svg viewBox="0 0 220 400"><use href="#palm" /></svg>
+  </div>
+  <p>Made with aloha 🌴</p>
+  <small>Kai's Tiki Tiki Bar · open every night under the full moon</small>
+  <div class="footer-wave"><div class="wave" style="top:0;--o:.6;--d:5s"></div></div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ---------- helpers ---------- */
+  const $ = (id) => document.getElementById(id);
+  const rand = (a, b) => Math.random() * (b - a) + a;
+  const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
+
+  /* ---------- stars ---------- */
+  const stars = $("stars");
+  for (let i = 0; i < 90; i++) {
+    const s = document.createElement("span");
+    s.className = "star";
+    const size = rand(1, 2.8);
+    s.style.cssText = `left:${rand(0, 100)}%;top:${rand(0, 100)}%;width:${size}px;height:${size}px;--d:${rand(2, 5)}s;--delay:${rand(0, 5)}s`;
+    stars.appendChild(s);
+  }
+
+  /* ---------- moon reflection ---------- */
+  const refl = $("reflection");
+  for (let i = 0; i < 16; i++) {
+    const r = document.createElement("span");
+    const w = Math.max(18, 100 - i * 4 + rand(-12, 12));
+    r.style.cssText = `width:${w}%;--d:${rand(1.8, 3.4)}s;--delay:${rand(0, 2)}s;opacity:${1 - i * 0.04}`;
+    refl.appendChild(r);
+  }
+
+  /* ---------- floating hibiscus ---------- */
+  const flowerColors = ["#ff4fa3", "#ff8a3c", "#b45cff", "#ff6fb5", "#ffd84a", "#45ead9"];
+  const flowers = $("flowers");
+  const flowerCount = window.innerWidth < 640 ? 6 : 10;
+  for (let i = 0; i < flowerCount; i++) {
+    const f = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    f.setAttribute("viewBox", "-50 -50 100 100");
+    f.setAttribute("class", "float-flower");
+    f.style.cssText = `left:${rand(2, 95)}%;--s:${rand(22, 44)}px;--d:${rand(18, 32)}s;--delay:${rand(-30, 0)}s;--x:${rand(-80, 80)}px;color:${pick(flowerColors)}`;
+    f.innerHTML = '<use href="#hibiscus" x="-50" y="-50" width="100" height="100"/>';
+    flowers.appendChild(f);
+  }
+
+  /* ---------- string lights ---------- */
+  const bulbColors = ["#ff4fa3", "#ffd84a", "#45ead9", "#b45cff", "#ff8a3c", "#7dff9a"];
+  function makeLights(container, scallops, perScallop) {
+    const top = 4, sag = 44;
+    let path = "";
+    for (let i = 0; i < scallops; i++) {
+      const x0 = (i / scallops) * 1000, x1 = ((i + 1) / scallops) * 1000;
+      path += `M${x0} ${top} Q${(x0 + x1) / 2} ${top + sag} ${x1} ${top} `;
+    }
+    container.innerHTML = `<svg viewBox="0 0 1000 60" preserveAspectRatio="none"><path d="${path}" fill="none" stroke="#1d1a14" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>`;
+    const h = container.clientHeight || 60;
+    const total = scallops * perScallop;
+    for (let i = 0; i < total; i++) {
+      const f = (i + 0.5) / total;
+      const t = (f * scallops) % 1;
+      const y = (1 - t) * (1 - t) * top + 2 * t * (1 - t) * (top + sag) + t * t * top;
+      const b = document.createElement("span");
+      b.className = "bulb";
+      b.style.cssText = `left:${f * 100}%;top:${(y / 60) * h + 3}px;--c:${bulbColors[i % bulbColors.length]};--d:${rand(1.6, 3.2)}s;--delay:${rand(0, 2)}s`;
+      container.appendChild(b);
+    }
+  }
+  function buildLights() {
+    const narrow = window.innerWidth < 640;
+    makeLights($("topLights"), narrow ? 3 : 5, narrow ? 5 : 6);
+    makeLights($("barLights"), narrow ? 2 : 3, narrow ? 5 : 6);
+  }
+  buildLights();
+  let resizeTimer;
+  window.addEventListener("resize", () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(buildLights, 200); });
+
+  /* ---------- shelf bottles ---------- */
+  const bottleColors = ["#ff4fa3", "#45ead9", "#ffd84a", "#b45cff", "#ff8a3c", "#7dff9a", "#3aa0ff", "#ff6b6b", "#c98a1b"];
+  function fillShelf(el, n) {
+    for (let i = 0; i < n; i++) {
+      const b = document.createElement("span");
+      const mug = Math.random() < 0.18;
+      b.className = "bottle" + (mug ? " tiki-mug" : "");
+      const h = mug ? rand(30, 40) : rand(38, 60);
+      b.style.cssText = `--c:${pick(bottleColors)};--h:${h}px;--w:${mug ? rand(20, 26) : rand(15, 22)}px;--neck:${rand(10, 18)}px;--label:${pick(["#fff4d6", "#ffe1f0", "#d9fff8", "#3a2208"])}`;
+      el.appendChild(b);
+    }
+  }
+  const narrowShelf = window.innerWidth < 640;
+  fillShelf($("shelf1"), narrowShelf ? 9 : 14);
+  fillShelf($("shelf2"), narrowShelf ? 8 : 12);
+
+  /* ---------- lei on Kai ---------- */
+  (function buildLei() {
+    const lei = $("lei");
+    const colors = ["#ff4fa3", "#ffd84a", "#b45cff", "#ff8a3c", "#ff6fb5"];
+    let out = "";
+    const n = 15;
+    for (let i = 0; i < n; i++) {
+      const t = i / (n - 1);
+      const x = (1 - t) * (1 - t) * 70 + 2 * t * (1 - t) * 100 + t * t * 130;
+      const y = (1 - t) * (1 - t) * 166 + 2 * t * (1 - t) * 222 + t * t * 166;
+      out += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="6" fill="${colors[i % colors.length]}" stroke="rgba(0,0,0,.25)"/>`;
+      out += `<circle cx="${(x - 1.5).toFixed(1)}" cy="${(y - 1.5).toFixed(1)}" r="1.6" fill="#fff" opacity=".7"/>`;
+    }
+    lei.innerHTML = out;
+  })();
+
+  /* ================= COCKTAILS ================= */
+  const COCKTAILS = [
+    { name: "Blue Hawaiian", glass: "hurricane", layers: ["#a9f1ff", "#2fc3ea", "#0a7fc2"], garnish: "pineapple", umbrella: "#ff4fa3", straw: "#ffd84a",
+      desc: "The color of a lagoon at noon — smooth, sweet and suspiciously easy to sip under the stars.",
+      ingredients: ["Light rum", "Blue curaçao", "Pineapple juice", "Cream of coconut"] },
+    { name: "Mai Tai", glass: "highball", layers: ["#8f3a12", "#e07a1f", "#f6b23c"], garnish: "lime", umbrella: "#45ead9", straw: "#ff4fa3", ice: true,
+      desc: "The undisputed king of the tiki menu: nutty, tangy and topped with a moody dark-rum float.",
+      ingredients: ["Aged rum", "Dark rum float", "Orange curaçao", "Orgeat", "Fresh lime"] },
+    { name: "Lava Flow", glass: "hurricane", layers: ["#fff8ee", "#ff3b4e", "#fff3e0", "#ff5a6a"], garnish: "pineapple", umbrella: "#ffd84a", straw: "#ff2e88",
+      desc: "A creamy piña colada erupting with ribbons of strawberry lava. Volcanic, but in a cuddly way.",
+      ingredients: ["Coconut rum", "Strawberry purée", "Banana", "Pineapple juice", "Coconut cream"] },
+    { name: "Pink Flamingo", glass: "coupe", layers: ["#ffd1e8", "#ff8cc6", "#ff4fa3"], garnish: "cherry", umbrella: null, straw: null,
+      desc: "Pretty, pink and standing elegantly on one leg. Tart grapefruit meets a blush of raspberry.",
+      ingredients: ["Vodka", "Pink grapefruit", "Raspberry syrup", "Squeeze of lime"] },
+    { name: "Coconut Moonlight", glass: "coconut", layers: ["#ffffff", "#e9e1ff", "#c3afff"], garnish: "cherry", umbrella: "#b45cff", straw: "#45ead9",
+      desc: "Served right in the shell and glowing like the full moon over the bay. Silky, dreamy, a little lavender.",
+      ingredients: ["White rum", "Coconut water", "Coconut cream", "Butterfly-pea syrup", "Vanilla"] },
+    { name: "Piña Colada", glass: "hurricane", layers: ["#fffdf0", "#fff1b8", "#ffd96b"], garnish: "pineapple", umbrella: "#ff4fa3", straw: "#ff4fa3",
+      desc: "If you like getting caught in the rain, this frosty classic is your soulmate in a glass.",
+      ingredients: ["White rum", "Pineapple juice", "Cream of coconut", "Crushed ice"] },
+    { name: "Zombie", glass: "mug", layers: ["#ff9a3c", "#e8601c", "#b23a0e"], mug: "#1f9e8f", garnish: "lime", umbrella: "#b45cff", straw: "#ffd84a",
+      desc: "Three rums, a secret spice blend and a strict two-per-guest limit. Kai will be watching.",
+      ingredients: ["Three rums", "Falernum", "Grapefruit", "Cinnamon syrup", "Lime"] },
+    { name: "Hibiscus Sunset", glass: "highball", layers: ["#ffe14d", "#ff8a2e", "#e8174f", "#7d0f45"], garnish: "orange", umbrella: "#45ead9", straw: "#45ead9", ice: true,
+      desc: "A whole tropical sunset poured in layers, from golden sky down to deep hibiscus dusk.",
+      ingredients: ["Tequila", "Orange juice", "Hibiscus syrup", "Grenadine"] },
+    { name: "Volcano Bowl", glass: "mug", layers: ["#ff6a1a", "#e8401c", "#a8200e"], mug: "#c0392b", garnish: "pineapple", umbrella: null, straw: "#ff4fa3", fire: true,
+      desc: "A flaming centerpiece meant for sharing — or not, we don't judge. Please don't touch the volcano.",
+      ingredients: ["Gold rum", "Brandy", "Orange", "Lemon", "Orgeat", "Fire (for show!)"] },
+    { name: "Lagoon Lullaby", glass: "coupe", layers: ["#d6fff1", "#6ff0c8", "#1fc9a0"], garnish: "lime", umbrella: null, straw: null,
+      desc: "Cool, minty and gentle as a hammock swaying over turquoise shallows.",
+      ingredients: ["Gin", "Melon liqueur", "Fresh mint", "Lime", "Soda splash"] },
+    { name: "Orchid Twilight", glass: "highball", layers: ["#f0d9ff", "#b47aff", "#7a3ddb", "#3f1a85"], garnish: "cherry", umbrella: "#ff4fa3", straw: "#ffd84a", ice: true,
+      desc: "Changes color as you stir, just like the sky right after the sun dips into the sea.",
+      ingredients: ["Butterfly-pea gin", "Violet liqueur", "Lemon", "Tonic"] },
+    { name: "Mango Tango", glass: "hurricane", layers: ["#fff08a", "#ffc23d", "#ff8c00"], garnish: "orange", umbrella: "#b45cff", straw: "#45ead9",
+      desc: "Ripe mango and passion fruit doing a sizzling little dance on your tongue.",
+      ingredients: ["Gold rum", "Mango purée", "Passion fruit", "Lime", "Chili salt rim"] },
+    { name: "Passion Punch", glass: "highball", layers: ["#fff3a8", "#ffb347", "#ff6f91", "#e8357a"], garnish: "orange", umbrella: "#ffd84a", straw: "#ff4fa3", ice: true,
+      desc: "The life of every luau: fruity, fizzy and impossible to drink without smiling.",
+      ingredients: ["Spiced rum", "Passion fruit", "Guava nectar", "Lime", "Ginger beer"] },
+    { name: "Shark Bite", glass: "highball", layers: ["#a8ecff", "#38b6ff", "#1a7fd8", "#d6002a"], garnish: "lime", umbrella: "#ff8a3c", straw: "#ffffff", ice: true,
+      desc: "Ocean-blue up top with a sneaky splash of grenadine 'shark attack' sinking to the bottom. Dun-dun!",
+      ingredients: ["Dark rum", "Blue curaçao", "Sweet & sour", "Grenadine"] },
+    { name: "Kiwi Kokomo", glass: "coupe", layers: ["#f2ffb8", "#bff26a", "#7ed957"], garnish: "lime", umbrella: "#ff4fa3", straw: null,
+      desc: "Bright green, zingy and basically a beach vacation from Aruba to Jamaica in one sip.",
+      ingredients: ["Vodka", "Muddled kiwi", "Lime", "Agave", "Sparkling wine top"] },
+    { name: "Tropical Itch", glass: "coconut", layers: ["#ffe6c7", "#ffb36b", "#ff8a2e"], garnish: "orange", umbrella: "#45ead9", straw: "#ff2e88",
+      desc: "Comes with a tiny bamboo back-scratcher in spirit. Bourbon, rum and sunshine in a shell.",
+      ingredients: ["Bourbon", "Dark rum", "Passion fruit", "Orange curaçao", "Bitters"] },
+    { name: "Guava Glow", glass: "hurricane", layers: ["#ffe3ea", "#ff9fb8", "#ff5c87"], garnish: "cherry", umbrella: "#45ead9", straw: "#b45cff",
+      desc: "Soft pink and glowing like a shell lamp at midnight. Sweet guava with a sparkly finish.",
+      ingredients: ["Coconut rum", "Guava nectar", "Lychee", "Lemon", "Prosecco"] },
+    { name: "Midnight Luau", glass: "mug", layers: ["#5a3cff", "#3a2a8f", "#1e1450"], mug: "#2b3a8f", garnish: "cherry", umbrella: "#ffd84a", straw: "#45ead9",
+      desc: "Deep, dark and sprinkled with edible glitter, so it twinkles like the night sky over the lounge.",
+      ingredients: ["Black rum", "Blackberry", "Coconut", "Lime", "Edible shimmer"] }
+  ];
+
+  const GLASSES = {
+    hurricane: { label: "a curvy hurricane glass", clear: true,
+      bowl: "M32 22 C30 52 50 62 45 86 C40 108 42 126 60 128 C78 126 80 108 75 86 C70 62 90 52 88 22 Z",
+      liqTop: 34, rimY: 22, rimL: 34, rimR: 86,
+      extra: '<rect x="56" y="126" width="8" height="20" rx="2" fill="rgba(255,255,255,.45)" stroke="rgba(255,255,255,.8)" stroke-width="1.5"/><ellipse cx="60" cy="150" rx="22" ry="5" fill="rgba(255,255,255,.45)" stroke="rgba(255,255,255,.85)" stroke-width="1.5"/>',
+      shine: "M39 30 C38 52 53 62 49 86 C46 100 46 112 51 120" },
+    highball: { label: "a tall highball glass", clear: true,
+      bowl: "M34 26 L39 150 Q40 158 48 158 L72 158 Q80 158 81 150 L86 26 Z",
+      liqTop: 38, rimY: 26, rimL: 36, rimR: 84, extra: "",
+      shine: "M42 34 L46 148" },
+    coupe: { label: "a vintage coupe", clear: true,
+      bowl: "M14 62 Q16 104 60 106 Q104 104 106 62 Z",
+      liqTop: 68, rimY: 62, rimL: 18, rimR: 102,
+      extra: '<rect x="57" y="104" width="6" height="40" rx="2" fill="rgba(255,255,255,.45)" stroke="rgba(255,255,255,.8)" stroke-width="1.5"/><ellipse cx="60" cy="148" rx="24" ry="5" fill="rgba(255,255,255,.45)" stroke="rgba(255,255,255,.85)" stroke-width="1.5"/>',
+      shine: "M24 70 Q28 94 48 100" },
+    mug: { label: "a carved tiki mug", clear: false,
+      bowl: "M32 40 L36 150 Q37 158 46 158 L74 158 Q83 158 84 150 L88 40 Z",
+      rimY: 40, rimL: 36, rimR: 84 },
+    coconut: { label: "a real coconut shell", clear: false,
+      bowl: "M16 92 Q16 156 60 158 Q104 156 104 92 Z",
+      rimY: 92, rimL: 24, rimR: 96 }
+  };
+
+  let uidCounter = 0;
+
+  function gradientStops(layers) {
+    const n = layers.length;
+    let s = "";
+    layers.forEach((c, i) => {
+      const a = Math.min(1, i / n + (i ? 0.05 : 0));
+      const b = Math.max(0, (i + 1) / n - (i < n - 1 ? 0.05 : 0));
+      s += `<stop offset="${a.toFixed(3)}" stop-color="${c}"/><stop offset="${b.toFixed(3)}" stop-color="${c}"/>`;
+    });
+    return s;
+  }
+
+  function garnishSVG(type, x, y) {
+    switch (type) {
+      case "pineapple":
+        return `<g transform="translate(${x} ${y}) rotate(-22)">
+          <path d="M-4 -6 L-11 -28 L-1 -11 L1 -33 L4 -11 L12 -26 L5 -6Z" fill="#3fbf4f" stroke="#1d7a2c" stroke-width="1"/>
+          <path d="M-15 -7 L15 -7 L14 -1 L-14 -1Z" fill="#c98a1b"/>
+          <path d="M-14 -1 L14 -1 L0 20Z" fill="#ffe14d" stroke="#e0b21b" stroke-width="1"/>
+          <path d="M-6 3 L6 3 M-3 9 L3 9" stroke="#e0b21b" stroke-width="1.2"/></g>`;
+      case "cherry":
+        return `<g transform="translate(${x} ${y})">
+          <path d="M2 -4 Q6 -18 16 -24" stroke="#2f8f3a" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <circle cx="0" cy="0" r="7.5" fill="#e0102f"/><circle cx="-2.5" cy="-2.5" r="2.2" fill="#fff" opacity=".7"/></g>`;
+      case "lime":
+      case "orange": {
+        const outer = type === "lime" ? "#4f9d2a" : "#f08a00";
+        const inner = type === "lime" ? "#c6ef6a" : "#ffc04d";
+        let seg = "";
+        for (let i = 0; i < 8; i++) {
+          const a = (i * Math.PI) / 4;
+          seg += `<line x1="0" y1="0" x2="${(Math.cos(a) * 11).toFixed(1)}" y2="${(Math.sin(a) * 11).toFixed(1)}" stroke="#fffbe6" stroke-width="1.3"/>`;
+        }
+        return `<g transform="translate(${x} ${y - 4})"><circle r="14" fill="${inner}" stroke="${outer}" stroke-width="3"/>${seg}<circle r="2.5" fill="#fffbe6"/></g>`;
+      }
+    }
+    return "";
+  }
+
+  function umbrellaSVG(color, x, y) {
+    if (!color) return "";
+    return `<g transform="translate(${x} ${y}) rotate(20)">
+      <line x1="0" y1="0" x2="0" y2="-48" stroke="#f5e6c8" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M-27 -40 Q0 -66 27 -40 Q13.5 -45 0 -40 Q-13.5 -45 -27 -40Z" fill="${color}" stroke="rgba(0,0,0,.25)" stroke-width="1"/>
+      <path d="M0 -55 L-13.5 -43 M0 -55 L13.5 -43 M0 -55 L0 -40" stroke="rgba(255,255,255,.6)" stroke-width="1.2"/>
+      <circle cx="0" cy="-56" r="2.5" fill="#fff4d6"/></g>`;
+  }
+
+  function strawSVG(color, x1, y1, x2, y2) {
+    if (!color) return "";
+    return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${color}" stroke-width="5" stroke-linecap="round"/>
+      <line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#fff" stroke-width="5" stroke-dasharray="4 5" opacity=".85"/>`;
+  }
+
+  function bubblesSVG(n, xMin, xMax, yBottom) {
+    let s = "";
+    for (let i = 0; i < n; i++) {
+      s += `<circle class="bubble" cx="${rand(xMin, xMax).toFixed(1)}" cy="${yBottom - rand(0, 20)}" r="${rand(1.2, 2.6).toFixed(1)}" fill="#fff" opacity=".8" style="--d:${rand(2, 3.6).toFixed(2)}s;--delay:${rand(0, 2.5).toFixed(2)}s"/>`;
+    }
+    return s;
+  }
+
+  function drinkSVG(c) {
+    const g = GLASSES[c.glass];
+    const id = "d" + (++uidCounter);
+    const liq = `url(#liq${id})`;
+    let s = `<svg viewBox="0 0 120 170" role="img" aria-label="A ${c.name} in ${g.label}"><defs>
+      <linearGradient id="liq${id}" x1="0" y1="0" x2="0" y2="1">${gradientStops(c.layers)}</linearGradient>
+      <radialGradient id="top${id}" cx=".5" cy=".5" r=".6">${gradientStops([...c.layers].reverse())}</radialGradient>
+      <clipPath id="clip${id}"><path d="${g.bowl}"/></clipPath>
+      <linearGradient id="shade${id}" x1="0" x2="1">
+        <stop offset="0" stop-color="#000" stop-opacity=".45"/><stop offset=".3" stop-color="#000" stop-opacity="0"/>
+        <stop offset=".42" stop-color="#fff" stop-opacity=".28"/><stop offset=".55" stop-color="#fff" stop-opacity="0"/>
+        <stop offset="1" stop-color="#000" stop-opacity=".5"/></linearGradient>
+    </defs>`;
+
+    if (g.clear) {
+      const strawEnd = [g.rimR + 6, g.rimY - 34];
+      s += strawSVG(c.straw, 62, 120, strawEnd[0], strawEnd[1]);
+      s += `<g clip-path="url(#clip${id})">
+        <rect x="0" y="${g.liqTop}" width="120" height="${170 - g.liqTop}" fill="${liq}" opacity=".93"/>
+        <ellipse cx="60" cy="${g.liqTop}" rx="56" ry="3.5" fill="#fff" opacity=".35"/>`;
+      if (c.ice) {
+        s += `<rect x="44" y="${g.liqTop + 2}" width="16" height="15" rx="3" fill="#fff" opacity=".28" stroke="#fff" stroke-opacity=".6" transform="rotate(-12 52 ${g.liqTop + 9})"/>
+          <rect x="60" y="${g.liqTop + 12}" width="15" height="14" rx="3" fill="#fff" opacity=".22" stroke="#fff" stroke-opacity=".55" transform="rotate(14 67 ${g.liqTop + 19})"/>`;
+      }
+      s += bubblesSVG(6, 42, 78, c.glass === "coupe" ? 102 : 140);
+      s += `</g>
+        <path d="${g.bowl}" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.85)" stroke-width="2"/>
+        <path d="${g.shine}" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" opacity=".55"/>
+        ${g.extra}`;
+    } else if (c.glass === "mug") {
+      s += strawSVG(c.straw, 66, 44, g.rimR + 4, g.rimY - 36);
+      s += `<path d="${g.bowl}" fill="${c.mug}"/>
+        <path d="${g.bowl}" fill="url(#shade${id})"/>
+        <path d="M33 56 H87 M35 140 H85" stroke="rgba(0,0,0,.35)" stroke-width="3"/>
+        <path d="M42 66 h14 M64 66 h14" stroke="rgba(0,0,0,.5)" stroke-width="4" stroke-linecap="round"/>
+        <rect x="43" y="72" width="12" height="9" rx="3" fill="rgba(0,0,0,.45)"/>
+        <rect x="65" y="72" width="12" height="9" rx="3" fill="rgba(0,0,0,.45)"/>
+        <path d="M60 82 L54 100 H66Z" fill="rgba(0,0,0,.35)"/>
+        <rect x="43" y="108" width="34" height="20" rx="6" fill="rgba(0,0,0,.45)"/>
+        <path d="M48 108 V128 M54 108 V128 M60 108 V128 M66 108 V128 M72 108 V128" stroke="rgba(255,255,255,.35)" stroke-width="2"/>
+        <ellipse cx="60" cy="${g.rimY}" rx="26" ry="5" fill="url(#top${id})" stroke="rgba(0,0,0,.35)" stroke-width="2"/>
+        <ellipse cx="54" cy="${g.rimY - 1}" rx="8" ry="1.5" fill="#fff" opacity=".45"/>`;
+      if (c.fire) {
+        s += `<g class="fire"><path d="M60 40 C46 30 52 16 58 6 C58 16 66 16 64 4 C74 16 76 30 60 40Z" fill="#ff8a1f"/>
+          <path d="M60 40 C53 34 55 26 60 18 C62 26 68 30 60 40Z" fill="#ffe066"/></g>`;
+      }
+    } else if (c.glass === "coconut") {
+      s += strawSVG(c.straw, 66, 94, g.rimR + 6, g.rimY - 40);
+      let fibers = "";
+      for (let i = 0; i < 18; i++) {
+        const x = rand(22, 98), y = rand(100, 150);
+        fibers += `<path d="M${x.toFixed(1)} ${y.toFixed(1)} l${rand(-4, 4).toFixed(1)} ${rand(4, 8).toFixed(1)}" stroke="#3d2010" stroke-width="1.4" stroke-linecap="round" opacity=".7"/>`;
+      }
+      s += `<path d="${g.bowl}" fill="#7a4a24"/>
+        <path d="${g.bowl}" fill="url(#shade${id})"/>${fibers}
+        <ellipse cx="60" cy="${g.rimY}" rx="44" ry="9" fill="#fff6e6" stroke="#5a3214" stroke-width="2"/>
+        <ellipse cx="60" cy="${g.rimY}" rx="37" ry="6.5" fill="url(#top${id})"/>
+        <ellipse cx="50" cy="${g.rimY - 1.5}" rx="10" ry="1.6" fill="#fff" opacity=".6"/>`;
+    }
+
+    s += garnishSVG(c.garnish, g.rimL + 4, g.rimY);
+    s += umbrellaSVG(c.umbrella, g.rimR - 10, g.rimY + 6);
+    s += "</svg>";
+    return s;
+  }
+
+  /* ---------- mixing flow ---------- */
+  const bartender = $("bartender");
+  const mixBtn = $("mixBtn");
+  const speech = $("speech");
+  const drinkSpot = $("drinkSpot");
+  const card = $("drinkCard");
+  let lastCocktail = -1;
+  let busy = false;
+  let served = 0;
+  let speechTimer;
+
+  const shakeLines = ["Shake shake shake! 🎶", "Ooh, a fancy one…", "Mixing up some magic ✨", "Hold onto your lei!", "Little bit of this… little bit of that…"];
+  const serveLines = ["One {d}, coming right up!", "Ta-da! A {d} for you 🌺", "Fresh {d}! Mahalo!", "Your {d}, my friend 🍹", "{d}! Kai's specialty."];
+
+  function say(text, ms) {
+    clearTimeout(speechTimer);
+    speech.textContent = text;
+    speech.classList.add("show");
+    if (ms) speechTimer = setTimeout(() => speech.classList.remove("show"), ms);
+  }
+
+  function nextCocktail() {
+    let i;
+    do { i = Math.floor(Math.random() * COCKTAILS.length); } while (i === lastCocktail);
+    lastCocktail = i;
+    return COCKTAILS[i];
+  }
+
+  function sparkleBurst() {
+    const bar = drinkSpot.parentElement;
+    const barRect = bar.getBoundingClientRect();
+    const r = drinkSpot.getBoundingClientRect();
+    const cx = r.left - barRect.left + r.width / 2;
+    const cy = r.top - barRect.top + r.height / 2;
+    const emojis = ["✨", "🌺", "💖", "⭐", "🌸", "✨"];
+    for (let i = 0; i < 12; i++) {
+      const sp = document.createElement("span");
+      sp.className = "sparkle";
+      sp.textContent = pick(emojis);
+      const ang = (i / 12) * Math.PI * 2 + rand(-0.3, 0.3);
+      const dist = rand(50, 100);
+      sp.style.cssText = `left:${cx - 10}px;top:${cy - 10}px;--dx:${Math.cos(ang) * dist}px;--dy:${Math.sin(ang) * dist - 30}px;--r:${rand(-180, 180)}deg`;
+      bar.appendChild(sp);
+      setTimeout(() => sp.remove(), 1000);
+    }
+  }
+
+  function showCard(c) {
+    $("drinkName").textContent = c.name;
+    $("drinkDesc").textContent = c.desc;
+    $("drinkChips").innerHTML = c.ingredients.map((ing, i) => `<span class="chip" style="--i:${i}">${ing}</span>`).join("");
+    $("glassNote").textContent = `Served in ${GLASSES[c.glass].label}${c.umbrella ? " with a paper umbrella" : ""}${c.fire ? " — and real (pretend) fire" : ""}.`;
+    $("drinkCount").textContent = `Drinks served tonight: ${served}`;
+    card.classList.remove("pop");
+    void card.offsetWidth;
+    card.classList.add("pop");
+  }
+
+  function mix() {
+    if (busy) return;
+    busy = true;
+    mixBtn.disabled = true;
+
+    const old = drinkSpot.querySelector(".drink");
+    if (old) {
+      old.classList.add("leaving");
+      setTimeout(() => old.remove(), 350);
+    }
+
+    bartender.classList.add("shaking");
+    say(pick(shakeLines));
+
+    setTimeout(() => {
+      bartender.classList.remove("shaking");
+      const c = nextCocktail();
+      served++;
+      const d = document.createElement("div");
+      d.className = "drink";
+      d.innerHTML = drinkSVG(c);
+      drinkSpot.innerHTML = "";
+      drinkSpot.appendChild(d);
+      setTimeout(sparkleBurst, 380);
+      showCard(c);
+      say(pick(serveLines).replace("{d}", c.name), 2800);
+      busy = false;
+      mixBtn.disabled = false;
+    }, 1600);
+  }
+
+  bartender.addEventListener("click", mix);
+  mixBtn.addEventListener("click", mix);
+
+  // a friendly hello
+  setTimeout(() => say("Aloha! Tap me for a drink 🍹", 3500), 1200);
+
+  /* ================= JOKES ================= */
+  const JOKES = [
+    ["What did the ocean say to the beach?", "Nothing — it just waved. 🌊"],
+    ["Why don't seagulls fly over the bay?", "Because then they'd be bagels!"],
+    ["Why did the oyster go to the gym?", "To build some mussels! 💪"],
+    ["What does a mermaid use to call her friends?", "A shell phone! 🐚"],
+    ["What kind of tree fits in your hand?", "A palm tree! 🌴"],
+    ["What did one volcano say to the other?", "I lava you! 🌋"],
+    ["Why did the mango go out with the prune?", "Because it couldn't find a date."],
+    ["What's the best day to go to the beach?", "Sun-day, of course! ☀️"],
+    ["Why did the banana go to the doctor?", "It wasn't peeling well. 🍌"],
+    ["Why do bananas wear sunscreen?", "Because they peel easily!"],
+    ["What's a fish's favorite instrument?", "The bass guitar! 🎸"],
+    ["Why are fish so smart?", "Because they live in schools! 🐠"],
+    ["What did the beach say when the tide finally came in?", "Long time, no sea!"],
+    ["How do you cut the ocean in half?", "With a sea-saw!"],
+    ["What lies at the bottom of the ocean and twitches?", "A nervous wreck."],
+    ["Why did the whale cross the ocean?", "To get to the other tide! 🐋"],
+    ["What did the shark say after eating a clownfish?", "\"This tastes a little funny.\" 🦈"],
+    ["Why did the lifeguard kick the elephant out of the pool?", "He wouldn't keep his trunks on! 🐘"],
+    ["Why are crabs so bad at sharing?", "Because they're a little shellfish. 🦀"],
+    ["What's a pirate's favorite letter?", "You'd think it's R, but it's the C! 🏴‍☠️"],
+    ["Why did the kiwi bring a ladder to the luau?", "It heard the drinks were on the house! 🥝"],
+    ["Why did the pineapple stop in the middle of the road?", "It ran out of juice! 🍍"],
+    ["What did the pineapple say to the coconut at the luau?", "\"Aloha! You're looking hairy nice tonight.\" 🥥"],
+    ["Why did the flamingo stand on one leg?", "If it lifted both, it would fall over! 🦩"],
+    ["Why did the ukulele get kicked out of the band?", "It kept strumming up trouble. 🎶"],
+    ["Why did the tiki torch get promoted?", "It was always lit at work! 🔥"],
+    ["What's orange and sounds like a parrot?", "A carrot! 🥕"],
+    ["How do you make a lemon drop?", "Just let it fall. 🍋"],
+    ["Why did the sun go to school?", "To get a little brighter! 🌞"],
+    ["What do you call a fish with no eyes?", "A fsh. 🐟"],
+    ["Why couldn't the bicycle stand up on the beach?", "It was two-tired. 🚲"],
+    ["What did the coconut say when it fell off the tree?", "\"I think I'm going nuts!\""],
+    ["Why did the turtle cross the reef?", "To get to the shell station! 🐢"],
+    ["What do you call a dinosaur on vacation in Hawaii?", "A Tropic-saurus Rex! 🦖"],
+    ["Why did the tomato blush at the beach party?", "It saw the salad dressing! 🍅"],
+    ["What do you call a sleepy surfer?", "A nap-tide enthusiast. 🏄"]
+  ];
+
+  const jokeSign = $("jokeSign");
+  const jokeQ = $("jokeQ");
+  const jokeA = $("jokeA");
+  const jokeLabel = $("jokeLabel");
+  const jokeBtn = $("jokeBtn");
+  let lastJoke = -1;
+  let jokeNum = 0;
+  let punchTimer, swapTimer;
+
+  function tellJoke() {
+    let i;
+    do { i = Math.floor(Math.random() * JOKES.length); } while (i === lastJoke);
+    lastJoke = i;
+    jokeNum++;
+    clearTimeout(punchTimer);
+    clearTimeout(swapTimer);
+    jokeA.classList.remove("show");
+    jokeSign.classList.remove("flip");
+    void jokeSign.offsetWidth;
+    jokeSign.classList.add("flip");
+    swapTimer = setTimeout(() => {
+      jokeLabel.textContent = `Island joke #${jokeNum}`;
+      jokeQ.textContent = JOKES[i][0];
+      jokeA.textContent = JOKES[i][1];
+    }, 320);
+    punchTimer = setTimeout(() => jokeA.classList.add("show"), 1300);
+  }
+  jokeBtn.addEventListener("click", tellJoke);
+})();
+</script>
+</body>
+</html>
