@@ -121,6 +121,7 @@ button { font-family: inherit; }
 .sand { position: absolute; bottom: -40px; width: 55vw; height: 120px; background: #050d1c; border-radius: 50%; }
 
 /* floating hibiscus */
+#flowers { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
 .float-flower {
   position: fixed;
   bottom: -60px;
@@ -532,9 +533,6 @@ section { max-width: 920px; margin: 0 auto 60px; }
   text-shadow: 0 0 10px rgba(255,79,163,.8);
   box-shadow: 0 0 16px rgba(255,79,163,.4);
 }
-.on-counter { position: absolute; bottom: 120px; z-index: 5; font-size: 2rem; filter: drop-shadow(0 4px 4px rgba(0,0,0,.5)); }
-.on-counter.pine { left: 6%; animation: bob 3s ease-in-out infinite; }
-.on-counter.coco { left: 14%; font-size: 1.6rem; }
 .shell-lamp { position: absolute; right: 5%; bottom: 118px; z-index: 5; width: 54px; height: 40px; }
 .shell-lamp .shell {
   position: absolute; left: 0; right: 0; top: 0; height: 32px;
@@ -746,7 +744,6 @@ footer small { display: block; margin-top: 8px; color: #8fb6d9; font-size: .82re
   .shelf-2 { top: 228px; }
   .drink-spot { left: calc(50% + 52px); width: 86px; bottom: 114px; }
   .speech { left: auto; right: 8px; top: 112px; max-width: 150px; font-size: .8rem; }
-  .on-counter.coco { display: none; }
   .shell-lamp { right: 3%; transform: scale(.8); }
   .counter { height: 124px; }
   .lantern { width: 32px; height: 40px; }
@@ -943,8 +940,6 @@ footer small { display: block; margin-top: 8px; color: #8fb6d9; font-size: .82re
         <div class="counter-top"></div>
         <div class="counter-front bamboo"><span class="carve">MAHALO</span></div>
       </div>
-      <span class="on-counter pine" aria-hidden="true">🍍</span>
-      <span class="on-counter coco" aria-hidden="true">🥥</span>
       <div class="shell-lamp" aria-hidden="true"><div class="shell"></div><div class="base"></div></div>
       <div class="drink-spot" id="drinkSpot"></div>
     </div>
