@@ -1320,6 +1320,58 @@ footer small { display: block; margin-top: 8px; color: #8fb6d9; font-size: .82re
   const shakeLines = ["Shake shake shake! 🎶", "Ooh, a fancy one…", "Mixing up some magic ✨", "Hold onto your lei!", "Little bit of this… little bit of that…"];
   const serveLines = ["One {d}, coming right up!", "Ta-da! A {d} for you 🌺", "Fresh {d}! Mahalo!", "Your {d}, my friend 🍹", "{d}! Emul's specialty."];
 
+  /* ---------- shaker sound (synthesized, no audio files) ---------- */
+  let audioCtx;
+  function playShakeSound(duration) {
+    try {
+      audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+      if (audioCtx.state === "suspended") audioCtx.resume();
+      const ctx = audioCtx, now = ctx.currentTime + 0.02, sr = ctx.sampleRate;
+
+      // white noise = ice rattling around inside the tin
+      const buf = ctx.createBuffer(1, Math.floor(sr * duration), sr);
+      const data = buf.getChannelData(0);
+      for (let i = 0; i < data.length; i++) data[i] = Math.random() * 2 - 1;
+      const noise = ctx.createBufferSource();
+      noise.buffer = buf;
+      const band = ctx.createBiquadFilter();
+      band.type = "bandpass"; band.frequency.value = 3000; band.Q.value = 0.7;
+      const high = ctx.createBiquadFilter();
+      high.type = "highpass"; high.frequency.value = 800;
+      const env = ctx.createGain();
+      const master = ctx.createGain();
+      master.gain.setValueAtTime(0.55, now);
+      master.gain.setValueAtTime(0.55, now + duration - 0.15);
+      master.gain.linearRampToValueAtTime(0, now + duration);
+      noise.connect(band).connect(high).connect(env).connect(master).connect(ctx.destination);
+
+      // one "chk" per arm swing (matches the 0.16s shake animation)
+      env.gain.setValueAtTime(0.0001, now);
+      for (let t = 0; t < duration - 0.1; t += 0.16) {
+        const at = now + t;
+        env.gain.setValueAtTime(0.0001, at);
+        env.gain.linearRampToValueAtTime(0.6 + Math.random() * 0.4, at + 0.012);
+        env.gain.exponentialRampToValueAtTime(0.03, at + 0.13);
+
+        // a couple of bright ice clinks on each swing
+        for (let k = 0; k < 2; k++) {
+          const ping = ctx.createOscillator();
+          const pg = ctx.createGain();
+          const pt = at + Math.random() * 0.06;
+          ping.type = "triangle";
+          ping.frequency.value = 2400 + Math.random() * 2600;
+          pg.gain.setValueAtTime(0.0001, pt);
+          pg.gain.linearRampToValueAtTime(0.06, pt + 0.004);
+          pg.gain.exponentialRampToValueAtTime(0.0001, pt + 0.05);
+          ping.connect(pg).connect(master);
+          ping.start(pt); ping.stop(pt + 0.06);
+        }
+      }
+      noise.start(now);
+      noise.stop(now + duration);
+    } catch (e) { /* no audio support: stay silent */ }
+  }
+
   function say(text, ms) {
     clearTimeout(speechTimer);
     speech.textContent = text;
@@ -1376,6 +1428,7 @@ footer small { display: block; margin-top: 8px; color: #8fb6d9; font-size: .82re
     }
 
     bartender.classList.add("shaking");
+    playShakeSound(1.6);
     say(pick(shakeLines));
 
     setTimeout(() => {
