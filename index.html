@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Aloha Lounge 🌺</title>
-<meta name="description" content="A glowing Y2K tiki lounge: meet Emul the bartender, get a random tropical cocktail, and hear a cheesy island joke." />
+<title>Tiki Islands 🌺</title>
+<meta name="description" content="Welcome to the Tiki Islands: explore Emul's tropical archipelago, grab a cocktail at the Tipsy Tiki and hear a cheesy island joke." />
 <meta name="theme-color" content="#0b1033" />
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌺</text></svg>" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -754,6 +754,210 @@ footer small { display: block; margin-top: 8px; color: #8fb6d9; font-size: .82re
   .bartender { width: 140px; margin-left: -92px; }
 }
 
+/* ================= TITLE (Welcome to Tiki Islands) ================= */
+.title-plaque .welcome {
+  margin: 0 0 2px;
+  font-family: var(--script);
+  font-size: clamp(1.15rem, 3.6vw, 1.7rem);
+  color: #ffe9a8;
+  text-shadow: 0 0 12px rgba(255,79,163,.9), 2px 2px 0 #2a0f3a;
+}
+.title-plaque h1 .nw { white-space: nowrap; }
+.title-plaque h1 .emo { font-size: .72em; vertical-align: .12em; }
+.title-plaque .caption {
+  margin: 12px auto 0;
+  max-width: 520px;
+  font-style: italic;
+  font-size: clamp(.92rem, 2.6vw, 1.12rem);
+  line-height: 1.45;
+  color: #fff4d6;
+  text-shadow: 0 2px 4px rgba(0,0,0,.6);
+}
+.title-plaque .tagline { margin-top: 10px; }
+
+/* ================= ISLAND MAP ================= */
+section.map-section { max-width: 1240px; }
+.map-frame {
+  position: relative;
+  border-radius: 28px;
+  overflow: hidden;
+  background: #0a3a5c;
+  box-shadow: 0 0 0 4px #3a2208, 0 0 0 7px var(--gold), 0 0 60px rgba(69,234,217,.35), 0 30px 60px rgba(0,0,0,.6);
+  -webkit-user-select: none; user-select: none;
+}
+#mapHost svg { display: block; width: 100%; height: auto; }
+#world { transform-origin: 0 0; transition: transform .95s cubic-bezier(.65,0,.25,1); }
+.isl { cursor: pointer; }
+.isl .lift { transition: transform .4s cubic-bezier(.3,1.6,.5,1), filter .4s; }
+.isl.is-hover .lift { transform: translateY(-12px); }
+.isl-art.is-hover .lift { filter: drop-shadow(0 0 10px rgba(255,244,190,.95)) drop-shadow(0 0 26px rgba(255,190,110,.55)); }
+.isl-top { pointer-events: none; }
+.isl-top .island-label { pointer-events: auto; cursor: pointer; outline: none; }
+.isl-top .island-label:focus-visible rect.plank { stroke: var(--turq); stroke-width: 5; }
+.no-hit { pointer-events: none; }
+.tint { mix-blend-mode: multiply; pointer-events: none; }
+
+.night { opacity: var(--n, 0); }
+.day { opacity: calc(1 - var(--n, 0)); }
+.goldhour { opacity: var(--g, 0); }
+.lit { opacity: calc(.45 + .55 * var(--n, 0)); }
+.lantern-glow { opacity: calc(.35 + .65 * var(--n, 0)); }
+.spot { opacity: calc(.12 + .55 * var(--n, 0)); }
+.boat-art { filter: brightness(calc(1 - .5 * var(--n, 0))); }
+.cloud-fill { fill: var(--cloud, #fff); }
+
+.sway { animation: palmSway 5s ease-in-out infinite; }
+.sway-slow { animation: palmSway 8s ease-in-out infinite; }
+@keyframes palmSway { 0%,100% { transform: rotate(-2.5deg); } 50% { transform: rotate(2.5deg); } }
+.foam { animation: foamMove 7s linear infinite; }
+@keyframes foamMove { to { stroke-dashoffset: -60; } }
+.foam2 { transform-box: fill-box; transform-origin: center; animation: foamPulse 4s ease-in-out infinite; }
+@keyframes foamPulse { 0%,100% { transform: scale(1); opacity: .15; } 50% { transform: scale(1.035); opacity: .45; } }
+.splash { transform-box: fill-box; transform-origin: center; animation: splash .7s ease-in-out infinite alternate; }
+@keyframes splash { from { transform: scale(.85); opacity: .7; } to { transform: scale(1.15); opacity: 1; } }
+.route { stroke-dasharray: 1 13; animation: routeMove 2.6s linear infinite; }
+@keyframes routeMove { to { stroke-dashoffset: -28; } }
+.tw { transform-box: fill-box; transform-origin: center; animation: twinkle var(--d, 3s) ease-in-out infinite; animation-delay: var(--delay, 0s); }
+.glint { transform-box: fill-box; transform-origin: center; animation: glint var(--d, 3s) ease-in-out infinite; animation-delay: var(--delay, 0s); }
+@keyframes glint { 0%,100% { transform: scale(.2); opacity: 0; } 50% { transform: scale(1); opacity: .9; } }
+.shim { transform-box: fill-box; transform-origin: center; animation: shimmer var(--d, 2.4s) ease-in-out infinite; animation-delay: var(--delay, 0s); }
+.cloud-drift { animation: drift var(--dur, 100s) linear infinite; animation-delay: var(--del, 0s); }
+@keyframes drift { from { transform: translateX(-380px); } to { transform: translateX(calc(var(--W, 1600) * 1px + 380px)); } }
+.note { animation: noteFloat 3.2s ease-out infinite; animation-delay: var(--delay, 0s); }
+@keyframes noteFloat { 0% { transform: translate(0,0); opacity: 0; } 15% { opacity: 1; } 100% { transform: translate(14px,-46px); opacity: 0; } }
+.zzz { animation: noteFloat 3.6s ease-out infinite; animation-delay: var(--delay, 0s); }
+.hula-hips { transform-box: fill-box; transform-origin: 50% 100%; animation: hula .55s ease-in-out infinite alternate; }
+@keyframes hula { from { transform: rotate(-7deg); } to { transform: rotate(7deg); } }
+.hula-arms { transform-box: fill-box; transform-origin: 50% 50%; animation: hulaArms .55s ease-in-out infinite alternate; }
+@keyframes hulaArms { from { transform: rotate(10deg) translateY(1px); } to { transform: rotate(-10deg) translateY(-1px); } }
+.bob { animation: bobY 2.6s ease-in-out infinite; }
+@keyframes bobY { 0%,100% { transform: translateY(-2px) rotate(-6deg); } 50% { transform: translateY(2px) rotate(6deg); } }
+.flicker { transform-box: fill-box; transform-origin: 50% 100%; animation: flicker .45s ease-in-out infinite alternate; }
+.lantern-glow { animation: lampFlicker 3s ease-in-out infinite; }
+.compass-spin { transition: transform 1.6s cubic-bezier(.3,1.3,.5,1); }
+.compass-wobble { animation: compassWobble 6s ease-in-out infinite; }
+@keyframes compassWobble { 0%,100% { transform: rotate(-4deg); } 50% { transform: rotate(4deg); } }
+.egg { cursor: pointer; }
+.egg:hover, .egg:focus-visible { filter: brightness(1.2) drop-shadow(0 0 6px #fff); outline: none; }
+
+.map-tip {
+  position: absolute; z-index: 5;
+  max-width: 250px;
+  padding: 10px 14px 11px;
+  border-radius: 16px;
+  background: linear-gradient(160deg, rgba(255,250,236,.97), rgba(255,226,240,.97));
+  color: #4a1840;
+  box-shadow: 0 0 0 3px var(--pink), 0 10px 24px rgba(0,0,0,.4);
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, calc(-100% - 6px)) scale(.85);
+  transform-origin: 50% 100%;
+  transition: opacity .2s, transform .25s cubic-bezier(.3,1.6,.5,1);
+  text-align: center;
+}
+.map-tip.show { opacity: 1; transform: translate(-50%, calc(-100% - 10px)) scale(1); }
+.map-tip b { display: block; font-family: var(--display); font-weight: 400; font-size: 1.15rem; color: #b02a6b; }
+.map-tip span { display: block; font-size: .88rem; line-height: 1.35; font-weight: 600; }
+.map-tip em { display: block; margin-top: 5px; font-style: normal; font-size: .76rem; font-weight: 800; color: #0a8f8a; letter-spacing: .5px; text-transform: uppercase; }
+.map-toast {
+  position: absolute; left: 50%; bottom: 18px; z-index: 6;
+  width: max-content; max-width: min(92%, 520px);
+  padding: 12px 18px;
+  border-radius: 18px;
+  background: rgba(20,14,40,.88);
+  color: #fff4d6;
+  font-weight: 700; font-size: .95rem; line-height: 1.4; text-align: center;
+  box-shadow: 0 0 0 2px var(--gold), 0 10px 30px rgba(0,0,0,.5);
+  opacity: 0;
+  transform: translate(-50%, 20px) scale(.9);
+  transition: opacity .25s, transform .3s cubic-bezier(.3,1.6,.5,1);
+  pointer-events: none;
+}
+.map-toast.show { opacity: 1; transform: translate(-50%, 0) scale(1); }
+
+.time-bar {
+  display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
+  gap: 8px 14px;
+  max-width: 980px;
+  margin: 18px auto 0;
+  padding: 12px 18px;
+  border-radius: 22px;
+  background: rgba(10,16,50,.6);
+  border: 2px solid rgba(242,193,78,.45);
+  font-size: .92rem; font-weight: 700;
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+}
+.tb-item { white-space: nowrap; }
+.tb-sun { color: #ffe9a8; font-weight: 600; }
+.tb-preview { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; color: #bfe9ff; }
+.tb-preview input { width: 150px; accent-color: var(--pink); }
+.tb-live {
+  padding: 6px 14px; border-radius: 999px; border: 2px solid var(--turq);
+  background: rgba(69,234,217,.15); color: #fff; font-weight: 800; cursor: pointer;
+  transition: transform .15s, background .15s;
+}
+.tb-live:hover { transform: translateY(-2px); background: rgba(69,234,217,.3); }
+
+/* ================= DESTINATIONS ================= */
+section { scroll-margin-top: 16px; }
+.dest-card {
+  position: relative;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 10px clamp(16px, 4vw, 34px) 26px;
+  border-radius: 30px;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(255,255,255,.16), transparent 50%),
+    linear-gradient(160deg, rgba(15,181,174,.5), rgba(20,26,77,.75) 55%, rgba(180,92,255,.45));
+  border: 2px solid rgba(255,233,168,.7);
+  box-shadow: 0 0 0 5px rgba(69,234,217,.15), 0 0 40px rgba(69,234,217,.3), 0 20px 40px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.4);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+}
+.dest-art { max-width: 560px; margin: 0 auto; }
+.dest-art[data-art="pineapple-peak"] { max-width: 360px; }
+.dest-art svg { display: block; width: 100%; height: auto; overflow: visible; }
+.dest-desc { margin: 6px auto 0; max-width: 580px; font-size: 1.05rem; line-height: 1.6; color: #fff; }
+.highlights { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; margin: 20px 0 6px; text-align: left; }
+.hl {
+  padding: 12px 14px;
+  border-radius: 18px;
+  background: rgba(255,255,255,.1);
+  border: 2px solid rgba(255,233,168,.4);
+  transition: transform .2s, background .2s;
+}
+.hl:hover { transform: translateY(-3px); background: rgba(255,255,255,.16); }
+.hl b { display: block; margin-bottom: 3px; font-family: var(--display); font-weight: 400; font-size: 1.08rem; color: #ffe9a8; }
+.hl span { font-size: .9rem; line-height: 1.45; color: #e3f4ff; }
+.dest-action { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 18px; }
+.dest-out {
+  margin: 0;
+  min-height: 1.4em;
+  font-weight: 800; font-size: 1.05rem; color: #fff8de;
+  text-shadow: 0 0 12px rgba(255,79,163,.8);
+}
+.dest-out.pop { animation: chipIn .45s cubic-bezier(.3,1.6,.5,1); }
+.sunset-info {
+  display: inline-block;
+  margin: 14px auto 0;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(255,138,60,.35), rgba(255,79,163,.35));
+  border: 2px solid rgba(255,214,140,.7);
+  font-weight: 800; font-size: .95rem;
+}
+.sunset-info:empty { display: none; }
+.back-row { display: flex; justify-content: center; margin-top: 22px; }
+.btn.small { padding: 11px 22px; font-size: clamp(1rem, 3.4vw, 1.1rem); border-width: 2px; }
+
+@media (max-width: 640px) {
+  .title-plaque h1 { white-space: nowrap; font-size: clamp(1.5rem, 7vw, 2.4rem); }
+  .time-bar { border-radius: 18px; font-size: .85rem; padding: 10px 12px; }
+  .tb-preview input { width: 120px; }
+  .map-tip { max-width: 200px; }
+  .map-frame { border-radius: 20px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .float-flower { display: none; }
@@ -836,18 +1040,54 @@ footer small { display: block; margin-top: 8px; color: #8fb6d9; font-size: .82re
   <div class="banner bamboo">
     <div class="torch" aria-hidden="true"><div class="glow"></div><div class="flame"></div><div class="torch-head"></div><div class="torch-pole"></div></div>
     <div class="title-plaque">
-      <h1>Aloha <span style="white-space:nowrap">Lounge <span class="emo">🌺</span></span></h1>
-      <p class="tagline">Grab a stool — the torches are lit &amp; the moon is full</p>
+      <p class="welcome">Welcome to</p>
+      <h1><span class="emo">🌺</span> <span class="nw">Tiki Islands</span> <span class="emo">🌺</span></h1>
+      <p class="caption">Created by Emul. Fueled by coconuts. Governed by absolutely no logic.</p>
+      <p class="tagline">Enjoy your time here</p>
     </div>
     <div class="torch" aria-hidden="true"><div class="glow"></div><div class="flame"></div><div class="torch-head"></div><div class="torch-pole"></div></div>
   </div>
 </header>
 
 <main>
-  <!-- ================= TIKI BAR ================= -->
-  <section id="bar" aria-labelledby="bar-title">
-    <h2 class="section-title" id="bar-title">The Tiki Bar 🍹</h2>
-    <p class="section-sub">Meet Emul, our resident mixologist. Give her a tap (or hit the button) and she'll shake up a tropical surprise.</p>
+  <!-- ================= ISLAND MAP ================= -->
+  <section id="map" class="map-section" aria-labelledby="map-title">
+    <h2 class="section-title" id="map-title">Explore the Islands 🗺️</h2>
+    <p class="section-sub">Hover to peek, click or tap to sail there. The islands follow the real sun over Yerevan, so come back after dark.</p>
+    <div class="map-frame" id="mapFrame">
+      <div id="mapHost"></div>
+      <div class="map-tip" id="mapTip" role="status"></div>
+      <div class="map-toast" id="mapToast" role="status" aria-live="polite"></div>
+    </div>
+    <div class="time-bar" id="timeBar">
+      <span class="tb-item" id="tbClock">🕐 --:--</span>
+      <span class="tb-item" id="tbPhase"></span>
+      <span class="tb-item tb-sun" id="tbSun"></span>
+      <label class="tb-preview">Preview the day <input type="range" id="tbSlider" min="0" max="1435" step="5" aria-label="Preview another time of day in Yerevan" /></label>
+      <button class="tb-live" id="tbLive" type="button" hidden>Back to live time</button>
+    </div>
+  </section>
+
+  <section id="tiki-bay" class="dest" aria-labelledby="tiki-bay-title">
+    <h2 class="section-title" id="tiki-bay-title">Tiki Bay 🌴</h2>
+    <p class="section-sub">The central and largest island, and the main entrance to the Tiki Islands.</p>
+    <div class="dest-card">
+      <div class="dest-art" data-art="tiki-bay" aria-hidden="true"></div>
+      <p class="dest-desc">Sail past the welcome dock, through the giant tiki gate and up the torch-lit path into the village. The waterfall never stops, the huts never lock, and the harbor master (a very serious pelican) checks every boat twice.</p>
+      <div class="highlights">
+        <div class="hl"><b>Giant Tiki Gate</b><span>Two carved tikis guard the way in. Say aloha or they frown harder.</span></div>
+        <div class="hl"><b>Waterfall Village</b><span>Bamboo huts that glow warm and golden after dark.</span></div>
+        <div class="hl"><b>Welcome Dock</b><span>Where every adventure (and most snack runs) begins.</span></div>
+      </div>
+      <div class="dest-action"><button class="btn small" type="button" data-action="tiki-bay">Blow the welcome conch 🐚</button><p class="dest-out" aria-live="polite"></p></div>
+      <div class="back-row"><button class="btn teal small back-map" type="button" data-island="tiki-bay">🗺️ Back to Map</button></div>
+    </div>
+  </section>
+
+  <!-- ================= THE TIPSY TIKI (bar) ================= -->
+  <section id="tipsy-tiki" aria-labelledby="bar-title">
+    <h2 class="section-title" id="bar-title">The Tipsy Tiki 🍹</h2>
+    <p class="section-sub">Emul's signature bamboo tiki bar. Give her a tap (or hit the button) and she'll shake up a tropical surprise.</p>
 
     <div class="bar">
       <div class="bar-wall bamboo"></div>
@@ -856,7 +1096,7 @@ footer small { display: block; margin-top: 8px; color: #8fb6d9; font-size: .82re
 
       <div class="bar-roof thatch"></div>
       <div class="lights" id="barLights" style="top:58px;height:46px"></div>
-      <div class="bar-sign">~ Emul's Tiki Tiki Bar ~</div>
+      <div class="bar-sign">~ The Tipsy Tiki ~</div>
       <div class="lantern" style="left:9%;--c:#ff8a3c;--d:4.2s"><div class="lamp"></div></div>
       <div class="lantern" style="right:9%;--c:#ff4fa3;--d:3.6s"><div class="lamp"></div></div>
       <div class="lantern mid" style="left:30%;top:52px;width:30px;height:38px;--c:#45ead9;--d:5s"><div class="lamp"></div></div>
@@ -969,12 +1209,63 @@ footer small { display: block; margin-top: 8px; color: #8fb6d9; font-size: .82re
       <p class="glass-note" id="glassNote"></p>
       <div class="drink-count" id="drinkCount"></div>
     </div>
+    <div class="back-row"><button class="btn teal small back-map" type="button" data-island="tipsy-tiki">🗺️ Back to Map</button></div>
   </section>
 
-  <!-- ================= JOKES ================= -->
-  <section id="jokes" aria-labelledby="jokes-title">
-    <h2 class="section-title" id="jokes-title">Island Giggles 🍍</h2>
-    <p class="section-sub">Our carved joke sign has heard every pun on the island. Some of them twice.</p>
+  <section id="coconut-cave" class="dest" aria-labelledby="coconut-cave-title">
+    <h2 class="section-title" id="coconut-cave-title">Coconut Cave 🥥</h2>
+    <p class="section-sub">A peaceful beach island of coconut palms, hammocks and beach chairs.</p>
+    <div class="dest-card">
+      <div class="dest-art" data-art="coconut-cave" aria-hidden="true"></div>
+      <p class="dest-desc">Hammocks swing between the palms, beach chairs face the waves and there is a frankly suspicious amount of coconuts. The cave at the back is perfect for naps, secrets and hiding from responsibilities.</p>
+      <div class="highlights">
+        <div class="hl"><b>Hammock Grove</b><span>Striped hammocks with a strict no-alarm-clock policy.</span></div>
+        <div class="hl"><b>Beach Chair Row</b><span>Front-row seats to the turquoise water.</span></div>
+        <div class="hl"><b>The Napping Cave</b><span>Cool, quiet and lit by a single cozy lantern.</span></div>
+      </div>
+      <div class="dest-action"><button class="btn small" type="button" data-action="coconut-cave">Claim a hammock 🌴</button><p class="dest-out" aria-live="polite"></p></div>
+      <div class="back-row"><button class="btn teal small back-map" type="button" data-island="coconut-cave">🗺️ Back to Map</button></div>
+    </div>
+  </section>
+
+  <section id="goo-lagoon" class="dest" aria-labelledby="goo-lagoon-title">
+    <h2 class="section-title" id="goo-lagoon-title">Goo Lagoon 💧</h2>
+    <p class="section-sub">A secluded island with crystal-clear water, waterfalls and tropical flowers.</p>
+    <div class="dest-card">
+      <div class="dest-art" data-art="goo-lagoon" aria-hidden="true"></div>
+      <p class="dest-desc">A hidden lagoon so clear you can count the fish (there are fourteen, and one of them is a duck). Twin waterfalls pour from the cliffs, the flowers bloom all year, and after dark the water glows.</p>
+      <div class="highlights">
+        <div class="hl"><b>Crystal Lagoon</b><span>So clear you can see your toes. And the duck.</span></div>
+        <div class="hl"><b>Twin Waterfalls</b><span>Nature’s shower, available 24/7.</span></div>
+        <div class="hl"><b>Glowing Water</b><span>The lagoon sparkles turquoise every night.</span></div>
+      </div>
+      <div class="dest-action"><button class="btn small" type="button" data-action="goo-lagoon">Skip a stone 🪨</button><p class="dest-out" aria-live="polite"></p></div>
+      <div class="back-row"><button class="btn teal small back-map" type="button" data-island="goo-lagoon">🗺️ Back to Map</button></div>
+    </div>
+  </section>
+
+  <section id="pineapple-peak" class="dest" aria-labelledby="pineapple-peak-title">
+    <h2 class="section-title" id="pineapple-peak-title">Pineapple Peak 🍍</h2>
+    <p class="section-sub">A mountainous island with lush vegetation and the best viewpoint in the archipelago.</p>
+    <div class="dest-card">
+      <div class="dest-art" data-art="pineapple-peak" aria-hidden="true"></div>
+      <p class="dest-desc">The tallest point in the islands, shaped (by pure coincidence, Emul insists) exactly like a pineapple. Follow the zigzag trail through the jungle to the summit deck and its very old, very loyal telescope.</p>
+      <div class="highlights">
+        <div class="hl"><b>Zigzag Trail</b><span>Lantern-lit at night, so nobody gets lost. Probably.</span></div>
+        <div class="hl"><b>Summit Viewpoint</b><span>See every island at once from the wooden deck.</span></div>
+        <div class="hl"><b>The Crown</b><span>Leafy, spiky and visible from Sunset Beach.</span></div>
+      </div>
+      <div class="dest-action"><button class="btn small" type="button" data-action="pineapple-peak">Look through the telescope 🔭</button><p class="dest-out" aria-live="polite"></p></div>
+      <div class="back-row"><button class="btn teal small back-map" type="button" data-island="pineapple-peak">🗺️ Back to Map</button></div>
+    </div>
+  </section>
+
+
+  <!-- ================= HULA HEAVEN (music + jokes) ================= -->
+  <section id="hula-heaven" aria-labelledby="jokes-title">
+    <h2 class="section-title" id="jokes-title">Hula Heaven 🎶</h2>
+    <p class="section-sub">Music, dancing and the cheesiest comedy stage in the Pacific. Start the beat, then pull a joke off the carved sign.</p>
+    <div class="btn-row"><button class="btn small" id="beatBtn" type="button">Start the luau beat <span class="btn-emo">🥁</span></button></div>
     <div class="sign-wrap">
       <span class="rope l"></span><span class="rope r"></span>
       <div class="stamp" aria-hidden="true">
@@ -991,6 +1282,24 @@ footer small { display: block; margin-top: 8px; color: #8fb6d9; font-size: .82re
     <div class="btn-row">
       <button class="btn teal" id="jokeBtn" type="button">Tell me a joke <span class="btn-emo">🍍</span></button>
     </div>
+    <div class="back-row"><button class="btn teal small back-map" type="button" data-island="hula-heaven">🗺️ Back to Map</button></div>
+  </section>
+
+  <section id="sunset-beach" class="dest" aria-labelledby="sunset-beach-title">
+    <h2 class="section-title" id="sunset-beach-title">Sunset Beach 🌅</h2>
+    <p class="section-sub">A small, romantic island with a wooden pier, cozy seating and an uninterrupted ocean view.</p>
+    <div class="dest-card">
+      <div class="dest-art" data-art="sunset-beach" aria-hidden="true"></div>
+      <p class="dest-desc">A tiny island made for long sunsets and longer conversations. Walk to the end of the pier, grab the cozy bench and watch the sun melt into the ocean.</p>
+      <p class="sunset-info" id="sunsetInfo"></p>
+      <div class="highlights">
+        <div class="hl"><b>The Wooden Pier</b><span>Lanterns light the way to the very end.</span></div>
+        <div class="hl"><b>Cozy Seating</b><span>A loveseat, two cushions and a candlelit table.</span></div>
+        <div class="hl"><b>Endless Horizon</b><span>Nothing between you and the sun but ocean.</span></div>
+      </div>
+      <div class="dest-action"><button class="btn small" type="button" data-action="sunset-beach">Make a wish 🌠</button><p class="dest-out" aria-live="polite"></p></div>
+      <div class="back-row"><button class="btn teal small back-map" type="button" data-island="sunset-beach">🗺️ Back to Map</button></div>
+    </div>
   </section>
 </main>
 
@@ -1004,7 +1313,7 @@ footer small { display: block; margin-top: 8px; color: #8fb6d9; font-size: .82re
     <svg viewBox="0 0 220 400"><use href="#palm" /></svg>
   </div>
   <p>Made with aloha 🌴</p>
-  <small>Emul's Tiki Tiki Bar · open every night under the full moon</small>
+  <small>The Tiki Islands · created by Emul · open every day, glowing every night</small>
   <div class="footer-wave"><div class="wave" style="top:0;--o:.6;--d:5s"></div></div>
 </footer>
 
@@ -1524,5 +1833,935 @@ footer small { display: block; margin-top: 8px; color: #8fb6d9; font-size: .82re
   jokeBtn.addEventListener("click", tellJoke);
 })();
 </script>
+<script>
+/* =====================================================================
+   THE TIKI ISLANDS — interactive map, Yerevan day/night cycle, destinations
+   ===================================================================== */
+(function () {
+  "use strict";
+  const $ = (id) => document.getElementById(id);
+  const f = (v) => (+v).toFixed(1);
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- seeded random + smooth blob shapes ---------- */
+  function rng(seed) {
+    return function () {
+      seed |= 0; seed = (seed + 0x6D2B79F5) | 0;
+      let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+  function blobPts(rx, ry, seed, wob = 0.1, n = 12) {
+    const r = rng(seed), pts = [];
+    for (let i = 0; i < n; i++) {
+      const a = (i / n) * Math.PI * 2, k = 1 + (r() * 2 - 1) * wob;
+      pts.push([Math.cos(a) * rx * k, Math.sin(a) * ry * k]);
+    }
+    return pts;
+  }
+  function smooth(pts) {
+    const n = pts.length;
+    let d = `M${f(pts[0][0])} ${f(pts[0][1])}`;
+    for (let i = 0; i < n; i++) {
+      const p0 = pts[(i - 1 + n) % n], p1 = pts[i], p2 = pts[(i + 1) % n], p3 = pts[(i + 2) % n];
+      d += ` C${f(p1[0] + (p2[0] - p0[0]) / 6)} ${f(p1[1] + (p2[1] - p0[1]) / 6)} ${f(p2[0] - (p3[0] - p1[0]) / 6)} ${f(p2[1] - (p3[1] - p1[1]) / 6)} ${f(p2[0])} ${f(p2[1])}`;
+    }
+    return d + "Z";
+  }
+  const rnd = (a, b) => a + Math.random() * (b - a);
+
+  /* ---------- shared gradients & patterns ---------- */
+  const DEFS = `
+  <radialGradient id="gSand" cx=".38" cy=".3" r=".8"><stop offset="0" stop-color="#fff7da"/><stop offset=".55" stop-color="#f8d99c"/><stop offset="1" stop-color="#e3ad66"/></radialGradient>
+  <linearGradient id="gCliff" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e6ad6c"/><stop offset="1" stop-color="#8e532b"/></linearGradient>
+  <radialGradient id="gGrass" cx=".35" cy=".28" r=".85"><stop offset="0" stop-color="#bdf56e"/><stop offset=".45" stop-color="#5fcb4a"/><stop offset="1" stop-color="#2a8a3c"/></radialGradient>
+  <radialGradient id="gShallow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#c8fff6" stop-opacity=".95"/><stop offset=".55" stop-color="#6ff2e6" stop-opacity=".6"/><stop offset="1" stop-color="#2fd6e0" stop-opacity="0"/></radialGradient>
+  <linearGradient id="gTrunk" x1="0" x2="1"><stop offset="0" stop-color="#7a4a24"/><stop offset=".5" stop-color="#c58f55"/><stop offset="1" stop-color="#6b3f1d"/></linearGradient>
+  <linearGradient id="gLeaf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a6f46e"/><stop offset=".6" stop-color="#45b84a"/><stop offset="1" stop-color="#23803a"/></linearGradient>
+  <linearGradient id="gThatch" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6d892"/><stop offset="1" stop-color="#b8873e"/></linearGradient>
+  <linearGradient id="gWood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cf9255"/><stop offset="1" stop-color="#7a4626"/></linearGradient>
+  <linearGradient id="gPlank" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a8652f"/><stop offset="1" stop-color="#6a3814"/></linearGradient>
+  <radialGradient id="gMountain" cx=".35" cy=".22" r=".95"><stop offset="0" stop-color="#b2f272"/><stop offset=".45" stop-color="#52bb4c"/><stop offset="1" stop-color="#1f6a37"/></radialGradient>
+  <radialGradient id="gRock" cx=".35" cy=".3" r=".9"><stop offset="0" stop-color="#c2a890"/><stop offset=".6" stop-color="#806858"/><stop offset="1" stop-color="#4a3a30"/></radialGradient>
+  <radialGradient id="gLagoon" cx=".45" cy=".4" r=".7"><stop offset="0" stop-color="#ecfffc"/><stop offset=".45" stop-color="#96f6ef"/><stop offset="1" stop-color="#2fc9d8"/></radialGradient>
+  <linearGradient id="gPine" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffe680"/><stop offset=".5" stop-color="#f4b72e"/><stop offset="1" stop-color="#b8701a"/></linearGradient>
+  <radialGradient id="gBush" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#9be85e"/><stop offset="1" stop-color="#2a8a3a"/></radialGradient>
+  <pattern id="pPineHatch" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0 H14 M0 0 V14" stroke="#8a5212" stroke-width="2" opacity=".45"/><circle cx="7" cy="7" r="1.5" fill="#7a4a10" opacity=".55"/></pattern>
+  <pattern id="pBamboo" width="7" height="10" patternUnits="userSpaceOnUse"><rect width="7" height="10" fill="#ecc676"/><rect x="5.5" width="1.5" height="10" fill="#a87c2c"/><rect y="7" width="7" height="1" fill="#b98a3a" opacity=".6"/></pattern>
+  <pattern id="pFall" width="12" height="24" patternUnits="userSpaceOnUse"><rect width="12" height="24" fill="#92f4ff"/><path d="M3 0 V14 M9 8 V24" stroke="#fff" stroke-width="2.2" stroke-linecap="round" opacity=".9"/><animateTransform attributeName="patternTransform" type="translate" from="0 0" to="0 24" dur=".7s" repeatCount="indefinite"/></pattern>
+  <pattern id="pWaves" width="140" height="60" patternUnits="userSpaceOnUse"><path d="M0 15 q17.5 -8 35 0 t35 0 t35 0 t35 0 M-35 45 q17.5 -8 35 0 t35 0 t35 0 t35 0 t35 0" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".28"/><animateTransform attributeName="patternTransform" type="translate" from="0 0" to="140 0" dur="10s" repeatCount="indefinite"/></pattern>
+  <pattern id="pWaves2" width="96" height="38" patternUnits="userSpaceOnUse"><path d="M10 12 q12 -6 24 0 M58 30 q12 -6 24 0" fill="none" stroke="#e8fffd" stroke-width="1.6" stroke-linecap="round" opacity=".3"/><animateTransform attributeName="patternTransform" type="translate" from="0 0" to="-96 0" dur="7s" repeatCount="indefinite"/></pattern>
+  <radialGradient id="gWarmGlow"><stop offset="0" stop-color="#ffe08a" stop-opacity=".95"/><stop offset=".4" stop-color="#ffab3d" stop-opacity=".45"/><stop offset="1" stop-color="#ff7a1a" stop-opacity="0"/></radialGradient>
+  <radialGradient id="gPinkGlow"><stop offset="0" stop-color="#ffc2e4" stop-opacity=".95"/><stop offset=".4" stop-color="#ff4fa3" stop-opacity=".4"/><stop offset="1" stop-color="#ff4fa3" stop-opacity="0"/></radialGradient>
+  <radialGradient id="gCoolGlow"><stop offset="0" stop-color="#b8fff8" stop-opacity=".9"/><stop offset=".5" stop-color="#45ead9" stop-opacity=".45"/><stop offset="1" stop-color="#45ead9" stop-opacity="0"/></radialGradient>
+  <radialGradient id="gSunGlow"><stop offset="0" stop-color="#fff6c8" stop-opacity=".95"/><stop offset=".35" style="stop-color:var(--sunc,#ffd27a)" stop-opacity=".55"/><stop offset="1" style="stop-color:var(--sunc,#ffd27a)" stop-opacity="0"/></radialGradient>
+  <radialGradient id="gMoonGlow"><stop offset="0" stop-color="#fffbe6" stop-opacity=".8"/><stop offset=".4" stop-color="#c9d4ff" stop-opacity=".3"/><stop offset="1" stop-color="#9aa8ff" stop-opacity="0"/></radialGradient>
+  <linearGradient id="gSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--sky1,#2f8ff0)"/><stop offset="1" style="stop-color:var(--sky2,#bfe8ff)"/></linearGradient>
+  <linearGradient id="gOcean" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--seaFar,#8be6f0)"/><stop offset=".3" style="stop-color:var(--seaMid,#2cc8dc)"/><stop offset="1" style="stop-color:var(--seaNear,#0a9fc4)"/></linearGradient>
+  <linearGradient id="gTitle" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fffbe0"/><stop offset=".5" stop-color="#ffe27a"/><stop offset="1" stop-color="#ff9f2e"/></linearGradient>
+  <linearGradient id="gSpotPink" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff9fd0" stop-opacity=".85"/><stop offset="1" stop-color="#ff4fa3" stop-opacity="0"/></linearGradient>
+  <linearGradient id="gSpotTeal" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a8fff6" stop-opacity=".85"/><stop offset="1" stop-color="#45ead9" stop-opacity="0"/></linearGradient>`;
+  (function injectDefs() {
+    const host = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    host.setAttribute("width", "0"); host.setAttribute("height", "0");
+    host.setAttribute("aria-hidden", "true");
+    host.style.cssText = "position:absolute;width:0;height:0;overflow:hidden";
+    host.innerHTML = `<defs>${DEFS}</defs>`;
+    document.body.prepend(host);
+  })();
+
+  /* ---------- small art helpers (local coordinates) ---------- */
+  function collector() {
+    const art = [], lights = [];
+    return {
+      add(o) { if (typeof o === "string") art.push(o); else { if (o.art) art.push(o.art); if (o.lights) lights.push(o.lights); } },
+      light(s) { lights.push(s); },
+      out() { return { art: art.join(""), lights: lights.join("") }; }
+    };
+  }
+
+  function base(rx, ry, depth, seed, grass = 0.8) {
+    const top = smooth(blobPts(rx, ry, seed, 0.09));
+    let s = `<ellipse cx="0" cy="${f(depth * 0.7)}" rx="${f(rx * 1.5)}" ry="${f(ry * 1.65)}" fill="url(#gShallow)"/>`;
+    s += `<ellipse class="foam2" cx="0" cy="${f(depth * 0.85)}" rx="${f(rx * 1.24)}" ry="${f(ry * 1.36)}" fill="none" stroke="#fff" stroke-width="2"/>`;
+    s += `<ellipse class="foam" cx="0" cy="${f(depth * 0.85)}" rx="${f(rx * 1.1)}" ry="${f(ry * 1.2)}" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="18 12" opacity=".75"/>`;
+    for (const k of [1, 0.75, 0.5, 0.25]) s += `<path d="${top}" transform="translate(0 ${f(depth * k)})" fill="url(#gCliff)"/>`;
+    s += `<path d="${top}" fill="url(#gSand)"/>`;
+    if (grass > 0) {
+      s += `<path d="${smooth(blobPts(rx * grass, ry * grass, seed + 7, 0.14))}" transform="translate(${f(-rx * 0.04)} ${f(-ry * 0.1)})" fill="url(#gGrass)"/>`;
+      s += `<path d="${smooth(blobPts(rx * grass * 0.5, ry * grass * 0.45, seed + 3, 0.15))}" transform="translate(${f(-rx * 0.2)} ${f(-ry * 0.3)})" fill="#e2ffa8" opacity=".2"/>`;
+    }
+    return s;
+  }
+
+  function palm(x, y, s = 1, lean = 0) {
+    const tx = lean, ty = -70, d = rnd(-6, 0).toFixed(2);
+    const leaves = [[-50, 2], [-42, -22], [-16, -36], [14, -36], [42, -22], [50, 2], [-30, 20], [30, 20]];
+    let L = "";
+    for (const [lx, ly] of leaves) {
+      L += `<path d="M0 0 Q${f(lx * 0.45)} ${f(ly - 20)} ${lx} ${ly} Q${f(lx * 0.55)} ${f(ly - 5)} 0 0Z" fill="url(#gLeaf)" stroke="#1d6b2c" stroke-width="1"/>`;
+      L += `<path d="M0 0 Q${f(lx * 0.48)} ${f(ly - 14)} ${f(lx * 0.95)} ${f(ly * 0.95)}" stroke="#1d6b2c" stroke-width=".8" fill="none" opacity=".6"/>`;
+    }
+    let rings = "";
+    for (const t of [0.18, 0.36, 0.54, 0.72]) {
+      const px = 2 * (1 - t) * t * lean * 0.4 + t * t * lean, py = 2 * (1 - t) * t * -36 + t * t * -70;
+      rings += `<path d="M${f(px - 4)} ${f(py)} h8" stroke="#5a3418" stroke-width="1.6" opacity=".55"/>`;
+    }
+    return `<g transform="translate(${f(x)} ${f(y)}) scale(${s})"><ellipse cx="${f(lean * 0.3)}" cy="2" rx="16" ry="5" fill="#0b3a2a" opacity=".22"/><g class="sway" style="animation-delay:${d}s"><path d="M-5 0 Q${f(lean * 0.4 - 5)} -36 ${f(tx - 3)} ${ty} L${f(tx + 3)} ${ty} Q${f(lean * 0.4 + 5)} -36 5 0Z" fill="url(#gTrunk)"/>${rings}<g transform="translate(${f(tx)} ${ty})">${L}<circle cx="-4" cy="4" r="4.5" fill="#6b3f1d"/><circle cx="4" cy="5" r="4.5" fill="#7a4a24"/><circle cx="0" cy="9" r="4.5" fill="#5a3418"/></g></g></g>`;
+  }
+
+  function hut(x, y, s = 1) {
+    const w = (wx) => `<rect x="${wx}" y="-22" width="9" height="8" rx="2" fill="#3a2208"/>`;
+    const glow = (wx) => `<circle cx="${wx + 4.5}" cy="-18" r="16" fill="url(#gWarmGlow)"/><rect x="${wx}" y="-22" width="9" height="8" rx="2" fill="#ffd56b"/>`;
+    const tr = `translate(${f(x)} ${f(y)}) scale(${s})`;
+    const art = `<g transform="${tr}"><ellipse cx="6" cy="2" rx="36" ry="8" fill="#0b3a2a" opacity=".2"/>
+      <path d="M22 0 L36 -8 L36 -36 L22 -28Z" fill="#a8762f"/>
+      <rect x="-22" y="-28" width="44" height="28" fill="url(#pBamboo)" stroke="#8a5f22" stroke-width="1"/>
+      <rect x="-5" y="-18" width="10" height="18" rx="4" fill="#4a2810"/>${w(-18)}${w(9)}
+      <path d="M-32 -24 Q-10 -78 6 -80 Q24 -78 46 -32 L36 -22 Q4 -14 -32 -24Z" fill="url(#gThatch)" stroke="#8a5f22" stroke-width="1.5"/>
+      <path d="M-24 -34 Q-4 -60 6 -78 M-8 -24 Q2 -50 6 -78 M10 -22 Q12 -52 8 -78 M26 -26 Q20 -54 8 -78" stroke="#a8762f" stroke-width="1.4" fill="none" opacity=".6"/>
+      <path d="M-32 -24 Q4 -14 36 -22 L46 -32" fill="none" stroke="#c99a45" stroke-width="4" stroke-dasharray="2 3"/></g>`;
+    const lights = `<g transform="${tr}" class="night">${glow(-18)}${glow(9)}</g>`;
+    return { art, lights };
+  }
+
+  function torch(x, y, s = 1) {
+    const tr = `translate(${f(x)} ${f(y)}) scale(${s})`;
+    return {
+      art: `<g transform="${tr}"><rect x="-1.8" y="-30" width="3.6" height="30" fill="#8a5a2a"/><path d="M-5 -35 L5 -35 L3 -28 L-3 -28Z" fill="#c99a45" stroke="#7a5418" stroke-width=".8"/></g>`,
+      lights: `<g transform="${tr} translate(0 -35)"><circle r="22" fill="url(#gWarmGlow)" class="night"/><g class="lit"><path class="flicker" d="M0 -13 C-6 -6 -5 0 0 1.5 C5 0 6 -6 0 -13Z" fill="#ff9a2e"/><path class="flicker" d="M0 -7 C-2.6 -3 -2 0 0 1 C2 0 2.6 -3 0 -7Z" fill="#fff3a0"/></g></g>`
+    };
+  }
+
+  function tiki(x, y, s = 1) {
+    const tr = `translate(${f(x)} ${f(y)}) scale(${s})`;
+    return {
+      art: `<g transform="${tr}"><ellipse cx="0" cy="2" rx="13" ry="4" fill="#0b3a2a" opacity=".22"/>
+        <rect x="-10" y="-46" width="20" height="46" rx="6" fill="url(#gWood)" stroke="#4a2410" stroke-width="1.2"/>
+        <rect x="-11.5" y="-49" width="23" height="9" rx="3" fill="#5a2e10"/>
+        <path d="M-8 -37 l6 2.5 M8 -37 l-6 2.5" stroke="#2d1505" stroke-width="2.6" stroke-linecap="round"/>
+        <ellipse cx="-4.5" cy="-31" rx="2.8" ry="2.2" fill="#2d1505"/><ellipse cx="4.5" cy="-31" rx="2.8" ry="2.2" fill="#2d1505"/>
+        <path d="M0 -29 l-2.5 7 h5z" fill="#3d1d07"/>
+        <rect x="-7.5" y="-19" width="15" height="8" rx="3" fill="#2d1505"/>
+        <path d="M-4 -19 v8 M0 -19 v8 M4 -19 v8" stroke="#f2d9a8" stroke-width="1.2"/></g>`,
+      lights: `<g transform="${tr}" class="night"><circle cx="-4.5" cy="-31" r="2" fill="#ffb02e"/><circle cx="4.5" cy="-31" r="2" fill="#ffb02e"/><circle cx="0" cy="-31" r="10" fill="url(#gWarmGlow)" opacity=".6"/></g>`
+    };
+  }
+
+  function waterfall(x, y, w, h) {
+    return `<g transform="translate(${f(x)} ${f(y)})"><rect x="${f(-w / 2)}" y="0" width="${w}" height="${h}" rx="${f(w / 2.4)}" fill="url(#pFall)" stroke="#5fd8e8" stroke-width="1"/>
+      <ellipse class="splash" cx="0" cy="${h}" rx="${f(w * 0.95)}" ry="${f(w * 0.38)}" fill="#fff" opacity=".85"/>
+      <circle class="splash" cx="${f(-w * 0.7)}" cy="${f(h - 2)}" r="${f(w * 0.22)}" fill="#fff"/><circle class="splash" cx="${f(w * 0.7)}" cy="${f(h - 3)}" r="${f(w * 0.2)}" fill="#fff"/></g>`;
+  }
+
+  const FLOWER_COLORS = ["#ff3b5c", "#ff4fa3", "#ffd23f", "#ff8a3c", "#ffffff"];
+  function flowers(seed, n, rx, ry, cx = 0, cy = 0, avoid) {
+    const r = rng(seed); let s = "", tries = 0, made = 0;
+    while (made < n && tries < n * 8) {
+      tries++;
+      const a = r() * Math.PI * 2, d = Math.sqrt(r());
+      const x = cx + Math.cos(a) * rx * d, y = cy + Math.sin(a) * ry * d;
+      if (avoid && avoid(x, y)) continue;
+      const sz = 7 + r() * 5;
+      s += `<use href="#hibiscus" x="${f(x - sz / 2)}" y="${f(y - sz / 2)}" width="${f(sz)}" height="${f(sz)}" style="color:${FLOWER_COLORS[Math.floor(r() * FLOWER_COLORS.length)]}"/>`;
+      made++;
+    }
+    return s;
+  }
+  function bush(x, y, r) {
+    return `<g transform="translate(${f(x)} ${f(y)})"><ellipse cx="0" cy="${f(r * 0.5)}" rx="${f(r * 1.3)}" ry="${f(r * 0.4)}" fill="#0b3a2a" opacity=".18"/><circle cx="${f(-r * 0.6)}" cy="0" r="${f(r * 0.72)}" fill="#2f9a3c"/><circle cx="${f(r * 0.6)}" cy="0" r="${f(r * 0.72)}" fill="#2f9a3c"/><circle cx="0" cy="${f(-r * 0.45)}" r="${f(r)}" fill="url(#gBush)"/></g>`;
+  }
+  function pathLights(pts) {
+    return pts.map(([x, y]) => `<circle cx="${f(x)}" cy="${f(y)}" r="8" fill="url(#gWarmGlow)"/><circle cx="${f(x)}" cy="${f(y)}" r="1.9" fill="#fff3b0"/>`).join("");
+  }
+  function samplePolyline(pts, step) {
+    const out = [];
+    for (let i = 0; i < pts.length - 1; i++) {
+      const [x1, y1] = pts[i], [x2, y2] = pts[i + 1];
+      const len = Math.hypot(x2 - x1, y2 - y1), n = Math.max(1, Math.round(len / step));
+      for (let k = 0; k < n; k++) out.push([x1 + (x2 - x1) * k / n, y1 + (y2 - y1) * k / n]);
+    }
+    out.push(pts[pts.length - 1]);
+    return out;
+  }
+  function boatSVG(hull = "#e8463c", sail2 = "#45ead9") {
+    return `<g class="boat-art"><ellipse cx="0" cy="11" rx="26" ry="4" fill="#0b4a5a" opacity=".3"/>
+      <path d="M-24 0 L24 0 L17 11 L-17 11Z" fill="${hull}" stroke="#5a1a14" stroke-width="1.5" stroke-linejoin="round"/>
+      <path d="M-22 1.5 L22 1.5" stroke="#fff4d6" stroke-width="2.4"/>
+      <line x1="0" y1="0" x2="0" y2="-42" stroke="#5a3418" stroke-width="2.2"/>
+      <path d="M2.5 -40 Q24 -22 19 -4 L2.5 -4Z" fill="#fffaf0" stroke="#d9cbb0" stroke-width="1"/>
+      <path d="M-2.5 -33 Q-18 -18 -15 -4 L-2.5 -4Z" fill="${sail2}" stroke="rgba(0,0,0,.15)" stroke-width="1"/>
+      <path d="M0 -42 L11 -39 L0 -36Z" fill="#ff4fa3"/></g>`;
+  }
+  function label(name, y, sc, id) {
+    const fs = 26 * sc, w = name.length * fs * 0.6 + fs * 1.5, h = fs * 1.6;
+    return `<g class="island-label" data-island="${id}" transform="translate(0 ${f(y)})" tabindex="0" role="link" aria-label="Visit ${name}">
+      <rect x="${f(-w / 2)}" y="${f(-h / 2 + 5)}" width="${f(w)}" height="${f(h)}" rx="${f(h / 2.2)}" fill="#072a3a" opacity=".35"/>
+      <rect class="plank" x="${f(-w / 2)}" y="${f(-h / 2)}" width="${f(w)}" height="${f(h)}" rx="${f(h / 2.2)}" fill="url(#gPlank)" stroke="#3d1d07" stroke-width="3"/>
+      <path d="M${f(-w / 2 + 14)} ${f(-h / 2 + 6)} H${f(w / 2 - 14)}" stroke="#ffe0a8" stroke-opacity=".35" stroke-width="2" stroke-linecap="round"/>
+      <text y="${f(fs * 0.36)}" text-anchor="middle" font-family="Kavoon, cursive" font-size="${f(fs)}" fill="#fff4d6" stroke="#4a2410" stroke-width="${f(fs * 0.16)}" paint-order="stroke" stroke-linejoin="round">${name}</text>
+      <use href="#hibiscus" x="${f(-w / 2 - fs * 0.55)}" y="${f(-h / 2 - fs * 0.3)}" width="${f(fs * 0.95)}" height="${f(fs * 0.95)}" style="color:#ff4fa3"/>
+      <use href="#hibiscus" x="${f(w / 2 - fs * 0.4)}" y="${f(-h / 2 - fs * 0.3)}" width="${f(fs * 0.8)}" height="${f(fs * 0.8)}" style="color:#ffd23f"/></g>`;
+  }
+
+  /* ---------- ISLAND ART ---------- */
+  function artTikiBay() {
+    const m = collector();
+    // welcome dock + moored boat (behind the island)
+    let dock = `<path d="M-150 94 L-214 150 L-198 160 L-134 104Z" fill="url(#gWood)" stroke="#5a2e10" stroke-width="1.5"/>`;
+    for (let k = 1; k < 8; k++) {
+      const t = k / 8;
+      dock += `<path d="M${f(-150 - 64 * t)} ${f(94 + 56 * t)} L${f(-134 - 64 * t)} ${f(104 + 56 * t)}" stroke="#5a2e10" stroke-width="1" opacity=".6"/>`;
+    }
+    dock += `<path d="M-212 150 v12 M-198 160 v12 M-182 128 v12 M-166 138 v12" stroke="#4a2410" stroke-width="3"/>`;
+    m.add(dock);
+    m.add(`<g transform="translate(-236 172) scale(.8)">${boatSVG("#ffd23f", "#ff4fa3")}</g>`);
+    m.add(base(230, 118, 34, 11, 0.84));
+    // mountain + waterfall + river
+    m.add(`<path d="M-205 22 Q-196 -40 -155 -84 Q-112 -150 -62 -162 Q-14 -170 14 -112 Q32 -72 50 -40 Q64 -10 66 24 Q-70 46 -205 22Z" fill="url(#gMountain)" stroke="#1f6a37" stroke-width="2"/>
+      <path d="M-62 -160 Q-84 -100 -124 -40 M-30 -150 Q-30 -90 -54 -18 M8 -118 Q22 -70 38 -18" stroke="#2c8040" stroke-width="3" fill="none" opacity=".5" stroke-linecap="round"/>
+      <path d="M-150 -84 Q-110 -150 -62 -160 Q-102 -132 -122 -70Z" fill="#d4ff96" opacity=".35"/>`);
+    m.add(bush(-150, -10, 14) + bush(-100, 10, 12) + bush(20, 6, 12));
+    m.add(`<ellipse cx="-40" cy="10" rx="28" ry="9" fill="url(#gLagoon)" stroke="#fff1c8" stroke-width="3"/>
+      <path d="M-34 14 Q-6 52 -26 118" stroke="#6fe8f2" stroke-width="10" fill="none" stroke-linecap="round"/>
+      <path d="M-32 18 Q-8 52 -26 112" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="5 9" opacity=".8"/>`);
+    m.add(waterfall(-40, -126, 16, 132));
+    // path to the village
+    m.add(`<path d="M40 100 Q70 60 100 44 Q130 28 160 22" stroke="#f6dca0" stroke-width="9" fill="none" stroke-linecap="round"/>`);
+    m.add(flowers(12, 26, 210, 100, 0, 0, (x, y) => x < 66 && y < 30 && x > -205));
+    m.add(hut(118, -36, 0.95)); m.add(hut(186, 2, 0.85)); m.add(hut(72, 4, 0.9));
+    // palms
+    m.add(palm(-214, 34, 0.95, -10)); m.add(palm(-176, 78, 1, 8)); m.add(palm(196, -40, 0.9, 10));
+    m.add(palm(214, 44, 1, -6)); m.add(palm(150, 86, 0.95, 6)); m.add(palm(-112, 98, 0.9, -6)); m.add(palm(38, -44, 0.85, 6));
+    // torches along the path
+    for (const [x, y] of [[84, 78], [54, 60], [118, 54], [144, 18]]) m.add(torch(x, y, 1));
+    const q = (p0, p1, p2, t) => (1 - t) * (1 - t) * p0 + 2 * t * (1 - t) * p1 + t * t * p2;
+    const pts = [];
+    for (let t = 0; t < 1; t += 0.25) pts.push([q(40, 70, 100, t), q(100, 60, 44, t)]);
+    for (let t = 0; t <= 1; t += 0.25) pts.push([q(100, 130, 160, t), q(44, 28, 22, t)]);
+    m.light(`<g class="night">${pathLights(pts)}</g>`);
+    // giant tiki gate
+    m.add(tiki(12, 98, 1.1)); m.add(tiki(72, 98, 1.1));
+    m.add(`<rect x="2" y="38" width="80" height="10" rx="5" fill="url(#pBamboo)" stroke="#7a5418" stroke-width="1.2"/>
+      <rect x="20" y="49" width="44" height="14" rx="3" fill="#5a2e10" stroke="#ffd56b" stroke-width="1.5"/>
+      <text x="42" y="60" text-anchor="middle" font-family="Kavoon, cursive" font-size="10" fill="#ffe9a8">ALOHA</text>
+      <use href="#hibiscus" x="-6" y="30" width="16" height="16" style="color:#ff4fa3"/><use href="#hibiscus" x="74" y="30" width="16" height="16" style="color:#ffd23f"/>`);
+    m.light(`<g class="night"><rect x="18" y="47" width="48" height="18" rx="5" fill="#ffd56b" opacity=".25"/><text x="42" y="60" text-anchor="middle" font-family="Kavoon, cursive" font-size="10" fill="#fff3b0">ALOHA</text></g>`);
+    return m.out();
+  }
+
+  function artTipsy() {
+    const m = collector();
+    m.add(base(110, 56, 24, 23, 0.72));
+    m.add(palm(-88, -6, 0.85, -8)); m.add(palm(86, -2, 0.8, 10));
+    // back shelf + bottles
+    let sh = `<rect x="-40" y="-64" width="80" height="38" rx="3" fill="#5a2e10"/><rect x="-40" y="-47" width="80" height="3" fill="#3a1d08"/>`;
+    const bc = ["#45c8ff", "#ff8a2e", "#7ed957", "#ff4fa3", "#ffe14d", "#b45cff", "#45ead9", "#ff6b6b"];
+    for (let i = 0; i < 8; i++) { const h = 8 + (i * 7) % 6; sh += `<rect x="${-36 + i * 9.4}" y="${-47 - h}" width="5" height="${h}" rx="1.5" fill="${bc[i]}"/><rect x="${-34.6 + i * 9.4}" y="${-50 - h}" width="2" height="3" fill="${bc[i]}"/>`; }
+    for (let i = 0; i < 7; i++) { const h = 7 + (i * 5) % 5; sh += `<rect x="${-34 + i * 10}" y="${-30 - h}" width="5" height="${h}" rx="1.5" fill="${bc[(i + 3) % 8]}"/>`; }
+    m.add(sh);
+    m.add(`<rect x="-48" y="-66" width="5" height="64" fill="url(#pBamboo)"/><rect x="43" y="-66" width="5" height="64" fill="url(#pBamboo)"/>`);
+    m.add(`<rect x="-48" y="-26" width="96" height="24" fill="url(#pBamboo)" stroke="#8a5f22" stroke-width="1"/><rect x="-53" y="-31" width="106" height="7" rx="3" fill="url(#gWood)" stroke="#5a2e10" stroke-width="1"/>`);
+    // cocktails on the counter
+    const cc = ["#45c8ff", "#ff8a2e", "#ff4fa3", "#ffe14d", "#7ed957"];
+    let ck = "";
+    [-36, -18, 0, 18, 36].forEach((x, i) => {
+      ck += `<path d="M${x - 3.5} -42 L${x + 3.5} -42 L${x + 2} -31 L${x - 2} -31Z" fill="${cc[i]}" stroke="#fff" stroke-width=".9"/>`;
+      if (i % 2 === 0) ck += `<path d="M${x} -42 L${x + 4} -50" stroke="#fff4d6" stroke-width="1"/><path d="M${x} -49 Q${x + 5} -55 ${x + 10} -48Z" fill="${["#ff4fa3", "#45ead9", "#ffd23f"][i / 2]}"/>`;
+    });
+    m.add(ck);
+    // stools
+    for (const [x, y] of [[-30, 6], [0, 8], [30, 6]]) m.add(`<path d="M${x - 5} ${y} L${x - 7} ${y + 13} M${x + 5} ${y} L${x + 7} ${y + 13} M${x} ${y} V${y + 13}" stroke="#7a4626" stroke-width="2.5"/><ellipse cx="${x}" cy="${y}" rx="8.5" ry="3.6" fill="#e2bd80" stroke="#7a4626" stroke-width="1.2"/>`);
+    // thatched roof
+    const ry = (x) => { const t = (x + 68) / 136; return -58 + 28 * t * (1 - t); };
+    let fringe = "M-68 -58";
+    for (let x = -68, k = 0; x <= 68; x += 6, k++) fringe += ` L${x} ${f(ry(x) + (k % 2 ? 8 : 0))}`;
+    let roof = `<path d="M-68 -58 Q-36 -104 0 -106 Q36 -104 68 -58 Q0 -44 -68 -58Z" fill="url(#gThatch)" stroke="#8a5f22" stroke-width="2"/>`;
+    for (let x = -56; x <= 56; x += 14) roof += `<path d="M0 -104 L${x} ${f(ry(x))}" stroke="#a8762f" stroke-width="1.4" opacity=".55"/>`;
+    roof += `<path d="${fringe}" fill="none" stroke="#c99a45" stroke-width="3" stroke-linejoin="round"/>`;
+    roof += `<use href="#hibiscus" x="-48" y="-90" width="20" height="20" style="color:#ff3b5c"/><use href="#hibiscus" x="22" y="-96" width="18" height="18" style="color:#ffd23f"/><use href="#hibiscus" x="-6" y="-104" width="14" height="14" style="color:#ff4fa3"/>`;
+    m.add(roof);
+    // lanterns
+    [[-30, -50, "#ff8a3c"], [0, -46, "#ffd23f"], [30, -50, "#ff4fa3"]].forEach(([x, y, c]) => {
+      m.add(`<line x1="${x}" y1="${y - 8}" x2="${x}" y2="${y - 4}" stroke="#3a2208" stroke-width="1"/><ellipse cx="${x}" cy="${y}" rx="5" ry="6" fill="${c}" stroke="#3a2208" stroke-width="1"/>`);
+      m.light(`<circle class="lantern-glow" cx="${x}" cy="${y}" r="20" fill="url(#gWarmGlow)"/><ellipse class="lit" cx="${x}" cy="${y}" rx="3.5" ry="4.5" fill="#fff3b0"/>`);
+    });
+    m.add(tiki(-62, 8, 0.75)); m.add(tiki(62, 10, 0.75));
+    m.add(torch(-84, 28)); m.add(torch(86, 30));
+    m.add(flowers(24, 10, 100, 46, 0, 8, (x, y) => Math.abs(x) < 56 && y < 22));
+    return m.out();
+  }
+
+  function artCoconut() {
+    const m = collector();
+    m.add(base(135, 68, 26, 37, 0.62));
+    m.add(`<path d="M-125 -4 Q-128 -64 -82 -86 Q-36 -100 -10 -60 Q4 -30 -12 2 Q-70 16 -125 -4Z" fill="url(#gRock)" stroke="#4a3a30" stroke-width="1.5"/>
+      <path d="M-112 -60 Q-84 -88 -50 -90 Q-24 -88 -14 -66 Q-46 -78 -112 -60Z" fill="#5cc94a"/>
+      <path d="M-86 0 Q-88 -42 -62 -46 Q-36 -44 -36 0Z" fill="#24160f"/>
+      <path d="M-100 -40 Q-96 -60 -80 -68" stroke="#e8d6c4" stroke-width="3" fill="none" opacity=".4" stroke-linecap="round"/>`);
+    m.light(`<g class="night"><ellipse cx="-61" cy="-14" rx="30" ry="24" fill="url(#gWarmGlow)"/><circle cx="-61" cy="-12" r="2.6" fill="#fff3b0"/></g>`);
+    m.add(palm(-6, -34, 0.9, 6)); m.add(palm(46, -36, 0.95, 0)); m.add(palm(94, -24, 0.95, 0));
+    m.add(palm(120, 14, 0.8, 10)); m.add(palm(-118, 24, 0.8, -8));
+    // hammock between two palms
+    m.add(`<path d="M48 -58 Q70 -28 92 -46 Q70 -38 48 -58Z" fill="#ff6fa8" stroke="#b8326a" stroke-width="1.2"/>
+      <path d="M52 -52 Q70 -32 88 -44" stroke="#fff4d6" stroke-width="2" fill="none" stroke-dasharray="3 3"/>`);
+    m.add(`<text class="zzz" x="70" y="-56" font-family="Kavoon, cursive" font-size="9" fill="#fff" style="--delay:0s">z</text><text class="zzz" x="74" y="-60" font-family="Kavoon, cursive" font-size="7" fill="#fff" style="--delay:1.2s">z</text>`);
+    // beach chairs + umbrella
+    const chair = (x, y, c) => `<g transform="translate(${x} ${y})"><path d="M-14 0 L-12 6 M8 0 L10 6 M16 -12 L18 6" stroke="#8a5a2a" stroke-width="2"/><path d="M-14 -2 L9 -2 L17 -15 L13 -17 L6 -7 L-14 -7Z" fill="${c}" stroke="#fff" stroke-width="1.2"/><path d="M-12 -4.5 L8 -4.5" stroke="#fff" stroke-width="1.4" opacity=".8"/></g>`;
+    m.add(chair(-8, 48, "#45c8ff") + chair(26, 52, "#ff4fa3"));
+    m.add(`<line x1="10" y1="44" x2="12" y2="8" stroke="#f5e6c8" stroke-width="2"/>
+      <path d="M-14 12 Q12 -14 38 8 Q12 2 -14 12Z" fill="#ffd23f" stroke="#c98a1b" stroke-width="1"/>
+      <path d="M-14 12 Q-2 -4 6 -4 L10 6Z M18 -4 Q30 -2 38 8 L14 5Z" fill="#ff4fa3"/>`);
+    m.add(`<circle cx="54" cy="44" r="5" fill="#6b3f1d"/><circle cx="62" cy="45" r="5" fill="#7a4a24"/><circle cx="58" cy="38" r="5" fill="#5a3418"/>`);
+    m.add(torch(124, 34));
+    m.add(flowers(38, 8, 120, 50, 20, 0, (x, y) => x < 0 && y < 10));
+    return m.out();
+  }
+
+  function artGoo() {
+    const m = collector();
+    m.add(base(150, 78, 26, 51, 0.9));
+    m.add(`<path d="M-96 -16 Q-104 -78 -56 -100 Q-4 -112 32 -86 Q56 -64 50 -18 Q-20 -2 -96 -16Z" fill="url(#gRock)" stroke="#4a3a30" stroke-width="1.5"/>
+      <path d="M-92 -64 Q-60 -100 -10 -104 Q30 -96 44 -72 Q-10 -88 -92 -64Z" fill="#5cc94a"/>`);
+    m.add(flowers(52, 8, 60, 12, -24, -84));
+    const lag = smooth(blobPts(92, 44, 57, 0.07));
+    m.add(`<path d="${lag}" transform="translate(16 10)" fill="url(#gLagoon)" stroke="#fff1c8" stroke-width="7"/>`);
+    m.light(`<path class="night" d="${lag}" transform="translate(16 10)" fill="url(#gCoolGlow)"/>`);
+    m.add(waterfall(-44, -88, 14, 68)); m.add(waterfall(6, -82, 11, 58));
+    let sp = "";
+    for (let i = 0; i < 7; i++) sp += `<path class="tw" style="--d:${rnd(2, 4).toFixed(1)}s;--delay:${rnd(0, 3).toFixed(1)}s" d="M${f(rnd(-50, 90))} ${f(rnd(-6, 34))} m0 -4 l1.2 2.8 2.8 1.2 -2.8 1.2 -1.2 2.8 -1.2 -2.8 -2.8 -1.2 2.8 -1.2Z" fill="#fff"/>`;
+    m.add(sp);
+    m.add(palm(-138, 10, 0.8, -8)); m.add(palm(134, -10, 0.85, 8)); m.add(palm(120, 42, 0.8, 6));
+    m.add(palm(-102, 50, 0.8, -6)); m.add(palm(76, -58, 0.8, 4));
+    m.add(flowers(53, 26, 145, 74, 0, 0, (x, y) => ((x - 16) / 100) ** 2 + ((y - 10) / 52) ** 2 < 1 || (y < -10 && x > -96 && x < 50)));
+    m.light(`<g class="night">${[[-120, 30], [110, 10], [60, 60], [-60, 62], [130, 50]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="9" fill="url(#gCoolGlow)"/>`).join("")}</g>`);
+    // Easter egg: the duck
+    m.add(`<g class="egg" data-egg="duck" tabindex="0" role="button" aria-label="A rubber duck"><g transform="translate(52 16)"><g class="bob"><ellipse cx="0" cy="4" rx="10" ry="3" fill="#2fc9d8" opacity=".6"/><ellipse cx="0" cy="0" rx="8" ry="5.5" fill="#ffd93b" stroke="#e0a81b" stroke-width="1"/><circle cx="5" cy="-6" r="4.2" fill="#ffd93b" stroke="#e0a81b" stroke-width="1"/><path d="M8.5 -6.5 L13 -5 L8.5 -4Z" fill="#ff8a1f"/><circle cx="6" cy="-7" r="1" fill="#2a1508"/></g></g></g>`);
+    return m.out();
+  }
+
+  function artPine() {
+    const m = collector();
+    m.add(base(140, 72, 28, 67, 0.86));
+    m.add(`<path d="M-132 14 Q-126 -46 -86 -78 Q-64 -96 -46 -104 L46 -104 Q64 -96 86 -78 Q126 -46 132 14 Q0 42 -132 14Z" fill="url(#gMountain)" stroke="#1f6a37" stroke-width="2"/>
+      <path d="M-96 -60 Q-70 -90 -40 -100 Q-74 -76 -84 -40Z" fill="#d4ff96" opacity=".35"/>`);
+    m.add(bush(-92, -30, 14) + bush(96, -24, 15) + bush(-58, -66, 12) + bush(64, -64, 12) + bush(-16, 4, 11) + bush(40, -20, 10));
+    const sum = "M-50 -96 Q-66 -168 -32 -214 Q0 -232 32 -214 Q66 -168 50 -96 Q0 -84 -50 -96Z";
+    m.add(`<path d="${sum}" fill="url(#gPine)" stroke="#9a5a12" stroke-width="2"/><path d="${sum}" fill="url(#pPineHatch)"/>
+      <path d="M-36 -190 Q-30 -212 -10 -220 Q-28 -200 -30 -150Z" fill="#fff3b0" opacity=".5"/>`);
+    let crown = "";
+    for (const [tx, ty] of [[-46, -16], [46, -16], [-36, -42], [36, -42], [-20, -64], [20, -64], [0, -80]]) {
+      crown += `<path d="M-6 0 Q${f(tx * 0.4 - 7)} ${f(ty * 0.6)} ${tx} ${ty} Q${f(tx * 0.4 + 7)} ${f(ty * 0.6)} 6 0Z" fill="url(#gLeaf)" stroke="#1d6b2c" stroke-width="1"/>`;
+    }
+    m.add(`<g transform="translate(0 -222)"><g class="sway-slow">${crown}</g></g>`);
+    const trail = [[24, 32], [-44, -6], [28, -44], [-30, -80], [32, -112], [56, -148]];
+    m.add(`<path d="M${trail.map((p) => p.join(" ")).join(" L")}" fill="none" stroke="#6a4a26" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" opacity=".5"/>
+      <path d="M${trail.map((p) => p.join(" ")).join(" L")}" fill="none" stroke="#f6dca0" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>`);
+    m.light(`<g class="night">${pathLights(samplePolyline(trail, 26))}</g>`);
+    // summit viewpoint deck + telescope
+    m.add(`<path d="M50 -142 V-118 M86 -142 V-116" stroke="#6a3814" stroke-width="3"/>
+      <path d="M42 -150 L88 -150 L94 -142 L48 -142Z" fill="url(#gWood)" stroke="#5a2e10" stroke-width="1.2"/>
+      <path d="M48 -150 V-162 M62 -150 V-162 M76 -150 V-162 M88 -150 V-162 M46 -160 H90" stroke="#7a4626" stroke-width="2" stroke-linecap="round"/>
+      <path d="M70 -150 L66 -143 M70 -150 L74 -143 M70 -150 V-156" stroke="#3a2208" stroke-width="1.6"/>
+      <rect x="61" y="-163" width="20" height="5.5" rx="2" fill="#c99a45" stroke="#7a5418" stroke-width="1" transform="rotate(-18 70 -158)"/>`);
+    m.light(`<g class="night"><circle cx="90" cy="-164" r="14" fill="url(#gWarmGlow)"/><circle cx="90" cy="-164" r="2.2" fill="#fff3b0"/></g>`);
+    m.add(palm(-122, 22, 0.85, -8)); m.add(palm(118, 18, 0.85, 8)); m.add(palm(-84, 48, 0.8, -4)); m.add(palm(86, 50, 0.8, 4));
+    m.add(flowers(68, 10, 120, 40, 0, 20, (x, y) => y < 10 && Math.abs(x) < 110));
+    return m.out();
+  }
+
+  function dancer(x, y, col, delay) {
+    return `<g transform="translate(${x} ${y})"><g class="hula-hips" style="animation-delay:${delay}s">
+      <path d="M-3 -1 V8 M3 -1 V8" stroke="#e8a878" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M-8 1 L-6 -11 L6 -11 L8 1Z" fill="#4cb848"/><path d="M-6 1 V-10 M-3 1 V-10 M0 1 V-10 M3 1 V-10 M6 1 V-10" stroke="#2a8a3a" stroke-width="1"/>
+      <rect x="-4" y="-21" width="8" height="10" rx="3" fill="${col}"/>
+      <g class="hula-arms" style="animation-delay:${delay}s"><path d="M-4 -19 Q-12 -26 -15 -18 M4 -19 Q12 -26 15 -18" stroke="#e8a878" stroke-width="2.4" fill="none" stroke-linecap="round"/></g>
+      <circle cx="0" cy="-26" r="5.2" fill="#e8a878"/><path d="M-5.5 -27 Q-5 -33 0 -32.5 Q5 -33 5.5 -27 Q6 -20 5 -16 L3 -24 Q0 -29 -3 -24 L-5 -16 Q-6 -20 -5.5 -27Z" fill="#4a2c19"/>
+      <circle cx="3.5" cy="-30" r="2.2" fill="#ff4fa3"/></g></g>`;
+  }
+  function artHula() {
+    const m = collector();
+    m.add(base(125, 62, 24, 79, 0.78));
+    m.add(palm(-110, -10, 0.8, -6)); m.add(palm(108, -14, 0.8, 8));
+    // stage
+    m.add(`<path d="M-54 -46 V-102 M54 -46 V-102" stroke="#d9b277" stroke-width="5" stroke-linecap="round"/>
+      <path d="M-58 -100 Q0 -114 58 -100" stroke="#d9b277" stroke-width="6" fill="none" stroke-linecap="round"/>
+      <path d="M-58 -36 L58 -36 L68 -46 L-48 -46Z" fill="#d79c5e" stroke="#5a2e10" stroke-width="1.2"/>
+      <rect x="-58" y="-36" width="116" height="14" fill="url(#gWood)" stroke="#5a2e10" stroke-width="1.2"/>`);
+    const bulbs = [];
+    for (let i = 0; i <= 8; i++) { const t = i / 8, x = -56 + 112 * t, y = -100 - 14 * 4 * t * (1 - t) * 0.5 + 6; bulbs.push([x, y, ["#ff4fa3", "#ffd23f", "#45ead9", "#b45cff"][i % 4]]); }
+    m.add(bulbs.map(([x, y, c]) => `<circle cx="${f(x)}" cy="${f(y)}" r="2.6" fill="${c}"/>`).join(""));
+    m.light(bulbs.map(([x, y, c]) => `<circle class="lit" cx="${f(x)}" cy="${f(y)}" r="2.6" fill="${c}"/><circle class="night" cx="${f(x)}" cy="${f(y)}" r="8" fill="url(#gPinkGlow)"/>`).join(""));
+    m.light(`<path class="spot" d="M-34 -98 L-58 8 L-12 8Z" fill="url(#gSpotPink)"/><path class="spot" d="M34 -98 L12 10 L58 10Z" fill="url(#gSpotTeal)"/>`);
+    // drums + ukulele
+    for (const x of [-30, -14]) m.add(`<rect x="${x - 5}" y="-60" width="10" height="14" fill="#b8326a" stroke="#5a1430" stroke-width="1"/><ellipse cx="${x}" cy="-60" rx="5" ry="2" fill="#f6dca0" stroke="#5a1430" stroke-width=".8"/>`);
+    m.add(`<g transform="translate(30 -50) rotate(18)"><rect x="-1.5" y="-26" width="3" height="20" fill="#7a4626"/><circle cx="0" cy="-4" r="6" fill="#e0a050" stroke="#7a4626"/><circle cx="0" cy="4" r="7.5" fill="#e0a050" stroke="#7a4626"/><circle cx="0" cy="0" r="2" fill="#5a2e10"/></g>`);
+    // dance floor
+    m.add(`<ellipse cx="0" cy="13" rx="62" ry="22" fill="#7a4626"/><ellipse cx="0" cy="8" rx="62" ry="22" fill="url(#gWood)" stroke="#5a2e10" stroke-width="1.2"/>
+      <path d="M-40 -8 V26 M-20 -12 V30 M0 -14 V30 M20 -12 V30 M40 -8 V26" stroke="#5a2e10" stroke-width="1" opacity=".35"/>`);
+    m.add(dancer(-26, 12, "#ff4fa3", 0) + dancer(0, 4, "#ffd23f", -0.25) + dancer(26, 14, "#45ead9", -0.5));
+    // music notes
+    [["♪", -36, -66, "#ff4fa3", 0], ["♫", 0, -72, "#ffd23f", 1.1], ["♪", 34, -64, "#45ead9", 2.1], ["♫", -10, -60, "#fff", 1.6]].forEach(([n, x, y, c, d]) => {
+      m.light(`<text class="note" style="--delay:${d}s" x="${x}" y="${y}" font-size="16" font-weight="700" fill="${c}" stroke="#3a1d08" stroke-width="1" paint-order="stroke">${n}</text>`);
+    });
+    for (const [x, y] of [[-98, 16], [98, 20], [-66, 42], [68, 44]]) m.add(torch(x, y));
+    m.add(flowers(80, 10, 115, 50, 0, 0, (x, y) => Math.abs(x) < 66 && y < 30));
+    return m.out();
+  }
+
+  function artSunset() {
+    const m = collector();
+    let pier = `<path d="M30 4 L190 58 L182 74 L22 18Z" fill="url(#gWood)" stroke="#5a2e10" stroke-width="1.4"/>`;
+    for (let k = 1; k < 14; k++) { const t = k / 14; pier += `<path d="M${f(30 + 160 * t)} ${f(4 + 54 * t)} L${f(22 + 160 * t)} ${f(18 + 56 * t)}" stroke="#5a2e10" stroke-width="1" opacity=".5"/>`; }
+    for (const t of [0.35, 0.65, 0.95]) pier += `<path d="M${f(22 + 160 * t)} ${f(18 + 56 * t)} v14 M${f(30 + 160 * t)} ${f(4 + 54 * t)} v12" stroke="#4a2410" stroke-width="3"/>`;
+    pier += `<path d="M160 50 L184 58 L184 52 L160 44Z" fill="#8a4f22"/><path d="M160 44 L184 52 L184 42 L160 34Z" fill="#a8652f" stroke="#5a2e10" stroke-width=".8"/>`;
+    m.add(pier);
+    const posts = [0.3, 0.62, 0.94].map((t) => [30 + 160 * t, 4 + 54 * t]);
+    m.add(posts.map(([x, y]) => `<path d="M${f(x)} ${f(y)} v-20" stroke="#5a2e10" stroke-width="2.2"/><rect x="${f(x - 3)}" y="${f(y - 26)}" width="6" height="7" rx="1.5" fill="#ffcf6b" stroke="#5a2e10" stroke-width="1"/>`).join(""));
+    m.light(`<g>${posts.map(([x, y]) => `<circle class="lantern-glow" cx="${f(x)}" cy="${f(y - 22)}" r="18" fill="url(#gWarmGlow)"/>`).join("")}</g>`);
+    m.add(base(100, 50, 22, 91, 0.55));
+    m.add(palm(-56, -12, 0.95, -10)); m.add(palm(-8, -26, 0.75, 6));
+    m.add(`<g transform="translate(-30 18)"><ellipse cx="0" cy="5" rx="24" ry="4" fill="#0b3a2a" opacity=".18"/><rect x="-18" y="-20" width="36" height="11" rx="4" fill="#b8703a" stroke="#5a2e10" stroke-width="1"/><rect x="-19" y="-10" width="38" height="7" rx="2" fill="#a0602e" stroke="#5a2e10" stroke-width="1"/><path d="M-16 -3 V5 M16 -3 V5" stroke="#6a3814" stroke-width="2.5"/><circle cx="-9" cy="-13" r="5" fill="#ff4fa3"/><circle cx="9" cy="-13" r="5" fill="#45ead9"/></g>`);
+    m.add(`<g transform="translate(6 22)"><path d="M0 0 V8" stroke="#6a3814" stroke-width="2"/><ellipse cx="0" cy="0" rx="9" ry="3.2" fill="#c98a4e" stroke="#5a2e10" stroke-width="1"/><rect x="-1.5" y="-8" width="3" height="7" fill="#fff4d6"/><path d="M-6 -6 L-4 0 M5 -6 L4 0" stroke="#ff8a3c" stroke-width="2.4" stroke-linecap="round"/></g>`);
+    m.light(`<g transform="translate(6 22)"><circle class="night" cx="0" cy="-10" r="14" fill="url(#gWarmGlow)"/><path class="lit flicker" d="M0 -13 C-2 -10 -1.5 -8.5 0 -8 C1.5 -8.5 2 -10 0 -13Z" fill="#ffb02e"/></g>`);
+    m.add(`<path d="M52 32 C42 24 42 16 48 16 C51 16 52 19 52 20 C52 19 53 16 56 16 C62 16 62 24 52 32Z" fill="none" stroke="#d9935a" stroke-width="2"/>`);
+    // Easter egg: Sir Pinchy the crab
+    m.add(`<g class="egg" data-egg="crab" tabindex="0" role="button" aria-label="A crab"><g transform="translate(-66 34)"><g class="bob"><ellipse cx="0" cy="0" rx="7" ry="4.5" fill="#ff5a3c" stroke="#a8261a" stroke-width="1"/><path d="M-6 2 l-4 3 M-5 3 l-3 4 M6 2 l4 3 M5 3 l3 4" stroke="#a8261a" stroke-width="1.2"/><circle cx="-9" cy="-4" r="3" fill="#ff5a3c" stroke="#a8261a" stroke-width="1"/><circle cx="9" cy="-4" r="3" fill="#ff5a3c" stroke="#a8261a" stroke-width="1"/><circle cx="-2.5" cy="-5" r="1.4" fill="#fff"/><circle cx="2.5" cy="-5" r="1.4" fill="#fff"/><circle cx="-2.5" cy="-5" r=".7" fill="#000"/><circle cx="2.5" cy="-5" r=".7" fill="#000"/></g></g></g>`);
+    return m.out();
+  }
+
+  /* ---------- island data ---------- */
+  const ISLANDS = [
+    { id: "hula-heaven", name: "Hula Heaven", rx: 125, ry: 62, depth: 24, top: 115, art: artHula, blurb: "Music, dancing and the cheesiest comedy stage in the Pacific.", d: [800, 250], m: [450, 330] },
+    { id: "tipsy-tiki", name: "The Tipsy Tiki", rx: 110, ry: 56, depth: 24, top: 110, art: artTipsy, blurb: "Emul’s bamboo tiki bar. Glowing lanterns, colorful cocktails, zero regrets.", d: [1200, 320], m: [700, 500] },
+    { id: "coconut-cave", name: "Coconut Cave", rx: 135, ry: 68, depth: 26, top: 100, art: artCoconut, blurb: "Hammocks, beach chairs and a cave built for very serious naps.", d: [400, 330], m: [205, 520] },
+    { id: "tiki-bay", name: "Tiki Bay", rx: 230, ry: 118, depth: 34, top: 175, art: artTikiBay, blurb: "The grand entrance! Sail through the giant tiki gate into the heart of the islands.", d: [800, 580], m: [450, 812] },
+    { id: "goo-lagoon", name: "Goo Lagoon", rx: 150, ry: 78, depth: 26, top: 110, art: artGoo, blurb: "Crystal-clear water, twin waterfalls and one suspiciously calm duck.", d: [1310, 650], m: [680, 1122] },
+    { id: "pineapple-peak", name: "Pineapple Peak", rx: 140, ry: 72, depth: 28, top: 305, art: artPine, blurb: "The tallest point in the islands. Totally not shaped like a pineapple.", d: [330, 800], m: [215, 1202] },
+    { id: "sunset-beach", name: "Sunset Beach", rx: 100, ry: 50, depth: 22, top: 90, art: artSunset, blurb: "A tiny island with a wooden pier and the best seat for the sunset.", d: [1010, 860], m: [470, 1405] }
+  ];
+  const byId = Object.fromEntries(ISLANDS.map((i) => [i.id, i]));
+  const ROUTES = [
+    ["tiki-bay", "tipsy-tiki", 1], ["tiki-bay", "coconut-cave", 1], ["tiki-bay", "sunset-beach", 1],
+    ["tiki-bay", "goo-lagoon", 0], ["tiki-bay", "pineapple-peak", 0], ["tiki-bay", "hula-heaven", 0],
+    ["hula-heaven", "tipsy-tiki", 0], ["hula-heaven", "coconut-cave", 0], ["goo-lagoon", "sunset-beach", 0], ["coconut-cave", "pineapple-peak", 0]
+  ];
+  const LAYOUTS = {
+    d: { W: 1600, H: 1000, sky: 150, label: 1, zoom: 2.3, title: [64, 26, 80], compass: [105, 905, 55], treasure: [612, 912], bottle: [1500, 930], shark: [1480, 430],
+         fish: [[560, 500], [1040, 760], [610, 225], [1460, 870], [180, 560], [880, 935]] },
+    m: { W: 900, H: 1560, sky: 190, label: 1.15, zoom: 1.9, title: [70, 30, 92], compass: [95, 1488, 50], treasure: [812, 1335], bottle: [815, 1505], shark: [740, 280],
+         fish: [[120, 340], [770, 650], [330, 990], [800, 1210], [640, 1505]] }
+  };
+
+  /* ---------- build the map ---------- */
+  const host = $("mapHost"), frame = $("mapFrame"), tip = $("mapTip"), toast = $("mapToast");
+  let L, layoutKey, svg, world, boats = [], fish = [], shark = null;
+
+  function shore(a, b, k = 1.12) {
+    const ax = a.p[0], ay = a.p[1] + a.depth * 0.5, bx = b.p[0], by = b.p[1] + b.depth * 0.5;
+    const dx = bx - ax, dy = by - ay;
+    const t = 1 / Math.sqrt((dx / (a.rx * k)) ** 2 + (dy / (a.ry * k * 1.15)) ** 2);
+    return [ax + dx * t, ay + dy * t];
+  }
+
+  function cloud(s, op) {
+    return `<g transform="scale(${s})" opacity="${op}"><ellipse class="cloud-fill" cx="0" cy="10" rx="64" ry="16"/><circle class="cloud-fill" cx="-30" cy="0" r="22"/><circle class="cloud-fill" cx="0" cy="-12" r="30"/><circle class="cloud-fill" cx="30" cy="-2" r="24"/><circle class="cloud-fill" cx="54" cy="6" r="16"/><circle class="cloud-fill" cx="-54" cy="6" r="15"/><ellipse cx="0" cy="18" rx="58" ry="7" fill="#7a8ab8" opacity=".18"/></g>`;
+  }
+
+  function build() {
+    layoutKey = frame.clientWidth < 700 ? "m" : "d";
+    L = LAYOUTS[layoutKey];
+    const { W, H, sky } = L;
+    ISLANDS.forEach((i) => { i.p = i[layoutKey]; });
+    let s = `<svg viewBox="0 0 ${W} ${H}" style="--W:${W}" aria-label="Interactive map of the Tiki Islands"><g id="world">`;
+
+    // --- sky
+    s += `<rect width="${W}" height="${sky + 6}" fill="url(#gSky)"/>`;
+    s += `<g class="night">`;
+    for (let i = 0; i < 70; i++) s += `<circle class="tw" style="--d:${rnd(2, 5).toFixed(1)}s;--delay:${rnd(0, 4).toFixed(1)}s" cx="${f(rnd(0, W))}" cy="${f(rnd(4, sky - 10))}" r="${f(rnd(0.7, 2))}" fill="#fff"/>`;
+    s += `</g>`;
+    s += `<g id="sun" class="egg" data-egg="sun"><circle r="80" fill="url(#gSunGlow)"/><circle r="24" style="fill:var(--sunc,#ffd27a)"/><circle cx="-7" cy="-7" r="9" fill="#fff" opacity=".35"/></g>`;
+    s += `<g id="moon" class="night egg" data-egg="moon"><circle r="50" fill="url(#gMoonGlow)"/><circle r="17" fill="#fff7dc"/><circle cx="-5" cy="-4" r="3.2" fill="#e8dcb0"/><circle cx="6" cy="5" r="2.3" fill="#e8dcb0"/><circle cx="5" cy="-7" r="1.6" fill="#e8dcb0"/></g>`;
+    s += `<path d="M0 ${sky} L0 ${sky - 18} Q${W * 0.05} ${sky - 44} ${W * 0.1} ${sky - 30} Q${W * 0.15} ${sky - 62} ${W * 0.21} ${sky - 26} Q${W * 0.25} ${sky - 14} ${W * 0.3} ${sky - 4} L${W * 0.62} ${sky} Q${W * 0.7} ${sky - 30} ${W * 0.76} ${sky - 22} Q${W * 0.83} ${sky - 54} ${W * 0.9} ${sky - 24} Q${W * 0.95} ${sky - 36} ${W} ${sky - 20} L${W} ${sky}Z" style="fill:var(--far,#7fbcc8)"/>`;
+    [[0.15, 40, 0.8, 140, -20], [0.5, 70, 0.6, 180, -110], [0.8, 34, 0.7, 160, -60]].forEach(([fx, y, sc, dur, del]) => {
+      s += `<g class="cloud-drift no-hit" style="--dur:${dur}s;--del:${del}s"><g transform="translate(${f(W * fx - W * 0.5)} ${y * (sky / 150)})">${cloud(sc, 0.95)}</g></g>`;
+    });
+
+    // --- ocean
+    s += `<rect y="${sky}" width="${W}" height="${H - sky}" fill="url(#gOcean)"/>`;
+    s += `<rect y="${sky}" width="${W}" height="${H - sky}" fill="url(#pWaves)"/><rect y="${sky}" width="${W}" height="${H - sky}" fill="url(#pWaves2)"/>`;
+    s += `<g class="day">`;
+    for (let i = 0; i < 40; i++) s += `<path class="glint" style="--d:${rnd(2, 4.5).toFixed(1)}s;--delay:${rnd(0, 4).toFixed(1)}s" d="M${f(rnd(0, W))} ${f(rnd(sky + 20, H))} m0 -5 l1.4 3.6 3.6 1.4 -3.6 1.4 -1.4 3.6 -1.4 -3.6 -3.6 -1.4 3.6 -1.4Z" fill="#fff"/>`;
+    s += `</g>`;
+    s += `<rect y="${sky}" width="${W}" height="16" fill="#fff" opacity=".18"/>`;
+
+    // --- sailing routes
+    s += `<g class="no-hit">`;
+    ROUTES.forEach(([a, b], i) => {
+      const A = byId[a], B = byId[b], p1 = shore(A, B), p2 = shore(B, A);
+      const mx = (p1[0] + p2[0]) / 2, my = (p1[1] + p2[1]) / 2, dx = p2[0] - p1[0], dy = p2[1] - p1[1];
+      const cx = mx - dy * 0.14, cy = my + dx * 0.14;
+      s += `<path id="route-${i}" class="route" d="M${f(p1[0])} ${f(p1[1])} Q${f(cx)} ${f(cy)} ${f(p2[0])} ${f(p2[1])}" fill="none" stroke="#fffaf0" stroke-width="4.5" stroke-linecap="round" opacity=".85"/>`;
+    });
+    s += `</g>`;
+
+    // --- fish + shark (underwater / surface)
+    s += `<g id="fishLayer" class="no-hit">`;
+    L.fish.forEach((p, i) => { s += `<g id="fish-${i}" opacity=".6"><g transform="scale(1)"><ellipse cx="0" cy="0" rx="9" ry="4.5" fill="${["#ff8a3c", "#ffd23f", "#ff4fa3", "#45c8ff", "#ff6b6b", "#b45cff"][i % 6]}"/><path d="M-8 0 L-15 -5 L-15 5Z" fill="${["#ff8a3c", "#ffd23f", "#ff4fa3", "#45c8ff", "#ff6b6b", "#b45cff"][i % 6]}"/><circle cx="5" cy="-1" r="1.2" fill="#1a1a1a"/></g></g>`; });
+    s += `</g>`;
+    s += `<g id="shark" class="egg" data-egg="shark" tabindex="0" role="button" aria-label="A shark fin"><g><ellipse cx="-6" cy="3" rx="22" ry="4" fill="#fff" opacity=".45"/><path d="M-10 2 Q-2 -6 2 -24 Q6 -10 12 2Z" fill="#6c7f99" stroke="#3e4c63" stroke-width="1.5"/></g></g>`;
+
+    // --- islands (art layer, back to front)
+    const sorted = [...ISLANDS].sort((a, b) => a.p[1] - b.p[1]);
+    const arts = {};
+    sorted.forEach((isl) => {
+      arts[isl.id] = isl.art();
+      s += `<g class="isl isl-art" data-island="${isl.id}" transform="translate(${isl.p[0]} ${isl.p[1]})"><g class="lift">${arts[isl.id].art}</g></g>`;
+    });
+
+    // --- easter eggs on the water
+    const [cx, cy, cr] = L.compass;
+    let star = "";
+    for (let i = 0; i < 4; i++) star += `<g transform="rotate(${i * 90})"><path d="M0 ${-cr * 0.92} L${cr * 0.16} ${-cr * 0.16} L0 0Z" fill="#0fb5ae"/><path d="M0 ${-cr * 0.92} L${-cr * 0.16} ${-cr * 0.16} L0 0Z" fill="#0a7f7a"/></g>`;
+    for (let i = 0; i < 4; i++) star += `<g transform="rotate(${45 + i * 90})"><path d="M0 ${-cr * 0.6} L${cr * 0.1} ${-cr * 0.1} L0 0Z" fill="#ff4fa3"/><path d="M0 ${-cr * 0.6} L${-cr * 0.1} ${-cr * 0.1} L0 0Z" fill="#c2306f"/></g>`;
+    const lbl = (t, x, y) => `<text x="${f(x)}" y="${f(y)}" text-anchor="middle" font-family="Kavoon, cursive" font-size="${f(cr * 0.28)}" fill="#5a2e10">${t}</text>`;
+    s += `<g class="egg" data-egg="compass" tabindex="0" role="button" aria-label="Compass rose" transform="translate(${cx} ${cy})"><ellipse cx="0" cy="${cr * 0.95}" rx="${cr * 0.9}" ry="${cr * 0.2}" fill="#063a4a" opacity=".3"/><g class="compass-wobble"><g class="compass-spin" id="compassSpin">
+      <circle r="${cr}" fill="#fff4d6" stroke="#8a5a2a" stroke-width="4"/><circle r="${cr * 0.8}" fill="none" stroke="#c99a45" stroke-width="1.5" stroke-dasharray="3 4"/>${star}
+      <use href="#hibiscus" x="${-cr * 0.18}" y="${-cr * 0.18}" width="${cr * 0.36}" height="${cr * 0.36}" style="color:#ffd23f"/>
+      ${lbl("N", 0, -cr * 0.68)}${lbl("S", 0, cr * 0.8)}${lbl("E", cr * 0.74, cr * 0.1)}${lbl("W", -cr * 0.74, cr * 0.1)}</g></g></g>`;
+    const [tx, ty] = L.treasure;
+    s += `<g class="egg" data-egg="treasure" tabindex="0" role="button" aria-label="A tiny sandbar marked with an X" transform="translate(${tx} ${ty})"><ellipse rx="52" ry="18" fill="url(#gShallow)"/><ellipse class="foam" rx="40" ry="13" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="10 8"/><ellipse rx="34" ry="11" fill="url(#gSand)"/><path d="M-7 -5 L7 5 M7 -5 L-7 5" stroke="#e8263c" stroke-width="3.2" stroke-linecap="round"/>${palm(18, -2, 0.42, 4)}</g>`;
+    const [bx, by] = L.bottle;
+    s += `<g class="egg" data-egg="bottle" tabindex="0" role="button" aria-label="A message in a bottle" transform="translate(${bx} ${by})"><g class="bob"><ellipse cx="0" cy="6" rx="18" ry="3.5" fill="#fff" opacity=".4"/><rect x="-13" y="-5" width="22" height="10" rx="5" fill="#7fe0a8" opacity=".85" stroke="#2f8f5a" stroke-width="1.2"/><rect x="9" y="-2.5" width="6" height="5" rx="1" fill="#7fe0a8" stroke="#2f8f5a" stroke-width="1"/><rect x="14" y="-2" width="3.5" height="4" fill="#b8874a"/><rect x="-8" y="-2.5" width="12" height="5" rx="1" fill="#fff4d6"/></g></g>`;
+
+    // --- day/night tint
+    s += `<rect class="tint" y="${sky}" width="${W}" height="${H - sky}" style="fill:var(--tint,#fff)"/>`;
+
+    // --- boats (with lanterns)
+    s += `<g id="boatLayer" class="no-hit">`;
+    ROUTES.forEach(([, , hasBoat], i) => {
+      if (!hasBoat) return;
+      s += `<g id="boat-${i}"><g class="boat-flip">${boatSVG(["#e8463c", "#2f7fe0", "#ff8a3c"][boats.length % 3], ["#45ead9", "#ffd23f", "#ff4fa3"][boats.length % 3])}<circle class="night" cx="-18" cy="-6" r="10" fill="url(#gWarmGlow)"/><circle class="night" cx="-18" cy="-6" r="2" fill="#fff3b0"/></g></g>`;
+      boats.push({ i });
+    });
+    s += `</g>`;
+
+    // --- reflections + lights + labels (above the tint)
+    const holes = sorted.map((isl) => `<g transform="translate(${isl.p[0]} ${isl.p[1]})"><ellipse cx="0" cy="${f(isl.depth / 2)}" rx="${f(isl.rx * 1.06)}" ry="${f(isl.ry * 1.12 + isl.depth / 2)}"/><rect x="${f(-isl.rx * 0.9)}" y="${-isl.top}" width="${f(isl.rx * 1.8)}" height="${isl.top}" rx="30"/></g>`).join("");
+    s += `<mask id="reflMask" maskUnits="userSpaceOnUse" x="0" y="0" width="${W}" height="${H}"><rect width="${W}" height="${H}" fill="#fff"/><g fill="#000">${holes}</g></mask>`;
+    s += `<g mask="url(#reflMask)" class="no-hit"><g id="moonRefl" class="night">${reflColumn("#fff6cf", "#d6dcff")}</g><g id="sunRefl" class="goldhour">${reflColumn("#fff1b0", "#ffb36b")}</g></g>`;
+    sorted.forEach((isl) => {
+      const ly = isl.ry + isl.depth + 30 * L.label;
+      s += `<g class="isl isl-top" data-island="${isl.id}" transform="translate(${isl.p[0]} ${isl.p[1]})"><g class="lift"><g class="no-hit">${arts[isl.id].lights}</g>${label(isl.name, ly, L.label, isl.id)}</g></g>`;
+    });
+
+    // --- low clouds drifting across the map
+    [[0.3, 0.42, 0.55, 210, -40], [0.7, 0.72, 0.5, 240, -150]].forEach(([fx, fy, sc, dur, del]) => {
+      s += `<g class="cloud-drift no-hit" style="--dur:${dur}s;--del:${del}s"><g transform="translate(${f(W * fx - W * 0.5)} ${f(H * fy)})">${cloud(sc * 1.4, 0.38)}</g></g>`;
+    });
+
+    // --- title
+    const [tfs, cfs, tyy] = L.title;
+    s += `<g class="no-hit" transform="translate(${W / 2} ${tyy})">
+      <text text-anchor="middle" font-family="Kavoon, cursive" font-size="${tfs}" fill="#5a2408" opacity=".55" transform="translate(0 5)">The Tiki Islands</text>
+      <text text-anchor="middle" font-family="Kavoon, cursive" font-size="${tfs}" fill="url(#gTitle)" stroke="#5a2408" stroke-width="${f(tfs * 0.13)}" paint-order="stroke" stroke-linejoin="round">The Tiki Islands</text>
+      <use href="#hibiscus" x="${f(-tfs * 4.95)}" y="${f(-tfs * 0.95)}" width="${f(tfs * 0.9)}" height="${f(tfs * 0.9)}" style="color:#ff4fa3"/>
+      <use href="#hibiscus" x="${f(tfs * 4.05)}" y="${f(-tfs * 0.95)}" width="${f(tfs * 0.9)}" height="${f(tfs * 0.9)}" style="color:#ff4fa3"/>
+      <text y="${f(tfs * 0.66)}" text-anchor="middle" font-family="Pacifico, cursive" font-size="${cfs}" fill="#fff" stroke="#0a4a5a" stroke-width="${f(cfs * 0.2)}" paint-order="stroke" stroke-linejoin="round">Discovered, designed &amp; ruled by Emul.</text></g>`;
+
+    s += `</g></svg>`;
+    host.innerHTML = s;
+    svg = host.querySelector("svg");
+    world = $("world");
+    boats.forEach((b) => {
+      b.el = $("boat-" + b.i); b.flip = b.el.querySelector(".boat-flip"); b.path = $("route-" + b.i);
+      b.len = b.path.getTotalLength(); b.t = Math.random(); b.dir = Math.random() < 0.5 ? 1 : -1; b.wait = 0; b.phase = Math.random() * 6;
+    });
+    fish = L.fish.map((c, i) => ({ el: $("fish-" + i), inner: $("fish-" + i).firstElementChild, c, rx: rnd(30, 60), ry: rnd(10, 20), w: rnd(0.3, 0.6) * (i % 2 ? 1 : -1), a: Math.random() * 6 }));
+    shark = { el: $("shark"), inner: $("shark").firstElementChild, c: L.shark, rx: 70, ry: 22, w: 0.35, a: 0 };
+    wire();
+    applySky(nowMs());
+    placeFrame();
+  }
+
+  function reflColumn(c1, c2) {
+    let s = "";
+    for (let i = 0; i < 16; i++) {
+      const w = Math.max(14, 120 - i * 6 + rnd(-14, 14));
+      s += `<rect class="shim" style="--d:${rnd(1.8, 3.4).toFixed(1)}s;--delay:${rnd(0, 2).toFixed(1)}s" x="${f(-w / 2)}" y="${i * 13 + 8}" width="${f(w)}" height="3.5" rx="2" fill="${i % 2 ? c1 : c2}" opacity="${f(0.85 - i * 0.045)}"/>`;
+    }
+    return s;
+  }
+
+  /* ---------- animation loop: boats, fish, shark ---------- */
+  let last = 0, running = false, rafId = 0;
+  function tick(ts) {
+    const dt = Math.min(0.05, (ts - last) / 1000 || 0); last = ts;
+    boats.forEach((b) => {
+      if (b.wait > 0) b.wait -= dt;
+      else {
+        b.t += b.dir * dt * (38 / b.len);
+        if (b.t >= 1 || b.t <= 0) { b.t = Math.max(0, Math.min(1, b.t)); b.dir *= -1; b.wait = 1.6; }
+      }
+      const p = b.path.getPointAtLength(b.t * b.len), q = b.path.getPointAtLength(Math.min(b.len, Math.max(0, b.t * b.len + b.dir * 4)));
+      const face = q.x >= p.x ? 1 : -1, bob = Math.sin(ts / 600 + b.phase) * 1.6;
+      b.el.setAttribute("transform", `translate(${f(p.x)} ${f(p.y + bob)})`);
+      b.flip.setAttribute("transform", `scale(${face} 1) rotate(${f(Math.sin(ts / 800 + b.phase) * 3)})`);
+    });
+    for (const o of [...fish, shark]) {
+      o.a += o.w * dt;
+      const x = o.c[0] + Math.cos(o.a) * o.rx, y = o.c[1] + Math.sin(o.a) * o.ry;
+      const face = -Math.sin(o.a) * o.w >= 0 ? 1 : -1;
+      o.el.setAttribute("transform", `translate(${f(x)} ${f(y)})`);
+      o.inner.setAttribute("transform", `scale(${face} 1)`);
+    }
+    if (running) rafId = requestAnimationFrame(tick);
+  }
+  function setRunning(on) {
+    if (reduceMotion) { if (on && !running) { running = false; tick(performance.now()); } return; }
+    if (on && !running) { running = true; last = performance.now(); rafId = requestAnimationFrame(tick); }
+    else if (!on && running) { running = false; cancelAnimationFrame(rafId); }
+  }
+  if ("IntersectionObserver" in window) new IntersectionObserver((es) => setRunning(es[0].isIntersecting), { threshold: 0.02 }).observe(frame);
+  else setRunning(true);
+
+  /* ---------- hover, tooltip, click, zoom ---------- */
+  let hoverId = null, isTouch = false;
+  function setHover(id) {
+    if (id === hoverId) return;
+    hoverId = id;
+    svg.querySelectorAll(".isl.is-hover").forEach((g) => g.classList.remove("is-hover"));
+    if (!id) { tip.classList.remove("show"); return; }
+    svg.querySelectorAll(`.isl[data-island="${id}"]`).forEach((g) => g.classList.add("is-hover"));
+    showTip(id);
+  }
+  function showTip(id) {
+    const isl = byId[id], g = svg.querySelector(`.isl-art[data-island="${id}"] .lift`);
+    if (!g) return;
+    const r = g.getBoundingClientRect(), fr = frame.getBoundingClientRect();
+    tip.innerHTML = `<b>${isl.name}</b><span>${isl.blurb}</span><em>${isTouch ? "Tap" : "Click"} to visit →</em>`;
+    const half = Math.min(125, fr.width / 2 - 10);
+    const x = Math.max(half + 6, Math.min(fr.width - half - 6, r.left + r.width / 2 - fr.left));
+    const top = Math.max(tip.offsetHeight + 16, r.top - fr.top + r.height * 0.18);
+    tip.style.left = x + "px"; tip.style.top = top + "px";
+    tip.classList.add("show");
+  }
+  function zoomTransform(id) {
+    const isl = byId[id], s = L.zoom, x = isl.p[0], y = isl.p[1] - isl.top * 0.3;
+    return `translate(${f(L.W / 2 - s * x)}px, ${f(L.H * 0.52 - s * y)}px) scale(${s})`;
+  }
+  function go(id) {
+    const isl = byId[id]; if (!isl) return;
+    setHover(null);
+    world.style.transform = zoomTransform(id);
+    setTimeout(() => {
+      const target = document.getElementById(id);
+      if (target) target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+      setTimeout(() => { world.style.transition = "none"; world.style.transform = ""; void world.getBoundingClientRect(); world.style.transition = ""; }, 1100);
+    }, reduceMotion ? 0 : 950);
+  }
+  function backToMap(id) {
+    if (id && byId[id]) { world.style.transition = "none"; world.style.transform = zoomTransform(id); void world.getBoundingClientRect(); }
+    frame.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "center" });
+    let done = false;
+    const finish = () => { if (done) return; done = true; world.style.transition = ""; requestAnimationFrame(() => { world.style.transform = ""; }); };
+    window.addEventListener("scrollend", finish, { once: true });
+    setTimeout(finish, 1100);
+  }
+  document.addEventListener("click", (e) => {
+    const b = e.target.closest(".back-map");
+    if (b) backToMap(b.dataset.island);
+  });
+
+  function wire() {
+    svg.addEventListener("pointerdown", (e) => { isTouch = e.pointerType !== "mouse"; });
+    svg.addEventListener("pointerover", (e) => {
+      if (e.pointerType && e.pointerType !== "mouse") return;
+      const g = e.target.closest("[data-island]");
+      setHover(g ? g.dataset.island : null);
+    });
+    svg.addEventListener("pointerleave", () => setHover(null));
+    svg.addEventListener("click", (e) => {
+      const egg = e.target.closest("[data-egg]");
+      if (egg) { e.stopPropagation(); hatch(egg.dataset.egg); return; }
+      const g = e.target.closest("[data-island]");
+      if (g) go(g.dataset.island);
+    });
+    svg.addEventListener("keydown", (e) => {
+      if (e.key !== "Enter" && e.key !== " ") return;
+      const egg = e.target.closest("[data-egg]"), g = e.target.closest("[data-island]");
+      if (egg) { e.preventDefault(); hatch(egg.dataset.egg); }
+      else if (g) { e.preventDefault(); go(g.dataset.island); }
+    });
+    svg.addEventListener("focusin", (e) => { const g = e.target.closest(".island-label"); if (g) setHover(g.dataset.island); });
+    svg.addEventListener("focusout", () => setHover(null));
+  }
+
+  /* ---------- easter eggs ---------- */
+  let toastTimer, coconuts = 0, compassTurns = 0;
+  function say(msg) {
+    toast.textContent = msg; toast.classList.add("show");
+    clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove("show"), 4200);
+  }
+  function hatch(egg) {
+    const night = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--n")) > 0.5;
+    switch (egg) {
+      case "duck": quack(); say("Quack! 🦆 Meet the Mayor of Goo Lagoon. Floating here since 2006 and has never lost an election."); break;
+      case "shark": say("Relax! 🦈 It's just Gary, a dolphin in a shark costume. He's going through a phase."); break;
+      case "bottle": say("📜 A message in a bottle: “If found, please return to Emul. Reward: one (1) coconut.”"); break;
+      case "treasure": coconuts++; say(`🏴‍☠️ You dug up the treasure… it's another coconut. Coconuts found: ${coconuts}. Classic Tiki Islands.`); break;
+      case "crab": say(night ? "🦀 Sir Pinchy waves a claw and whispers: “Shh, I'm counting the stars.”" : "🦀 Sir Pinchy waves hello and asks you to keep it down. He's waiting for the sunset."); break;
+      case "compass": compassTurns++; $("compassSpin").style.transform = `rotate(${compassTurns * 720 + 40}deg)`; say("🧭 The compass spins… and points to the Tipsy Tiki. It always points to the Tipsy Tiki."); break;
+      case "sun": say("☀️ Please don't poke the sun. Emul only has the one."); break;
+      case "moon": say("🌙 The moon winks at you. Emul had it installed especially for the islands."); break;
+    }
+  }
+
+  /* ---------- little synthesized sounds ---------- */
+  let actx;
+  const ctx = () => { actx = actx || new (window.AudioContext || window.webkitAudioContext)(); if (actx.state === "suspended") actx.resume(); return actx; };
+  function quack() {
+    try {
+      const c = ctx(), t0 = c.currentTime + 0.02;
+      [0, 0.16].forEach((off) => {
+        const o = c.createOscillator(), g = c.createGain(), bp = c.createBiquadFilter();
+        o.type = "sawtooth"; bp.type = "bandpass"; bp.frequency.value = 1100; bp.Q.value = 3;
+        o.frequency.setValueAtTime(620, t0 + off); o.frequency.exponentialRampToValueAtTime(330, t0 + off + 0.13);
+        g.gain.setValueAtTime(0.0001, t0 + off); g.gain.linearRampToValueAtTime(0.35, t0 + off + 0.015); g.gain.exponentialRampToValueAtTime(0.0001, t0 + off + 0.14);
+        o.connect(bp).connect(g).connect(c.destination); o.start(t0 + off); o.stop(t0 + off + 0.16);
+      });
+    } catch (e) { /* no audio */ }
+  }
+  let noiseBuf;
+  function luauBeat(btn) {
+    try {
+      const c = ctx(), step = 0.21, t0 = c.currentTime + 0.06;
+      if (!noiseBuf) { noiseBuf = c.createBuffer(1, c.sampleRate * 0.08, c.sampleRate); const d = noiseBuf.getChannelData(0); for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1; }
+      const drum = (t, f0, f1, vol, dec) => {
+        const o = c.createOscillator(), g = c.createGain();
+        o.type = "sine"; o.frequency.setValueAtTime(f0, t); o.frequency.exponentialRampToValueAtTime(f1, t + dec);
+        g.gain.setValueAtTime(0.0001, t); g.gain.linearRampToValueAtTime(vol, t + 0.006); g.gain.exponentialRampToValueAtTime(0.0001, t + dec);
+        o.connect(g).connect(c.destination); o.start(t); o.stop(t + dec + 0.02);
+      };
+      const shake = (t, vol) => {
+        const n = c.createBufferSource(), hp = c.createBiquadFilter(), g = c.createGain();
+        n.buffer = noiseBuf; hp.type = "highpass"; hp.frequency.value = 5000;
+        g.gain.setValueAtTime(vol, t); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.07);
+        n.connect(hp).connect(g).connect(c.destination); n.start(t); n.stop(t + 0.08);
+      };
+      const low = [0, 3, 6, 8, 11, 14], hi = [2, 5, 10, 12, 13];
+      for (let bar = 0; bar < 4; bar++) for (let i = 0; i < 16; i++) {
+        const t = t0 + (bar * 16 + i) * step;
+        shake(t, i % 2 ? 0.05 : 0.1);
+        if (low.includes(i)) drum(t, 130, 58, 0.55, 0.32);
+        if (hi.includes(i)) drum(t, 340, 210, 0.3, 0.14);
+      }
+      btn.disabled = true; btn.querySelector(".btn-emo").textContent = "🎶";
+      setTimeout(() => { btn.disabled = false; btn.querySelector(".btn-emo").textContent = "🥁"; }, 64 * step * 1000 + 300);
+    } catch (e) { /* no audio */ }
+  }
+  const beatBtn = $("beatBtn");
+  if (beatBtn) beatBtn.addEventListener("click", () => luauBeat(beatBtn));
+
+  /* =====================================================================
+     YEREVAN TIME + REAL SOLAR POSITION (Asia/Yerevan, 40.18°N 44.51°E)
+     ===================================================================== */
+  const YEREVAN = { lat: 40.1792, lon: 44.4991, tz: "Asia/Yerevan" };
+  const RAD = Math.PI / 180;
+  function sunElevation(ms) {
+    const d = ms / 86400000 + 2440587.5 - 2451545.0;
+    const g = (357.529 + 0.98560028 * d) * RAD;
+    const q = 280.459 + 0.98564736 * d;
+    const Lr = (q + 1.915 * Math.sin(g) + 0.02 * Math.sin(2 * g)) * RAD;
+    const e = (23.439 - 0.00000036 * d) * RAD;
+    const ra = Math.atan2(Math.cos(e) * Math.sin(Lr), Math.cos(Lr));
+    const dec = Math.asin(Math.sin(e) * Math.sin(Lr));
+    const gmst = (18.697374558 + 24.06570982441908 * d) % 24;
+    const ha = (gmst * 15 + YEREVAN.lon) * RAD - ra;
+    const lat = YEREVAN.lat * RAD;
+    return Math.asin(Math.sin(lat) * Math.sin(dec) + Math.cos(lat) * Math.cos(dec) * Math.cos(ha)) / RAD;
+  }
+  const partsFmt = new Intl.DateTimeFormat("en-GB", { timeZone: YEREVAN.tz, year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", second: "2-digit", hourCycle: "h23" });
+  const timeFmt = new Intl.DateTimeFormat("en-GB", { timeZone: YEREVAN.tz, hour: "2-digit", minute: "2-digit", hourCycle: "h23" });
+  function yParts(ms) {
+    const o = {}; partsFmt.formatToParts(new Date(ms)).forEach((p) => { o[p.type] = +p.value; });
+    if (o.hour === 24) o.hour = 0;
+    return o;
+  }
+  function yMidnight(ms) {
+    const p = yParts(ms);
+    const offset = Date.UTC(p.year, p.month - 1, p.day, p.hour, p.minute, p.second) - Math.floor(ms / 1000) * 1000;
+    return Date.UTC(p.year, p.month - 1, p.day) - offset;
+  }
+  const dayCache = {};
+  function solarDay(ms) {
+    const m0 = yMidnight(ms);
+    if (dayCache[m0]) return dayCache[m0];
+    let rise = null, set = null, maxE = -90, noon = m0, prev = sunElevation(m0);
+    for (let i = 2; i <= 1440; i += 2) {
+      const t = m0 + i * 60000, e = sunElevation(t);
+      if (prev < -0.833 && e >= -0.833 && rise === null) rise = t;
+      if (prev >= -0.833 && e < -0.833) set = t;
+      if (e > maxE) { maxE = e; noon = t; }
+      prev = e;
+    }
+    return (dayCache[m0] = { m0, rise: rise ?? m0 + 6 * 3600000, set: set ?? m0 + 18 * 3600000, maxE, noon });
+  }
+  const fmt = (ms) => timeFmt.format(new Date(ms));
+
+  /* palettes keyed by sun elevation (dawn = pinker, dusk = more violet) */
+  const NIGHT = { sky1: "#060b2c", sky2: "#1d2466", seaFar: "#1c2c66", seaMid: "#12305e", seaNear: "#0a2448", tint: "#4652a4", far: "#141c45", cloud: "#4a5590", sunc: "#ff8a3c", n: 1, g: 0 };
+  const DAY = { sky1: "#2f8ff0", sky2: "#c4ecff", seaFar: "#a6eef4", seaMid: "#2fd0e0", seaNear: "#0aa4c8", tint: "#ffffff", far: "#7fbcc8", cloud: "#ffffff", sunc: "#ffe08a", n: 0, g: 0 };
+  const mk = (e, o) => Object.assign({ e }, o);
+  const AM = [mk(-90, NIGHT), mk(-12, NIGHT),
+    mk(-6, { sky1: "#252f72", sky2: "#e48aa8", seaFar: "#b08ab8", seaMid: "#3c5a96", seaNear: "#1a4a7c", tint: "#a294d6", far: "#4a3f80", cloud: "#e2a6c6", sunc: "#ff8a5c", n: 0.85, g: 0.2 }),
+    mk(-0.5, { sky1: "#4f74c8", sky2: "#ffb48a", seaFar: "#ffc9a0", seaMid: "#4fa8c4", seaNear: "#137ea4", tint: "#ffd2b4", far: "#9a7aa0", cloud: "#ffd6c0", sunc: "#ff9a4a", n: 0.35, g: 1 }),
+    mk(6, { sky1: "#4e9be8", sky2: "#ffe0b8", seaFar: "#c0eef0", seaMid: "#36c4d8", seaNear: "#0b9cc0", tint: "#fff0dc", far: "#88b4c4", cloud: "#fff4e8", sunc: "#ffc86a", n: 0.04, g: 0.45 }),
+    mk(16, DAY), mk(90, DAY)];
+  const PM = [mk(-90, NIGHT), mk(-12, NIGHT),
+    mk(-6, { sky1: "#1f2266", sky2: "#a8508e", seaFar: "#8a5a9c", seaMid: "#33467e", seaNear: "#14386a", tint: "#8c78c4", far: "#3a2c6a", cloud: "#b47aaa", sunc: "#ff6a4a", n: 0.85, g: 0.25 }),
+    mk(-0.5, { sky1: "#4a5cb4", sky2: "#ff7e4a", seaFar: "#ffa070", seaMid: "#3e8eb4", seaNear: "#106c96", tint: "#ffb894", far: "#8a5a86", cloud: "#ffb490", sunc: "#ff6a2a", n: 0.35, g: 1 }),
+    mk(6, { sky1: "#4a92e0", sky2: "#ffd09a", seaFar: "#b8e6e8", seaMid: "#30bcd4", seaNear: "#0a98bc", tint: "#ffe8d0", far: "#86aec0", cloud: "#fff0e0", sunc: "#ffb85a", n: 0.04, g: 0.5 }),
+    mk(16, DAY), mk(90, DAY)];
+  const hex = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16));
+  const mixHex = (a, b, t) => "#" + hex(a).map((v, i) => Math.round(v + (hex(b)[i] - v) * t).toString(16).padStart(2, "0")).join("");
+  function palette(e, rising) {
+    const S = rising ? AM : PM;
+    let i = 0; while (i < S.length - 2 && e > S[i + 1].e) i++;
+    const a = S[i], b = S[i + 1], t = Math.max(0, Math.min(1, (e - a.e) / (b.e - a.e)));
+    const out = {};
+    for (const k of Object.keys(a)) if (k !== "e") out[k] = typeof a[k] === "number" ? a[k] + (b[k] - a[k]) * t : mixHex(a[k], b[k], t);
+    return out;
+  }
+  function phaseOf(e, rising) {
+    if (e >= 6) return ["☀️", "Daytime"];
+    if (e >= -0.833) return rising ? ["🌅", "Sunrise"] : ["🌇", "Sunset"];
+    if (e >= -12) return rising ? ["🌄", "Dawn"] : ["🌆", "Dusk"];
+    return ["🌙", "Night"];
+  }
+
+  let previewMs = null;
+  const nowMs = () => previewMs ?? Date.now();
+  const root = document.documentElement;
+  function applySky(ms) {
+    const e = sunElevation(ms), rising = sunElevation(ms + 600000) > e;
+    const pal = palette(e, rising);
+    for (const k of Object.keys(pal)) root.style.setProperty("--" + k, typeof pal[k] === "number" ? pal[k].toFixed(3) : pal[k]);
+    const day = solarDay(ms), [icon, name] = phaseOf(e, rising);
+    if (L) {
+      const { W, sky } = L;
+      const fDay = Math.max(-0.08, Math.min(1.08, (ms - day.rise) / (day.set - day.rise)));
+      const sx = W * (0.07 + 0.86 * fDay), sy = sky - 14 - (e / Math.max(day.maxE, 10)) * (sky - 50);
+      const sun = $("sun"); if (sun) sun.setAttribute("transform", `translate(${f(sx)} ${f(sy)})`);
+      const dayLen = day.set - day.rise, nightLen = 86400000 - dayLen;
+      const since = ms >= day.set ? ms - day.set : ms - (day.set - 86400000);
+      const fN = Math.max(0, Math.min(1, since / nightLen));
+      const mx = W * (0.1 + 0.8 * fN), my = sky - 30 - Math.sin(Math.PI * fN) * (sky - 80);
+      const moon = $("moon"); if (moon) moon.setAttribute("transform", `translate(${f(mx)} ${f(my)})`);
+      const mr = $("moonRefl"); if (mr) mr.setAttribute("transform", `translate(${f(mx)} ${sky})`);
+      const sr = $("sunRefl"); if (sr) sr.setAttribute("transform", `translate(${f(Math.max(40, Math.min(W - 40, sx)))} ${sky})`);
+    }
+    $("tbClock").textContent = (previewMs ? "⏱ Previewing " : "🕐 ") + fmt(ms) + " Yerevan time";
+    $("tbPhase").textContent = `${icon} ${name} on the islands`;
+    $("tbSun").textContent = `Sunrise ${fmt(day.rise)} · Sunset ${fmt(day.set)}`;
+    if (!previewMs) {
+      const slider = $("tbSlider");
+      if (document.activeElement !== slider) slider.value = Math.round((ms - day.m0) / 60000 / 5) * 5;
+      updateSunsetInfo(ms, day);
+    }
+  }
+  function updateSunsetInfo(ms, day) {
+    const el = $("sunsetInfo"); if (!el) return;
+    const mins = Math.round((day.set - ms) / 60000);
+    if (ms < day.rise) el.textContent = `🌙 The sun is still asleep. Sunrise at ${fmt(day.rise)}, sunset at ${fmt(day.set)} (Yerevan time).`;
+    else if (mins > 0) el.textContent = `🌅 Today's sunset: ${fmt(day.set)} Yerevan time, in ${Math.floor(mins / 60) ? Math.floor(mins / 60) + "h " : ""}${mins % 60}m. Emul's saving you a seat.`;
+    else el.textContent = `✨ The sun set at ${fmt(day.set)} Yerevan time. Stay for the stars, the lanterns are on.`;
+  }
+  $("tbSlider").addEventListener("input", (e) => {
+    const day = solarDay(Date.now());
+    previewMs = day.m0 + (+e.target.value) * 60000;
+    $("tbLive").hidden = false;
+    applySky(previewMs);
+  });
+  $("tbLive").addEventListener("click", () => { previewMs = null; $("tbLive").hidden = true; applySky(Date.now()); });
+  setInterval(() => { if (!previewMs) applySky(Date.now()); }, 30000);
+
+  /* ---------- destination illustrations + fun buttons ---------- */
+  function placeFrame() { /* hook for future layout tweaks */ }
+  document.querySelectorAll(".dest-art").forEach((el) => {
+    const isl = byId[el.dataset.art]; if (!isl) return;
+    const a = isl.art(), padX = isl.rx * 1.55, extra = isl.id === "sunset-beach" ? 110 : isl.id === "tiki-bay" ? 40 : 0;
+    const top = isl.top + 14, h = top + isl.ry * 1.65 + isl.depth + 10;
+    el.innerHTML = `<svg viewBox="${f(-padX - (isl.id === "tiki-bay" ? 30 : 0))} ${f(-top)} ${f(padX * 2 + extra + (isl.id === "tiki-bay" ? 30 : 0))} ${f(h)}">${a.art}${a.lights}</svg>`;
+  });
+  const ACTIONS = {
+    "tiki-bay": ["Aloha! 🌺", "Barev! 🇦🇲 (Emul insists you learn this one.)", "Welcome, traveler! The pelican approves.", "Hola, amigo! The tikis are smiling. Barely.", "Bonjour! Please wipe your flip-flops.", "The conch echoes across all seven islands. Somewhere, a duck replies."],
+    "coconut-cave": ["Hammock #7 is yours. Recommended nap: 3 hours.", "Hammock #2 claimed! Warning: it swings to the left.", "All hammocks taken… by coconuts. Try the cave?", "Hammock #4 is yours. A crab already signed the waiver.", "You got the VIP hammock: extra shade, extra snooze."],
+    "goo-lagoon": ["Skipped 7 times! New island record! 🏆", "Plop. It sank. The fish are giggling.", "Skipped 3 times and bonked the duck. It forgives you.", "Skipped 12 times and landed on Sunset Beach. Show-off.", "The stone refused to leave. It likes it here."],
+    "pineapple-peak": ["🔭 You spot a boat delivering 400 pineapples.", "🔭 You spot Emul waving from the Tipsy Tiki.", "🔭 You spot a dolphin wearing a shark fin. Weird.", "🔭 You spot the Mayor of Goo Lagoon. Quack.", "🔭 You spot… your own eyelash. Clean the lens."],
+    "sunset-beach": ["🌠 Wish granted: endless sunsets, zero sunburn.", "🌠 Wish granted: your coconut will always have a straw.", "🌠 Wish noted. Sir Pinchy will process it shortly.", "🌠 Wish granted: one extra hour of golden hour.", "🌠 The ocean heard you. It says “maybe.”"]
+  };
+  const lastAct = {};
+  document.querySelectorAll("[data-action]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const list = ACTIONS[btn.dataset.action], out = btn.parentElement.querySelector(".dest-out");
+      let i; do { i = Math.floor(Math.random() * list.length); } while (i === lastAct[btn.dataset.action] && list.length > 1);
+      lastAct[btn.dataset.action] = i;
+      out.textContent = list[i]; out.classList.remove("pop"); void out.offsetWidth; out.classList.add("pop");
+    });
+  });
+
+  /* ---------- go ---------- */
+  build();
+  let resizeT;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeT);
+    resizeT = setTimeout(() => { const k = frame.clientWidth < 700 ? "m" : "d"; if (k !== layoutKey) { boats = []; build(); } }, 200);
+  });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (hoverId) showTip(hoverId); });
+})();
+</script>
+
 </body>
 </html>
