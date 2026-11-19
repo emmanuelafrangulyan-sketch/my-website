@@ -1873,7 +1873,7 @@ section { scroll-margin-top: 16px; }
 
   /* ---------- shared gradients & patterns ---------- */
   const DEFS = `
-  <radialGradient id="gSand" cx=".38" cy=".3" r=".8"><stop offset="0" stop-color="#fff7da"/><stop offset=".55" stop-color="#f8d99c"/><stop offset="1" stop-color="#e3ad66"/></radialGradient>
+  <radialGradient id="gSand" cx=".38" cy=".3" r=".8"><stop offset="0" stop-color="#fffdf4"/><stop offset=".6" stop-color="#fbf0d8"/><stop offset="1" stop-color="#ecd9ae"/></radialGradient>
   <linearGradient id="gCliff" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e6ad6c"/><stop offset="1" stop-color="#8e532b"/></linearGradient>
   <radialGradient id="gGrass" cx=".35" cy=".28" r=".85"><stop offset="0" stop-color="#bdf56e"/><stop offset=".45" stop-color="#5fcb4a"/><stop offset="1" stop-color="#2a8a3c"/></radialGradient>
   <radialGradient id="gShallow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#c8fff6" stop-opacity=".95"/><stop offset=".55" stop-color="#6ff2e6" stop-opacity=".6"/><stop offset="1" stop-color="#2fd6e0" stop-opacity="0"/></radialGradient>
@@ -1886,12 +1886,14 @@ section { scroll-margin-top: 16px; }
   <radialGradient id="gRock" cx=".35" cy=".3" r=".9"><stop offset="0" stop-color="#c2a890"/><stop offset=".6" stop-color="#806858"/><stop offset="1" stop-color="#4a3a30"/></radialGradient>
   <radialGradient id="gLagoon" cx=".45" cy=".4" r=".7"><stop offset="0" stop-color="#ecfffc"/><stop offset=".45" stop-color="#96f6ef"/><stop offset="1" stop-color="#2fc9d8"/></radialGradient>
   <linearGradient id="gPine" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffe680"/><stop offset=".5" stop-color="#f4b72e"/><stop offset="1" stop-color="#b8701a"/></linearGradient>
+  <linearGradient id="gRockL" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c6cbd2"/><stop offset=".55" stop-color="#8d939b"/><stop offset="1" stop-color="#666c74"/></linearGradient>
+  <linearGradient id="gRockR" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6f757d"/><stop offset="1" stop-color="#3a3f46"/></linearGradient>
   <radialGradient id="gBush" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#9be85e"/><stop offset="1" stop-color="#2a8a3a"/></radialGradient>
   <pattern id="pPineHatch" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0 H14 M0 0 V14" stroke="#8a5212" stroke-width="2" opacity=".45"/><circle cx="7" cy="7" r="1.5" fill="#7a4a10" opacity=".55"/></pattern>
   <pattern id="pBamboo" width="7" height="10" patternUnits="userSpaceOnUse"><rect width="7" height="10" fill="#ecc676"/><rect x="5.5" width="1.5" height="10" fill="#a87c2c"/><rect y="7" width="7" height="1" fill="#b98a3a" opacity=".6"/></pattern>
   <pattern id="pFall" width="12" height="24" patternUnits="userSpaceOnUse"><rect width="12" height="24" fill="#92f4ff"/><path d="M3 0 V14 M9 8 V24" stroke="#fff" stroke-width="2.2" stroke-linecap="round" opacity=".9"/><animateTransform attributeName="patternTransform" type="translate" from="0 0" to="0 24" dur=".7s" repeatCount="indefinite"/></pattern>
-  <pattern id="pWaves" width="140" height="60" patternUnits="userSpaceOnUse"><path d="M0 15 q17.5 -8 35 0 t35 0 t35 0 t35 0 M-35 45 q17.5 -8 35 0 t35 0 t35 0 t35 0 t35 0" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".28"/><animateTransform attributeName="patternTransform" type="translate" from="0 0" to="140 0" dur="10s" repeatCount="indefinite"/></pattern>
-  <pattern id="pWaves2" width="96" height="38" patternUnits="userSpaceOnUse"><path d="M10 12 q12 -6 24 0 M58 30 q12 -6 24 0" fill="none" stroke="#e8fffd" stroke-width="1.6" stroke-linecap="round" opacity=".3"/><animateTransform attributeName="patternTransform" type="translate" from="0 0" to="-96 0" dur="7s" repeatCount="indefinite"/></pattern>
+  <pattern id="pWaves" width="140" height="60" patternUnits="userSpaceOnUse"><path d="M0 15 q17.5 -8 35 0 t35 0 t35 0 t35 0 M-35 45 q17.5 -8 35 0 t35 0 t35 0 t35 0 t35 0" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".07"/><animateTransform attributeName="patternTransform" type="translate" from="0 0" to="140 0" dur="10s" repeatCount="indefinite"/></pattern>
+  <pattern id="pWaves2" width="96" height="38" patternUnits="userSpaceOnUse"><path d="M10 12 q12 -6 24 0 M58 30 q12 -6 24 0" fill="none" stroke="#e8fffd" stroke-width="1.6" stroke-linecap="round" opacity=".1"/><animateTransform attributeName="patternTransform" type="translate" from="0 0" to="-96 0" dur="7s" repeatCount="indefinite"/></pattern>
   <radialGradient id="gWarmGlow"><stop offset="0" stop-color="#ffe08a" stop-opacity=".95"/><stop offset=".4" stop-color="#ffab3d" stop-opacity=".45"/><stop offset="1" stop-color="#ff7a1a" stop-opacity="0"/></radialGradient>
   <radialGradient id="gPinkGlow"><stop offset="0" stop-color="#ffc2e4" stop-opacity=".95"/><stop offset=".4" stop-color="#ff4fa3" stop-opacity=".4"/><stop offset="1" stop-color="#ff4fa3" stop-opacity="0"/></radialGradient>
   <radialGradient id="gCoolGlow"><stop offset="0" stop-color="#b8fff8" stop-opacity=".9"/><stop offset=".5" stop-color="#45ead9" stop-opacity=".45"/><stop offset="1" stop-color="#45ead9" stop-opacity="0"/></radialGradient>
@@ -2045,57 +2047,146 @@ section { scroll-margin-top: 16px; }
       <use href="#hibiscus" x="${f(w / 2 - fs * 0.4)}" y="${f(-h / 2 - fs * 0.3)}" width="${f(fs * 0.8)}" height="${f(fs * 0.8)}" style="color:#ffd23f"/></g>`;
   }
 
-  /* ---------- ISLAND ART ---------- */
+  /* ---------- AERIAL TERRAIN: organic islands, glowing shallows, jungle canopy ---------- */
+  function blobK(seed, wob = 0.3, n = 16) {
+    const r = rng(seed), raw = [];
+    for (let i = 0; i < n; i++) raw.push(1 + (r() * 2 - 1) * wob);
+    return raw.map((v, i) => (raw[(i - 1 + n) % n] + 2 * v + raw[(i + 1) % n]) / 4);
+  }
+  function kAt(k, a) {
+    const n = k.length; if (a < 0) a += Math.PI * 2;
+    const p = (a / (Math.PI * 2)) * n, i = Math.floor(p) % n, t = p - Math.floor(p);
+    return k[i] * (1 - t) + k[(i + 1) % n] * t;
+  }
+  function insideShape(sh, k, fac, x, y) {
+    const dx = (x - sh.x) / sh.rx, dy = (y - sh.y) / sh.ry;
+    return Math.hypot(dx, dy) < kAt(k, Math.atan2(dy, dx)) * fac;
+  }
+  function shapePath(sh, k, fac = 1) {
+    return smooth(k.map((kk, i) => { const a = (i / k.length) * Math.PI * 2; return [Math.cos(a) * sh.rx * kk * fac, Math.sin(a) * sh.ry * kk * fac]; }));
+  }
+  const inClear = (clear, x, y) => clear && clear.some(([cx, cy, crx, cry]) => ((x - cx) / crx) ** 2 + ((y - cy) / cry) ** 2 < 1);
+  const TREE_COLS = [["#1f7434", "#3fae45"], ["#24803a", "#4cbf4a"], ["#2a8f3c", "#62d153"], ["#2f9a3a", "#7bdc5c"], ["#1b6a30", "#38a043"], ["#2c8a2f", "#8be05a"]];
+
+  function terrain(o) {
+    const jf = o.jungle ?? 0.72;
+    const shapes = [[0, 0, o.rx, o.ry, o.seed], ...(o.lobes || [])].map(([x, y, rx, ry, seed]) => ({ x, y, rx, ry, k: blobK(seed, 0.34), kj: blobK(seed + 5, 0.4), jf }));
+    let s = "";
+    const tr = (sh, dy = 0) => `translate(${sh.x} ${sh.y + dy})`;
+    // glowing turquoise shallows (stacked soft halos, no filters)
+    for (const [sc, c, op] of [[1.62, "#d8fffb", 0.14], [1.44, "#b8fff4", 0.22], [1.28, "#9ef9ef", 0.38], [1.14, "#dcfff8", 0.7]])
+      for (const sh of shapes) s += `<path d="${shapePath(sh, sh.k, sc)}" transform="${tr(sh)}" fill="${c}" opacity="${op}"/>`;
+    for (const sh of shapes) s += `<path class="foam" d="${shapePath(sh, sh.k, 1.05)}" transform="${tr(sh)}" fill="none" stroke="#fff" stroke-width="2.2" stroke-dasharray="16 12" opacity=".85"/>`;
+    // sand (with a hint of thickness)
+    for (const sh of shapes) s += `<path d="${shapePath(sh, sh.k)}" transform="${tr(sh, 4)}" fill="#d6be8c"/>`;
+    for (const sh of shapes) s += `<path d="${shapePath(sh, sh.k)}" transform="${tr(sh)}" fill="url(#gSand)"/>`;
+    if (jf > 0) {
+      for (const sh of shapes) s += `<path d="${shapePath(sh, sh.kj, jf)}" transform="${tr(sh)}" fill="#1e6e35"/>`;
+      if (o.clear) for (const [cx, cy, crx, cry] of o.clear) s += `<ellipse cx="${cx}" cy="${cy}" rx="${crx * 1.08}" ry="${cry * 1.1}" fill="#3f9e45"/><ellipse cx="${cx}" cy="${cy}" rx="${crx}" ry="${cry}" fill="url(#gGrass)"/>`;
+      const r = rng(o.seed + 99), trees = [];
+      for (const sh of shapes) {
+        const n = Math.round((sh.rx * sh.ry * jf * jf / 62) * (o.density ?? 1));
+        let tries = 0, made = 0;
+        while (made < n && tries < n * 8) {
+          tries++;
+          const x = sh.x + (r() * 2 - 1) * sh.rx * jf * 1.3, y = sh.y + (r() * 2 - 1) * sh.ry * jf * 1.3;
+          if (!insideShape(sh, sh.kj, jf * 0.97, x, y) || inClear(o.clear, x, y)) continue;
+          trees.push([x, y, 6.5 + r() * 6.5, Math.floor(r() * TREE_COLS.length)]); made++;
+        }
+      }
+      trees.sort((a, b) => a[1] - b[1]);
+      for (const [x, y, rr, ci] of trees) {
+        const [d, l] = TREE_COLS[ci];
+        s += `<circle cx="${f(x + 1.5)}" cy="${f(y + 2.5)}" r="${f(rr)}" fill="#0c4a24" opacity=".35"/><circle cx="${f(x)}" cy="${f(y)}" r="${f(rr)}" fill="${d}"/><circle cx="${f(x - rr * 0.28)}" cy="${f(y - rr * 0.32)}" r="${f(rr * 0.6)}" fill="${l}"/>`;
+      }
+    }
+    return { s, shapes, clear: o.clear };
+  }
+
+  function rimPalms(T, n, seed, smin = 0.5, smax = 0.68) {
+    const r = rng(seed), out = [];
+    let tries = 0;
+    while (out.length < n && tries < n * 10) {
+      tries++;
+      const sh = r() < 0.5 ? T.shapes[0] : T.shapes[Math.floor(r() * T.shapes.length)];
+      const a = r() * Math.PI * 2, kk = kAt(sh.k, a);
+      const fac = Math.max(sh.jf * 0.92, 0.5) + (0.93 - Math.max(sh.jf * 0.92, 0.5)) * r();
+      const x = sh.x + Math.cos(a) * sh.rx * kk * fac, y = sh.y + Math.sin(a) * sh.ry * kk * fac;
+      if (inClear(T.clear, x, y)) continue;
+      out.push([x, y, smin + r() * (smax - smin), Math.cos(a) * 10]);
+    }
+    return out.sort((a, b) => a[1] - b[1]).map(([x, y, s, l]) => palm(x, y, s, l)).join("");
+  }
+
+  function treeClump(pts, seed) {
+    const r = rng(seed);
+    return pts.map(([x, y]) => { const rr = 5 + r() * 5, [d, l] = TREE_COLS[Math.floor(r() * TREE_COLS.length)]; return `<circle cx="${f(x + 1.5)}" cy="${f(y + 2.5)}" r="${f(rr)}" fill="#0c4a24" opacity=".35"/><circle cx="${f(x)}" cy="${f(y)}" r="${f(rr)}" fill="${d}"/><circle cx="${f(x - rr * 0.28)}" cy="${f(y - rr * 0.32)}" r="${f(rr * 0.6)}" fill="${l}"/>`; }).join("");
+  }
+
+  function rockPeak(x, y, w, h, seed) {
+    const r = rng(seed), L = [], R = [];
+    for (let i = 1; i < 6; i++) {
+      const t = i / 6;
+      L.push([-w / 2 + (w / 2) * t + (r() - 0.5) * w * 0.07, -h * Math.pow(t, 1.3) + (r() - 0.5) * h * 0.06]);
+      R.push([(w / 2) * t + (r() - 0.5) * w * 0.07, -h * Math.pow(1 - t, 1.3) + (r() - 0.5) * h * 0.06]);
+    }
+    const P = (a) => a.map(([px, py]) => `${f(px)} ${f(py)}`).join(" L");
+    const rb = w * 0.1;
+    let s = `<g transform="translate(${f(x)} ${f(y)})"><ellipse cx="${f(w * 0.12)}" cy="2" rx="${f(w * 0.62)}" ry="${f(w * 0.14)}" fill="#0c3a2a" opacity=".28"/>`;
+    s += `<path d="M${f(-w / 2)} 0 L${P(L)} L0 ${-h} L${f(rb)} 3 Z" fill="url(#gRockL)" stroke="#3a3f46" stroke-width="1" stroke-linejoin="round"/>`;
+    s += `<path d="M0 ${-h} L${P(R)} L${f(w / 2)} 0 L${f(rb)} 3 Z" fill="url(#gRockR)" stroke="#2c3036" stroke-width="1" stroke-linejoin="round"/>`;
+    s += `<path d="M${f(-w * 0.08)} ${f(-h * 0.72)} L${f(-w * 0.16)} ${f(-h * 0.45)} L${f(-w * 0.12)} ${f(-h * 0.2)} M${f(-w * 0.28)} ${f(-h * 0.38)} L${f(-w * 0.32)} ${f(-h * 0.12)} M${f(w * 0.2)} ${f(-h * 0.5)} L${f(w * 0.26)} ${f(-h * 0.2)}" stroke="#2a2e34" stroke-width="1.4" fill="none" opacity=".35" stroke-linecap="round"/>`;
+    s += `<path d="M0 ${-h} L${f(-w * 0.06)} ${f(-h * 0.8)} L${f(w * 0.05)} ${f(-h * 0.84)}Z" fill="#e8ecf0" opacity=".55"/>`;
+    return s + `</g>`;
+  }
+  function seaStack(x, y, s) {
+    return `<g transform="translate(${f(x)} ${f(y)}) scale(${s})"><ellipse cx="2" cy="4" rx="40" ry="14" fill="#b8fff4" opacity=".35"/><ellipse class="foam" cx="2" cy="3" rx="27" ry="8" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="8 7" opacity=".8"/>${rockPeak(0, 4, 40, 50, Math.round(x + y))}</g>`;
+  }
+  function sandbar(x, y, rx, ry) {
+    return `<g transform="translate(${f(x)} ${f(y)})"><ellipse rx="${f(rx * 1.6)}" ry="${f(ry * 1.9)}" fill="#c8fff6" opacity=".3"/><ellipse rx="${f(rx * 1.25)}" ry="${f(ry * 1.4)}" fill="#e8fffb" opacity=".55"/><ellipse rx="${rx}" ry="${ry}" fill="url(#gSand)"/></g>`;
+  }
+
+  /* ---------- ISLAND ART (aerial style) ---------- */
   function artTikiBay() {
     const m = collector();
-    // welcome dock + moored boat (behind the island)
-    let dock = `<path d="M-150 94 L-214 150 L-198 160 L-134 104Z" fill="url(#gWood)" stroke="#5a2e10" stroke-width="1.5"/>`;
-    for (let k = 1; k < 8; k++) {
-      const t = k / 8;
-      dock += `<path d="M${f(-150 - 64 * t)} ${f(94 + 56 * t)} L${f(-134 - 64 * t)} ${f(104 + 56 * t)}" stroke="#5a2e10" stroke-width="1" opacity=".6"/>`;
-    }
-    dock += `<path d="M-212 150 v12 M-198 160 v12 M-182 128 v12 M-166 138 v12" stroke="#4a2410" stroke-width="3"/>`;
+    let dock = `<path d="M-160 112 L-224 166 L-208 176 L-144 122Z" fill="url(#gWood)" stroke="#5a2e10" stroke-width="1.5"/>`;
+    for (let k = 1; k < 8; k++) { const t = k / 8; dock += `<path d="M${f(-160 - 64 * t)} ${f(112 + 54 * t)} L${f(-144 - 64 * t)} ${f(122 + 54 * t)}" stroke="#5a2e10" stroke-width="1" opacity=".6"/>`; }
+    dock += `<path d="M-222 166 v12 M-208 176 v12 M-192 144 v12 M-176 154 v12" stroke="#4a2410" stroke-width="3"/>`;
     m.add(dock);
-    m.add(`<g transform="translate(-236 172) scale(.8)">${boatSVG("#ffd23f", "#ff4fa3")}</g>`);
-    m.add(base(230, 118, 34, 11, 0.84));
-    // mountain + waterfall + river
-    m.add(`<path d="M-205 22 Q-196 -40 -155 -84 Q-112 -150 -62 -162 Q-14 -170 14 -112 Q32 -72 50 -40 Q64 -10 66 24 Q-70 46 -205 22Z" fill="url(#gMountain)" stroke="#1f6a37" stroke-width="2"/>
-      <path d="M-62 -160 Q-84 -100 -124 -40 M-30 -150 Q-30 -90 -54 -18 M8 -118 Q22 -70 38 -18" stroke="#2c8040" stroke-width="3" fill="none" opacity=".5" stroke-linecap="round"/>
-      <path d="M-150 -84 Q-110 -150 -62 -160 Q-102 -132 -122 -70Z" fill="#d4ff96" opacity=".35"/>`);
-    m.add(bush(-150, -10, 14) + bush(-100, 10, 12) + bush(20, 6, 12));
-    m.add(`<ellipse cx="-40" cy="10" rx="28" ry="9" fill="url(#gLagoon)" stroke="#fff1c8" stroke-width="3"/>
-      <path d="M-34 14 Q-6 52 -26 118" stroke="#6fe8f2" stroke-width="10" fill="none" stroke-linecap="round"/>
-      <path d="M-32 18 Q-8 52 -26 112" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="5 9" opacity=".8"/>`);
-    m.add(waterfall(-40, -126, 16, 132));
-    // path to the village
-    m.add(`<path d="M40 100 Q70 60 100 44 Q130 28 160 22" stroke="#f6dca0" stroke-width="9" fill="none" stroke-linecap="round"/>`);
-    m.add(flowers(12, 26, 210, 100, 0, 0, (x, y) => x < 66 && y < 30 && x > -205));
-    m.add(hut(118, -36, 0.95)); m.add(hut(186, 2, 0.85)); m.add(hut(72, 4, 0.9));
-    // palms
-    m.add(palm(-214, 34, 0.95, -10)); m.add(palm(-176, 78, 1, 8)); m.add(palm(196, -40, 0.9, 10));
-    m.add(palm(214, 44, 1, -6)); m.add(palm(150, 86, 0.95, 6)); m.add(palm(-112, 98, 0.9, -6)); m.add(palm(38, -44, 0.85, 6));
-    // torches along the path
-    for (const [x, y] of [[84, 78], [54, 60], [118, 54], [144, 18]]) m.add(torch(x, y, 1));
+    m.add(`<g transform="translate(-246 188) scale(.8)">${boatSVG("#ffd23f", "#ff4fa3")}</g>`);
+    const T = terrain({ rx: 230, ry: 118, seed: 11, jungle: 0.8, lobes: [[-150, 36, 92, 60, 13], [150, -28, 96, 56, 17], [50, 74, 96, 46, 19]],
+      clear: [[-40, 14, 36, 15], [132, -10, 82, 46], [50, 84, 48, 26]] });
+    m.add(T.s);
+    m.add(rockPeak(-82, 8, 160, 188, 5) + rockPeak(-8, 6, 96, 120, 6));
+    m.add(treeClump([[-158, 6], [-140, 12], [-118, 14], [-96, 16], [-72, 18], [-14, 14], [10, 12], [30, 8], [-170, -2], [44, 2]], 7));
+    m.add(`<ellipse cx="-40" cy="14" rx="30" ry="10" fill="url(#gLagoon)" stroke="#fff1c8" stroke-width="3"/>
+      <path d="M-34 18 Q-6 56 -26 124" stroke="#6fe8f2" stroke-width="10" fill="none" stroke-linecap="round"/>
+      <path d="M-32 22 Q-8 56 -26 118" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="5 9" opacity=".8"/>`);
+    m.add(waterfall(-48, -104, 14, 116));
+    m.add(`<path d="M40 102 Q70 62 100 46 Q130 30 160 24" stroke="#f6dca0" stroke-width="9" fill="none" stroke-linecap="round"/>`);
+    m.add(flowers(12, 14, 80, 40, 132, -10));
+    m.add(hut(118, -34, 0.95)); m.add(hut(186, 4, 0.85)); m.add(hut(92, 14, 0.9));
+    for (const [x, y] of [[84, 80], [54, 62], [118, 56], [144, 20]]) m.add(torch(x, y, 1));
     const q = (p0, p1, p2, t) => (1 - t) * (1 - t) * p0 + 2 * t * (1 - t) * p1 + t * t * p2;
     const pts = [];
-    for (let t = 0; t < 1; t += 0.25) pts.push([q(40, 70, 100, t), q(100, 60, 44, t)]);
-    for (let t = 0; t <= 1; t += 0.25) pts.push([q(100, 130, 160, t), q(44, 28, 22, t)]);
+    for (let t = 0; t < 1; t += 0.25) pts.push([q(40, 70, 100, t), q(102, 62, 46, t)]);
+    for (let t = 0; t <= 1; t += 0.25) pts.push([q(100, 130, 160, t), q(46, 30, 24, t)]);
     m.light(`<g class="night">${pathLights(pts)}</g>`);
-    // giant tiki gate
-    m.add(tiki(12, 98, 1.1)); m.add(tiki(72, 98, 1.1));
-    m.add(`<rect x="2" y="38" width="80" height="10" rx="5" fill="url(#pBamboo)" stroke="#7a5418" stroke-width="1.2"/>
-      <rect x="20" y="49" width="44" height="14" rx="3" fill="#5a2e10" stroke="#ffd56b" stroke-width="1.5"/>
-      <text x="42" y="60" text-anchor="middle" font-family="Kavoon, cursive" font-size="10" fill="#ffe9a8">ALOHA</text>
-      <use href="#hibiscus" x="-6" y="30" width="16" height="16" style="color:#ff4fa3"/><use href="#hibiscus" x="74" y="30" width="16" height="16" style="color:#ffd23f"/>`);
-    m.light(`<g class="night"><rect x="18" y="47" width="48" height="18" rx="5" fill="#ffd56b" opacity=".25"/><text x="42" y="60" text-anchor="middle" font-family="Kavoon, cursive" font-size="10" fill="#fff3b0">ALOHA</text></g>`);
+    m.add(tiki(12, 100, 1.1)); m.add(tiki(72, 100, 1.1));
+    m.add(`<rect x="2" y="40" width="80" height="10" rx="5" fill="url(#pBamboo)" stroke="#7a5418" stroke-width="1.2"/>
+      <rect x="20" y="51" width="44" height="14" rx="3" fill="#5a2e10" stroke="#ffd56b" stroke-width="1.5"/>
+      <text x="42" y="62" text-anchor="middle" font-family="Kavoon, cursive" font-size="10" fill="#ffe9a8">ALOHA</text>
+      <use href="#hibiscus" x="-6" y="32" width="16" height="16" style="color:#ff4fa3"/><use href="#hibiscus" x="74" y="32" width="16" height="16" style="color:#ffd23f"/>`);
+    m.light(`<g class="night"><rect x="18" y="49" width="48" height="18" rx="5" fill="#ffd56b" opacity=".25"/><text x="42" y="62" text-anchor="middle" font-family="Kavoon, cursive" font-size="10" fill="#fff3b0">ALOHA</text></g>`);
+    m.add(rimPalms(T, 18, 21));
     return m.out();
   }
 
   function artTipsy() {
     const m = collector();
-    m.add(base(110, 56, 24, 23, 0.72));
-    m.add(palm(-88, -6, 0.85, -8)); m.add(palm(86, -2, 0.8, 10));
-    // back shelf + bottles
+    const T = terrain({ rx: 110, ry: 56, seed: 23, jungle: 0.76, lobes: [[80, 14, 46, 30, 25], [-76, 18, 44, 28, 27]], clear: [[0, -6, 84, 40]] });
+    m.add(T.s);
+    m.add(rimPalms(T, 7, 29));
     let sh = `<rect x="-40" y="-64" width="80" height="38" rx="3" fill="#5a2e10"/><rect x="-40" y="-47" width="80" height="3" fill="#3a1d08"/>`;
     const bc = ["#45c8ff", "#ff8a2e", "#7ed957", "#ff4fa3", "#ffe14d", "#b45cff", "#45ead9", "#ff6b6b"];
     for (let i = 0; i < 8; i++) { const h = 8 + (i * 7) % 6; sh += `<rect x="${-36 + i * 9.4}" y="${-47 - h}" width="5" height="${h}" rx="1.5" fill="${bc[i]}"/><rect x="${-34.6 + i * 9.4}" y="${-50 - h}" width="2" height="3" fill="${bc[i]}"/>`; }
@@ -2103,7 +2194,6 @@ section { scroll-margin-top: 16px; }
     m.add(sh);
     m.add(`<rect x="-48" y="-66" width="5" height="64" fill="url(#pBamboo)"/><rect x="43" y="-66" width="5" height="64" fill="url(#pBamboo)"/>`);
     m.add(`<rect x="-48" y="-26" width="96" height="24" fill="url(#pBamboo)" stroke="#8a5f22" stroke-width="1"/><rect x="-53" y="-31" width="106" height="7" rx="3" fill="url(#gWood)" stroke="#5a2e10" stroke-width="1"/>`);
-    // cocktails on the counter
     const cc = ["#45c8ff", "#ff8a2e", "#ff4fa3", "#ffe14d", "#7ed957"];
     let ck = "";
     [-36, -18, 0, 18, 36].forEach((x, i) => {
@@ -2111,9 +2201,7 @@ section { scroll-margin-top: 16px; }
       if (i % 2 === 0) ck += `<path d="M${x} -42 L${x + 4} -50" stroke="#fff4d6" stroke-width="1"/><path d="M${x} -49 Q${x + 5} -55 ${x + 10} -48Z" fill="${["#ff4fa3", "#45ead9", "#ffd23f"][i / 2]}"/>`;
     });
     m.add(ck);
-    // stools
     for (const [x, y] of [[-30, 6], [0, 8], [30, 6]]) m.add(`<path d="M${x - 5} ${y} L${x - 7} ${y + 13} M${x + 5} ${y} L${x + 7} ${y + 13} M${x} ${y} V${y + 13}" stroke="#7a4626" stroke-width="2.5"/><ellipse cx="${x}" cy="${y}" rx="8.5" ry="3.6" fill="#e2bd80" stroke="#7a4626" stroke-width="1.2"/>`);
-    // thatched roof
     const ry = (x) => { const t = (x + 68) / 136; return -58 + 28 * t * (1 - t); };
     let fringe = "M-68 -58";
     for (let x = -68, k = 0; x <= 68; x += 6, k++) fringe += ` L${x} ${f(ry(x) + (k % 2 ? 8 : 0))}`;
@@ -2122,32 +2210,30 @@ section { scroll-margin-top: 16px; }
     roof += `<path d="${fringe}" fill="none" stroke="#c99a45" stroke-width="3" stroke-linejoin="round"/>`;
     roof += `<use href="#hibiscus" x="-48" y="-90" width="20" height="20" style="color:#ff3b5c"/><use href="#hibiscus" x="22" y="-96" width="18" height="18" style="color:#ffd23f"/><use href="#hibiscus" x="-6" y="-104" width="14" height="14" style="color:#ff4fa3"/>`;
     m.add(roof);
-    // lanterns
     [[-30, -50, "#ff8a3c"], [0, -46, "#ffd23f"], [30, -50, "#ff4fa3"]].forEach(([x, y, c]) => {
       m.add(`<line x1="${x}" y1="${y - 8}" x2="${x}" y2="${y - 4}" stroke="#3a2208" stroke-width="1"/><ellipse cx="${x}" cy="${y}" rx="5" ry="6" fill="${c}" stroke="#3a2208" stroke-width="1"/>`);
       m.light(`<circle class="lantern-glow" cx="${x}" cy="${y}" r="20" fill="url(#gWarmGlow)"/><ellipse class="lit" cx="${x}" cy="${y}" rx="3.5" ry="4.5" fill="#fff3b0"/>`);
     });
     m.add(tiki(-62, 8, 0.75)); m.add(tiki(62, 10, 0.75));
     m.add(torch(-84, 28)); m.add(torch(86, 30));
-    m.add(flowers(24, 10, 100, 46, 0, 8, (x, y) => Math.abs(x) < 56 && y < 22));
     return m.out();
   }
 
   function artCoconut() {
     const m = collector();
-    m.add(base(135, 68, 26, 37, 0.62));
-    m.add(`<path d="M-125 -4 Q-128 -64 -82 -86 Q-36 -100 -10 -60 Q4 -30 -12 2 Q-70 16 -125 -4Z" fill="url(#gRock)" stroke="#4a3a30" stroke-width="1.5"/>
-      <path d="M-112 -60 Q-84 -88 -50 -90 Q-24 -88 -14 -66 Q-46 -78 -112 -60Z" fill="#5cc94a"/>
-      <path d="M-86 0 Q-88 -42 -62 -46 Q-36 -44 -36 0Z" fill="#24160f"/>
-      <path d="M-100 -40 Q-96 -60 -80 -68" stroke="#e8d6c4" stroke-width="3" fill="none" opacity=".4" stroke-linecap="round"/>`);
+    const T = terrain({ rx: 135, ry: 68, seed: 37, jungle: 0.74, lobes: [[-94, 14, 64, 42, 39], [86, 22, 60, 38, 41]], clear: [[18, 32, 74, 32], [62, -40, 52, 28]] });
+    m.add(T.s);
+    m.add(`<path d="M-125 -4 Q-128 -64 -82 -86 Q-36 -100 -10 -60 Q4 -30 -12 2 Q-70 16 -125 -4Z" fill="url(#gRockL)" stroke="#3a3f46" stroke-width="1.5"/>
+      <path d="M-40 -96 Q-10 -70 -12 2 Q-30 8 -50 6 Q-30 -40 -40 -96Z" fill="url(#gRockR)" opacity=".85"/>
+      <path d="M-86 0 Q-88 -42 -62 -46 Q-36 -44 -36 0Z" fill="#1a1410"/>
+      <path d="M-104 -46 Q-98 -66 -80 -74" stroke="#eef2f6" stroke-width="3" fill="none" opacity=".45" stroke-linecap="round"/>`);
+    m.add(treeClump([[-120, 2], [-104, 8], [-28, 6], [-14, 0], [-110, -60], [-60, -88], [-30, -80]], 43));
     m.light(`<g class="night"><ellipse cx="-61" cy="-14" rx="30" ry="24" fill="url(#gWarmGlow)"/><circle cx="-61" cy="-12" r="2.6" fill="#fff3b0"/></g>`);
-    m.add(palm(-6, -34, 0.9, 6)); m.add(palm(46, -36, 0.95, 0)); m.add(palm(94, -24, 0.95, 0));
-    m.add(palm(120, 14, 0.8, 10)); m.add(palm(-118, 24, 0.8, -8));
-    // hammock between two palms
+    m.add(rimPalms(T, 9, 45));
+    m.add(palm(46, -36, 0.95, 0)); m.add(palm(94, -24, 0.95, 0));
     m.add(`<path d="M48 -58 Q70 -28 92 -46 Q70 -38 48 -58Z" fill="#ff6fa8" stroke="#b8326a" stroke-width="1.2"/>
       <path d="M52 -52 Q70 -32 88 -44" stroke="#fff4d6" stroke-width="2" fill="none" stroke-dasharray="3 3"/>`);
     m.add(`<text class="zzz" x="70" y="-56" font-family="Kavoon, cursive" font-size="9" fill="#fff" style="--delay:0s">z</text><text class="zzz" x="74" y="-60" font-family="Kavoon, cursive" font-size="7" fill="#fff" style="--delay:1.2s">z</text>`);
-    // beach chairs + umbrella
     const chair = (x, y, c) => `<g transform="translate(${x} ${y})"><path d="M-14 0 L-12 6 M8 0 L10 6 M16 -12 L18 6" stroke="#8a5a2a" stroke-width="2"/><path d="M-14 -2 L9 -2 L17 -15 L13 -17 L6 -7 L-14 -7Z" fill="${c}" stroke="#fff" stroke-width="1.2"/><path d="M-12 -4.5 L8 -4.5" stroke="#fff" stroke-width="1.4" opacity=".8"/></g>`;
     m.add(chair(-8, 48, "#45c8ff") + chair(26, 52, "#ff4fa3"));
     m.add(`<line x1="10" y1="44" x2="12" y2="8" stroke="#f5e6c8" stroke-width="2"/>
@@ -2155,16 +2241,17 @@ section { scroll-margin-top: 16px; }
       <path d="M-14 12 Q-2 -4 6 -4 L10 6Z M18 -4 Q30 -2 38 8 L14 5Z" fill="#ff4fa3"/>`);
     m.add(`<circle cx="54" cy="44" r="5" fill="#6b3f1d"/><circle cx="62" cy="45" r="5" fill="#7a4a24"/><circle cx="58" cy="38" r="5" fill="#5a3418"/>`);
     m.add(torch(124, 34));
-    m.add(flowers(38, 8, 120, 50, 20, 0, (x, y) => x < 0 && y < 10));
     return m.out();
   }
 
   function artGoo() {
     const m = collector();
-    m.add(base(150, 78, 26, 51, 0.9));
-    m.add(`<path d="M-96 -16 Q-104 -78 -56 -100 Q-4 -112 32 -86 Q56 -64 50 -18 Q-20 -2 -96 -16Z" fill="url(#gRock)" stroke="#4a3a30" stroke-width="1.5"/>
-      <path d="M-92 -64 Q-60 -100 -10 -104 Q30 -96 44 -72 Q-10 -88 -92 -64Z" fill="#5cc94a"/>`);
-    m.add(flowers(52, 8, 60, 12, -24, -84));
+    const T = terrain({ rx: 150, ry: 78, seed: 51, jungle: 0.88, lobes: [[-112, 30, 60, 40, 53], [112, -24, 56, 36, 55]], clear: [[16, 10, 106, 54]] });
+    m.add(T.s);
+    m.add(`<path d="M-96 -16 Q-104 -78 -56 -100 Q-4 -112 32 -86 Q56 -64 50 -18 Q-20 -2 -96 -16Z" fill="url(#gRockL)" stroke="#3a3f46" stroke-width="1.5"/>
+      <path d="M0 -106 Q40 -84 50 -18 Q20 -10 6 -10 Q22 -60 0 -106Z" fill="url(#gRockR)" opacity=".85"/>`);
+    m.add(treeClump([[-88, -70], [-66, -94], [-40, -104], [-12, -106], [16, -98], [36, -80], [-96, -40]], 57));
+    m.add(flowers(52, 6, 60, 12, -24, -90));
     const lag = smooth(blobPts(92, 44, 57, 0.07));
     m.add(`<path d="${lag}" transform="translate(16 10)" fill="url(#gLagoon)" stroke="#fff1c8" stroke-width="7"/>`);
     m.light(`<path class="night" d="${lag}" transform="translate(16 10)" fill="url(#gCoolGlow)"/>`);
@@ -2172,42 +2259,37 @@ section { scroll-margin-top: 16px; }
     let sp = "";
     for (let i = 0; i < 7; i++) sp += `<path class="tw" style="--d:${rnd(2, 4).toFixed(1)}s;--delay:${rnd(0, 3).toFixed(1)}s" d="M${f(rnd(-50, 90))} ${f(rnd(-6, 34))} m0 -4 l1.2 2.8 2.8 1.2 -2.8 1.2 -1.2 2.8 -1.2 -2.8 -2.8 -1.2 2.8 -1.2Z" fill="#fff"/>`;
     m.add(sp);
-    m.add(palm(-138, 10, 0.8, -8)); m.add(palm(134, -10, 0.85, 8)); m.add(palm(120, 42, 0.8, 6));
-    m.add(palm(-102, 50, 0.8, -6)); m.add(palm(76, -58, 0.8, 4));
-    m.add(flowers(53, 26, 145, 74, 0, 0, (x, y) => ((x - 16) / 100) ** 2 + ((y - 10) / 52) ** 2 < 1 || (y < -10 && x > -96 && x < 50)));
+    m.add(flowers(53, 18, 145, 74, 0, 0, (x, y) => ((x - 16) / 100) ** 2 + ((y - 10) / 52) ** 2 < 1 || (y < -10 && x > -96 && x < 50)));
+    m.add(rimPalms(T, 10, 59));
     m.light(`<g class="night">${[[-120, 30], [110, 10], [60, 60], [-60, 62], [130, 50]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="9" fill="url(#gCoolGlow)"/>`).join("")}</g>`);
-    // Easter egg: the duck
     m.add(`<g class="egg" data-egg="duck" tabindex="0" role="button" aria-label="A rubber duck"><g transform="translate(52 16)"><g class="bob"><ellipse cx="0" cy="4" rx="10" ry="3" fill="#2fc9d8" opacity=".6"/><ellipse cx="0" cy="0" rx="8" ry="5.5" fill="#ffd93b" stroke="#e0a81b" stroke-width="1"/><circle cx="5" cy="-6" r="4.2" fill="#ffd93b" stroke="#e0a81b" stroke-width="1"/><path d="M8.5 -6.5 L13 -5 L8.5 -4Z" fill="#ff8a1f"/><circle cx="6" cy="-7" r="1" fill="#2a1508"/></g></g></g>`);
     return m.out();
   }
 
   function artPine() {
     const m = collector();
-    m.add(base(140, 72, 28, 67, 0.86));
-    m.add(`<path d="M-132 14 Q-126 -46 -86 -78 Q-64 -96 -46 -104 L46 -104 Q64 -96 86 -78 Q126 -46 132 14 Q0 42 -132 14Z" fill="url(#gMountain)" stroke="#1f6a37" stroke-width="2"/>
-      <path d="M-96 -60 Q-70 -90 -40 -100 Q-74 -76 -84 -40Z" fill="#d4ff96" opacity=".35"/>`);
-    m.add(bush(-92, -30, 14) + bush(96, -24, 15) + bush(-58, -66, 12) + bush(64, -64, 12) + bush(-16, 4, 11) + bush(40, -20, 10));
+    const T = terrain({ rx: 140, ry: 72, seed: 67, jungle: 0.84, density: 1.1, lobes: [[-98, 26, 62, 40, 69], [102, 20, 58, 38, 71]] });
+    m.add(T.s);
+    m.add(rockPeak(0, 6, 176, 124, 8));
+    m.add(treeClump([[-84, 4], [-64, 8], [-40, 10], [40, 10], [62, 8], [84, 4], [-96, -4], [96, -6]], 73));
     const sum = "M-50 -96 Q-66 -168 -32 -214 Q0 -232 32 -214 Q66 -168 50 -96 Q0 -84 -50 -96Z";
     m.add(`<path d="${sum}" fill="url(#gPine)" stroke="#9a5a12" stroke-width="2"/><path d="${sum}" fill="url(#pPineHatch)"/>
       <path d="M-36 -190 Q-30 -212 -10 -220 Q-28 -200 -30 -150Z" fill="#fff3b0" opacity=".5"/>`);
     let crown = "";
-    for (const [tx, ty] of [[-46, -16], [46, -16], [-36, -42], [36, -42], [-20, -64], [20, -64], [0, -80]]) {
+    for (const [tx, ty] of [[-46, -16], [46, -16], [-36, -42], [36, -42], [-20, -64], [20, -64], [0, -80]])
       crown += `<path d="M-6 0 Q${f(tx * 0.4 - 7)} ${f(ty * 0.6)} ${tx} ${ty} Q${f(tx * 0.4 + 7)} ${f(ty * 0.6)} 6 0Z" fill="url(#gLeaf)" stroke="#1d6b2c" stroke-width="1"/>`;
-    }
     m.add(`<g transform="translate(0 -222)"><g class="sway-slow">${crown}</g></g>`);
-    const trail = [[24, 32], [-44, -6], [28, -44], [-30, -80], [32, -112], [56, -148]];
-    m.add(`<path d="M${trail.map((p) => p.join(" ")).join(" L")}" fill="none" stroke="#6a4a26" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" opacity=".5"/>
+    const trail = [[24, 34], [-44, -4], [28, -42], [-30, -78], [32, -110], [56, -148]];
+    m.add(`<path d="M${trail.map((p) => p.join(" ")).join(" L")}" fill="none" stroke="#3a3020" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" opacity=".45"/>
       <path d="M${trail.map((p) => p.join(" ")).join(" L")}" fill="none" stroke="#f6dca0" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>`);
     m.light(`<g class="night">${pathLights(samplePolyline(trail, 26))}</g>`);
-    // summit viewpoint deck + telescope
     m.add(`<path d="M50 -142 V-118 M86 -142 V-116" stroke="#6a3814" stroke-width="3"/>
       <path d="M42 -150 L88 -150 L94 -142 L48 -142Z" fill="url(#gWood)" stroke="#5a2e10" stroke-width="1.2"/>
       <path d="M48 -150 V-162 M62 -150 V-162 M76 -150 V-162 M88 -150 V-162 M46 -160 H90" stroke="#7a4626" stroke-width="2" stroke-linecap="round"/>
       <path d="M70 -150 L66 -143 M70 -150 L74 -143 M70 -150 V-156" stroke="#3a2208" stroke-width="1.6"/>
       <rect x="61" y="-163" width="20" height="5.5" rx="2" fill="#c99a45" stroke="#7a5418" stroke-width="1" transform="rotate(-18 70 -158)"/>`);
     m.light(`<g class="night"><circle cx="90" cy="-164" r="14" fill="url(#gWarmGlow)"/><circle cx="90" cy="-164" r="2.2" fill="#fff3b0"/></g>`);
-    m.add(palm(-122, 22, 0.85, -8)); m.add(palm(118, 18, 0.85, 8)); m.add(palm(-84, 48, 0.8, -4)); m.add(palm(86, 50, 0.8, 4));
-    m.add(flowers(68, 10, 120, 40, 0, 20, (x, y) => y < 10 && Math.abs(x) < 110));
+    m.add(rimPalms(T, 10, 75));
     return m.out();
   }
 
@@ -2222,9 +2304,9 @@ section { scroll-margin-top: 16px; }
   }
   function artHula() {
     const m = collector();
-    m.add(base(125, 62, 24, 79, 0.78));
-    m.add(palm(-110, -10, 0.8, -6)); m.add(palm(108, -14, 0.8, 8));
-    // stage
+    const T = terrain({ rx: 125, ry: 62, seed: 79, jungle: 0.78, lobes: [[-92, 18, 50, 32, 81], [94, 10, 50, 30, 83]], clear: [[0, -18, 84, 52]] });
+    m.add(T.s);
+    m.add(rimPalms(T, 8, 85));
     m.add(`<path d="M-54 -46 V-102 M54 -46 V-102" stroke="#d9b277" stroke-width="5" stroke-linecap="round"/>
       <path d="M-58 -100 Q0 -114 58 -100" stroke="#d9b277" stroke-width="6" fill="none" stroke-linecap="round"/>
       <path d="M-58 -36 L58 -36 L68 -46 L-48 -46Z" fill="#d79c5e" stroke="#5a2e10" stroke-width="1.2"/>
@@ -2234,19 +2316,15 @@ section { scroll-margin-top: 16px; }
     m.add(bulbs.map(([x, y, c]) => `<circle cx="${f(x)}" cy="${f(y)}" r="2.6" fill="${c}"/>`).join(""));
     m.light(bulbs.map(([x, y, c]) => `<circle class="lit" cx="${f(x)}" cy="${f(y)}" r="2.6" fill="${c}"/><circle class="night" cx="${f(x)}" cy="${f(y)}" r="8" fill="url(#gPinkGlow)"/>`).join(""));
     m.light(`<path class="spot" d="M-34 -98 L-58 8 L-12 8Z" fill="url(#gSpotPink)"/><path class="spot" d="M34 -98 L12 10 L58 10Z" fill="url(#gSpotTeal)"/>`);
-    // drums + ukulele
     for (const x of [-30, -14]) m.add(`<rect x="${x - 5}" y="-60" width="10" height="14" fill="#b8326a" stroke="#5a1430" stroke-width="1"/><ellipse cx="${x}" cy="-60" rx="5" ry="2" fill="#f6dca0" stroke="#5a1430" stroke-width=".8"/>`);
     m.add(`<g transform="translate(30 -50) rotate(18)"><rect x="-1.5" y="-26" width="3" height="20" fill="#7a4626"/><circle cx="0" cy="-4" r="6" fill="#e0a050" stroke="#7a4626"/><circle cx="0" cy="4" r="7.5" fill="#e0a050" stroke="#7a4626"/><circle cx="0" cy="0" r="2" fill="#5a2e10"/></g>`);
-    // dance floor
     m.add(`<ellipse cx="0" cy="13" rx="62" ry="22" fill="#7a4626"/><ellipse cx="0" cy="8" rx="62" ry="22" fill="url(#gWood)" stroke="#5a2e10" stroke-width="1.2"/>
       <path d="M-40 -8 V26 M-20 -12 V30 M0 -14 V30 M20 -12 V30 M40 -8 V26" stroke="#5a2e10" stroke-width="1" opacity=".35"/>`);
     m.add(dancer(-26, 12, "#ff4fa3", 0) + dancer(0, 4, "#ffd23f", -0.25) + dancer(26, 14, "#45ead9", -0.5));
-    // music notes
     [["♪", -36, -66, "#ff4fa3", 0], ["♫", 0, -72, "#ffd23f", 1.1], ["♪", 34, -64, "#45ead9", 2.1], ["♫", -10, -60, "#fff", 1.6]].forEach(([n, x, y, c, d]) => {
       m.light(`<text class="note" style="--delay:${d}s" x="${x}" y="${y}" font-size="16" font-weight="700" fill="${c}" stroke="#3a1d08" stroke-width="1" paint-order="stroke">${n}</text>`);
     });
     for (const [x, y] of [[-98, 16], [98, 20], [-66, 42], [68, 44]]) m.add(torch(x, y));
-    m.add(flowers(80, 10, 115, 50, 0, 0, (x, y) => Math.abs(x) < 66 && y < 30));
     return m.out();
   }
 
@@ -2260,13 +2338,14 @@ section { scroll-margin-top: 16px; }
     const posts = [0.3, 0.62, 0.94].map((t) => [30 + 160 * t, 4 + 54 * t]);
     m.add(posts.map(([x, y]) => `<path d="M${f(x)} ${f(y)} v-20" stroke="#5a2e10" stroke-width="2.2"/><rect x="${f(x - 3)}" y="${f(y - 26)}" width="6" height="7" rx="1.5" fill="#ffcf6b" stroke="#5a2e10" stroke-width="1"/>`).join(""));
     m.light(`<g>${posts.map(([x, y]) => `<circle class="lantern-glow" cx="${f(x)}" cy="${f(y - 22)}" r="18" fill="url(#gWarmGlow)"/>`).join("")}</g>`);
-    m.add(base(100, 50, 22, 91, 0.55));
+    const T = terrain({ rx: 100, ry: 50, seed: 91, jungle: 0.6, lobes: [[-66, 8, 44, 30, 93]], clear: [[-12, 20, 62, 22]] });
+    m.add(T.s);
+    m.add(rimPalms(T, 4, 95));
     m.add(palm(-56, -12, 0.95, -10)); m.add(palm(-8, -26, 0.75, 6));
     m.add(`<g transform="translate(-30 18)"><ellipse cx="0" cy="5" rx="24" ry="4" fill="#0b3a2a" opacity=".18"/><rect x="-18" y="-20" width="36" height="11" rx="4" fill="#b8703a" stroke="#5a2e10" stroke-width="1"/><rect x="-19" y="-10" width="38" height="7" rx="2" fill="#a0602e" stroke="#5a2e10" stroke-width="1"/><path d="M-16 -3 V5 M16 -3 V5" stroke="#6a3814" stroke-width="2.5"/><circle cx="-9" cy="-13" r="5" fill="#ff4fa3"/><circle cx="9" cy="-13" r="5" fill="#45ead9"/></g>`);
     m.add(`<g transform="translate(6 22)"><path d="M0 0 V8" stroke="#6a3814" stroke-width="2"/><ellipse cx="0" cy="0" rx="9" ry="3.2" fill="#c98a4e" stroke="#5a2e10" stroke-width="1"/><rect x="-1.5" y="-8" width="3" height="7" fill="#fff4d6"/><path d="M-6 -6 L-4 0 M5 -6 L4 0" stroke="#ff8a3c" stroke-width="2.4" stroke-linecap="round"/></g>`);
     m.light(`<g transform="translate(6 22)"><circle class="night" cx="0" cy="-10" r="14" fill="url(#gWarmGlow)"/><path class="lit flicker" d="M0 -13 C-2 -10 -1.5 -8.5 0 -8 C1.5 -8.5 2 -10 0 -13Z" fill="#ffb02e"/></g>`);
     m.add(`<path d="M52 32 C42 24 42 16 48 16 C51 16 52 19 52 20 C52 19 53 16 56 16 C62 16 62 24 52 32Z" fill="none" stroke="#d9935a" stroke-width="2"/>`);
-    // Easter egg: Sir Pinchy the crab
     m.add(`<g class="egg" data-egg="crab" tabindex="0" role="button" aria-label="A crab"><g transform="translate(-66 34)"><g class="bob"><ellipse cx="0" cy="0" rx="7" ry="4.5" fill="#ff5a3c" stroke="#a8261a" stroke-width="1"/><path d="M-6 2 l-4 3 M-5 3 l-3 4 M6 2 l4 3 M5 3 l3 4" stroke="#a8261a" stroke-width="1.2"/><circle cx="-9" cy="-4" r="3" fill="#ff5a3c" stroke="#a8261a" stroke-width="1"/><circle cx="9" cy="-4" r="3" fill="#ff5a3c" stroke="#a8261a" stroke-width="1"/><circle cx="-2.5" cy="-5" r="1.4" fill="#fff"/><circle cx="2.5" cy="-5" r="1.4" fill="#fff"/><circle cx="-2.5" cy="-5" r=".7" fill="#000"/><circle cx="2.5" cy="-5" r=".7" fill="#000"/></g></g></g>`);
     return m.out();
   }
@@ -2276,7 +2355,7 @@ section { scroll-margin-top: 16px; }
     { id: "hula-heaven", name: "Hula Heaven", rx: 125, ry: 62, depth: 24, top: 115, art: artHula, blurb: "Music, dancing and the cheesiest comedy stage in the Pacific.", d: [800, 250], m: [450, 330] },
     { id: "tipsy-tiki", name: "The Tipsy Tiki", rx: 110, ry: 56, depth: 24, top: 110, art: artTipsy, blurb: "Emul’s bamboo tiki bar. Glowing lanterns, colorful cocktails, zero regrets.", d: [1200, 320], m: [700, 500] },
     { id: "coconut-cave", name: "Coconut Cave", rx: 135, ry: 68, depth: 26, top: 100, art: artCoconut, blurb: "Hammocks, beach chairs and a cave built for very serious naps.", d: [400, 330], m: [205, 520] },
-    { id: "tiki-bay", name: "Tiki Bay", rx: 230, ry: 118, depth: 34, top: 175, art: artTikiBay, blurb: "The grand entrance! Sail through the giant tiki gate into the heart of the islands.", d: [800, 580], m: [450, 812] },
+    { id: "tiki-bay", name: "Tiki Bay", rx: 230, ry: 118, depth: 34, top: 200, art: artTikiBay, blurb: "The grand entrance! Sail through the giant tiki gate into the heart of the islands.", d: [800, 580], m: [450, 812] },
     { id: "goo-lagoon", name: "Goo Lagoon", rx: 150, ry: 78, depth: 26, top: 110, art: artGoo, blurb: "Crystal-clear water, twin waterfalls and one suspiciously calm duck.", d: [1310, 650], m: [680, 1122] },
     { id: "pineapple-peak", name: "Pineapple Peak", rx: 140, ry: 72, depth: 28, top: 305, art: artPine, blurb: "The tallest point in the islands. Totally not shaped like a pineapple.", d: [330, 800], m: [215, 1202] },
     { id: "sunset-beach", name: "Sunset Beach", rx: 100, ry: 50, depth: 22, top: 90, art: artSunset, blurb: "A tiny island with a wooden pier and the best seat for the sunset.", d: [1010, 860], m: [470, 1405] }
@@ -2288,9 +2367,9 @@ section { scroll-margin-top: 16px; }
     ["hula-heaven", "tipsy-tiki", 0], ["hula-heaven", "coconut-cave", 0], ["goo-lagoon", "sunset-beach", 0], ["coconut-cave", "pineapple-peak", 0]
   ];
   const LAYOUTS = {
-    d: { W: 1600, H: 1000, sky: 150, label: 1, zoom: 2.3, title: [64, 26, 80], compass: [105, 905, 55], treasure: [612, 912], bottle: [1500, 930], shark: [1480, 430],
+    d: { W: 1600, H: 1000, sky: 0, stacks: [[1050, 165, 1], [1112, 196, 0.62], [560, 180, 0.8], [118, 175, 1.1], [168, 212, 0.68], [1545, 240, 1], [1565, 560, 0.9], [1215, 905, 0.8], [1258, 942, 0.55], [505, 528, 0.7], [80, 560, 0.85], [1560, 785, 0.7]], bars: [[600, 438, 64, 14], [1085, 470, 52, 12], [1450, 995, 70, 14]], label: 1, zoom: 2.3, title: [64, 26, 80], compass: [105, 905, 55], treasure: [612, 912], bottle: [1500, 930], shark: [1480, 430],
          fish: [[560, 500], [1040, 760], [610, 225], [1460, 870], [180, 560], [880, 935]] },
-    m: { W: 900, H: 1560, sky: 190, label: 1.15, zoom: 1.9, title: [70, 30, 92], compass: [95, 1488, 50], treasure: [812, 1335], bottle: [815, 1505], shark: [740, 280],
+    m: { W: 900, H: 1560, sky: 0, stacks: [[78, 236, 0.9], [128, 268, 0.6], [852, 212, 0.9], [858, 925, 0.8], [58, 868, 0.8], [880, 1420, 0.65], [380, 1530, 0.6]], bars: [[90, 700, 56, 12], [830, 1012, 46, 11]], label: 1.15, zoom: 1.9, title: [70, 30, 92], compass: [95, 1488, 50], treasure: [812, 1335], bottle: [815, 1505], shark: [740, 280],
          fish: [[120, 340], [770, 650], [330, 990], [800, 1210], [640, 1505]] }
   };
 
@@ -2316,25 +2395,14 @@ section { scroll-margin-top: 16px; }
     ISLANDS.forEach((i) => { i.p = i[layoutKey]; });
     let s = `<svg viewBox="0 0 ${W} ${H}" style="--W:${W}" aria-label="Interactive map of the Tiki Islands"><g id="world">`;
 
-    // --- sky
-    s += `<rect width="${W}" height="${sky + 6}" fill="url(#gSky)"/>`;
-    s += `<g class="night">`;
-    for (let i = 0; i < 70; i++) s += `<circle class="tw" style="--d:${rnd(2, 5).toFixed(1)}s;--delay:${rnd(0, 4).toFixed(1)}s" cx="${f(rnd(0, W))}" cy="${f(rnd(4, sky - 10))}" r="${f(rnd(0.7, 2))}" fill="#fff"/>`;
-    s += `</g>`;
-    s += `<g id="sun" class="egg" data-egg="sun"><circle r="80" fill="url(#gSunGlow)"/><circle r="24" style="fill:var(--sunc,#ffd27a)"/><circle cx="-7" cy="-7" r="9" fill="#fff" opacity=".35"/></g>`;
-    s += `<g id="moon" class="night egg" data-egg="moon"><circle r="50" fill="url(#gMoonGlow)"/><circle r="17" fill="#fff7dc"/><circle cx="-5" cy="-4" r="3.2" fill="#e8dcb0"/><circle cx="6" cy="5" r="2.3" fill="#e8dcb0"/><circle cx="5" cy="-7" r="1.6" fill="#e8dcb0"/></g>`;
-    s += `<path d="M0 ${sky} L0 ${sky - 18} Q${W * 0.05} ${sky - 44} ${W * 0.1} ${sky - 30} Q${W * 0.15} ${sky - 62} ${W * 0.21} ${sky - 26} Q${W * 0.25} ${sky - 14} ${W * 0.3} ${sky - 4} L${W * 0.62} ${sky} Q${W * 0.7} ${sky - 30} ${W * 0.76} ${sky - 22} Q${W * 0.83} ${sky - 54} ${W * 0.9} ${sky - 24} Q${W * 0.95} ${sky - 36} ${W} ${sky - 20} L${W} ${sky}Z" style="fill:var(--far,#7fbcc8)"/>`;
-    [[0.15, 40, 0.8, 140, -20], [0.5, 70, 0.6, 180, -110], [0.8, 34, 0.7, 160, -60]].forEach(([fx, y, sc, dur, del]) => {
-      s += `<g class="cloud-drift no-hit" style="--dur:${dur}s;--del:${del}s"><g transform="translate(${f(W * fx - W * 0.5)} ${y * (sky / 150)})">${cloud(sc, 0.95)}</g></g>`;
-    });
-
-    // --- ocean
-    s += `<rect y="${sky}" width="${W}" height="${H - sky}" fill="url(#gOcean)"/>`;
-    s += `<rect y="${sky}" width="${W}" height="${H - sky}" fill="url(#pWaves)"/><rect y="${sky}" width="${W}" height="${H - sky}" fill="url(#pWaves2)"/>`;
+    // --- aerial ocean (no horizon: we're looking down from above)
+    s += `<rect width="${W}" height="${H}" fill="url(#gOcean)"/>`;
+    s += `<rect width="${W}" height="${H}" fill="url(#pWaves)"/><rect width="${W}" height="${H}" fill="url(#pWaves2)"/>`;
     s += `<g class="day">`;
-    for (let i = 0; i < 40; i++) s += `<path class="glint" style="--d:${rnd(2, 4.5).toFixed(1)}s;--delay:${rnd(0, 4).toFixed(1)}s" d="M${f(rnd(0, W))} ${f(rnd(sky + 20, H))} m0 -5 l1.4 3.6 3.6 1.4 -3.6 1.4 -1.4 3.6 -1.4 -3.6 -3.6 -1.4 3.6 -1.4Z" fill="#fff"/>`;
+    for (let i = 0; i < 40; i++) s += `<path class="glint" style="--d:${rnd(2, 4.5).toFixed(1)}s;--delay:${rnd(0, 4).toFixed(1)}s" d="M${f(rnd(0, W))} ${f(rnd(10, H))} m0 -5 l1.4 3.6 3.6 1.4 -3.6 1.4 -1.4 3.6 -1.4 -3.6 -3.6 -1.4 3.6 -1.4Z" fill="#fff"/>`;
     s += `</g>`;
-    s += `<rect y="${sky}" width="${W}" height="16" fill="#fff" opacity=".18"/>`;
+    s += L.bars.map(([x, y, rx, ry]) => sandbar(x, y, rx, ry)).join("");
+    s += L.stacks.map(([x, y, sc]) => seaStack(x, y, sc)).join("");
 
     // --- sailing routes
     s += `<g class="no-hit">`;
@@ -2376,7 +2444,8 @@ section { scroll-margin-top: 16px; }
     s += `<g class="egg" data-egg="bottle" tabindex="0" role="button" aria-label="A message in a bottle" transform="translate(${bx} ${by})"><g class="bob"><ellipse cx="0" cy="6" rx="18" ry="3.5" fill="#fff" opacity=".4"/><rect x="-13" y="-5" width="22" height="10" rx="5" fill="#7fe0a8" opacity=".85" stroke="#2f8f5a" stroke-width="1.2"/><rect x="9" y="-2.5" width="6" height="5" rx="1" fill="#7fe0a8" stroke="#2f8f5a" stroke-width="1"/><rect x="14" y="-2" width="3.5" height="4" fill="#b8874a"/><rect x="-8" y="-2.5" width="12" height="5" rx="1" fill="#fff4d6"/></g></g>`;
 
     // --- day/night tint
-    s += `<rect class="tint" y="${sky}" width="${W}" height="${H - sky}" style="fill:var(--tint,#fff)"/>`;
+    s += `<rect class="tint" width="${W}" height="${H}" style="fill:var(--tint,#fff)"/>`;
+    s += `<g class="night no-hit">${Array.from({ length: 90 }, () => `<circle class="tw" style="--d:${rnd(2, 5).toFixed(1)}s;--delay:${rnd(0, 4).toFixed(1)}s" cx="${f(rnd(0, W))}" cy="${f(rnd(0, H))}" r="${f(rnd(0.6, 1.8))}" fill="#e8f0ff"/>`).join("")}</g>`;
 
     // --- boats (with lanterns)
     s += `<g id="boatLayer" class="no-hit">`;
@@ -2390,15 +2459,15 @@ section { scroll-margin-top: 16px; }
     // --- reflections + lights + labels (above the tint)
     const holes = sorted.map((isl) => `<g transform="translate(${isl.p[0]} ${isl.p[1]})"><ellipse cx="0" cy="${f(isl.depth / 2)}" rx="${f(isl.rx * 1.06)}" ry="${f(isl.ry * 1.12 + isl.depth / 2)}"/><rect x="${f(-isl.rx * 0.9)}" y="${-isl.top}" width="${f(isl.rx * 1.8)}" height="${isl.top}" rx="30"/></g>`).join("");
     s += `<mask id="reflMask" maskUnits="userSpaceOnUse" x="0" y="0" width="${W}" height="${H}"><rect width="${W}" height="${H}" fill="#fff"/><g fill="#000">${holes}</g></mask>`;
-    s += `<g mask="url(#reflMask)" class="no-hit"><g id="moonRefl" class="night">${reflColumn("#fff6cf", "#d6dcff")}</g><g id="sunRefl" class="goldhour">${reflColumn("#fff1b0", "#ffb36b")}</g></g>`;
+    s += `<g mask="url(#reflMask)" class="no-hit"><g id="moonRefl" class="night"><ellipse cx="0" cy="${f(H * 0.18)}" rx="${f(W * 0.2)}" ry="${f(H * 0.16)}" fill="url(#gMoonGlow)" opacity=".45"/></g><g id="sunRefl" class="goldhour"><ellipse cx="0" cy="${f(H * 0.12)}" rx="${f(W * 0.3)}" ry="${f(H * 0.2)}" fill="url(#gSunGlow)" opacity=".5"/></g></g>`;
     sorted.forEach((isl) => {
       const ly = isl.ry + isl.depth + 30 * L.label;
       s += `<g class="isl isl-top" data-island="${isl.id}" transform="translate(${isl.p[0]} ${isl.p[1]})"><g class="lift"><g class="no-hit">${arts[isl.id].lights}</g>${label(isl.name, ly, L.label, isl.id)}</g></g>`;
     });
 
-    // --- low clouds drifting across the map
-    [[0.3, 0.42, 0.55, 210, -40], [0.7, 0.72, 0.5, 240, -150]].forEach(([fx, fy, sc, dur, del]) => {
-      s += `<g class="cloud-drift no-hit" style="--dur:${dur}s;--del:${del}s"><g transform="translate(${f(W * fx - W * 0.5)} ${f(H * fy)})">${cloud(sc * 1.4, 0.38)}</g></g>`;
+    // --- clouds drifting over the map, casting soft shadows on the water
+    [[0.2, 0.3, 0.6, 200, -30], [0.62, 0.62, 0.55, 230, -120], [0.9, 0.12, 0.5, 260, -200]].forEach(([fx, fy, sc, dur, del]) => {
+      s += `<g class="cloud-drift no-hit" style="--dur:${dur}s;--del:${del}s"><g transform="translate(${f(W * fx - W * 0.5)} ${f(H * fy)})"><g transform="translate(60 120) scale(${sc * 1.4})" opacity=".14"><ellipse rx="70" ry="26" fill="#03303f"/><ellipse cx="40" cy="-10" rx="40" ry="20" fill="#03303f"/></g>${cloud(sc * 1.4, 0.5)}</g></g>`;
     });
 
     // --- title
@@ -2553,8 +2622,6 @@ section { scroll-margin-top: 16px; }
       case "treasure": coconuts++; say(`🏴‍☠️ You dug up the treasure… it's another coconut. Coconuts found: ${coconuts}. Classic Tiki Islands.`); break;
       case "crab": say(night ? "🦀 Sir Pinchy waves a claw and whispers: “Shh, I'm counting the stars.”" : "🦀 Sir Pinchy waves hello and asks you to keep it down. He's waiting for the sunset."); break;
       case "compass": compassTurns++; $("compassSpin").style.transform = `rotate(${compassTurns * 720 + 40}deg)`; say("🧭 The compass spins… and points to the Tipsy Tiki. It always points to the Tipsy Tiki."); break;
-      case "sun": say("☀️ Please don't poke the sun. Emul only has the one."); break;
-      case "moon": say("🌙 The moon winks at you. Emul had it installed especially for the islands."); break;
     }
   }
 
@@ -2652,7 +2719,7 @@ section { scroll-margin-top: 16px; }
 
   /* palettes keyed by sun elevation (dawn = pinker, dusk = more violet) */
   const NIGHT = { sky1: "#060b2c", sky2: "#1d2466", seaFar: "#1c2c66", seaMid: "#12305e", seaNear: "#0a2448", tint: "#4652a4", far: "#141c45", cloud: "#4a5590", sunc: "#ff8a3c", n: 1, g: 0 };
-  const DAY = { sky1: "#2f8ff0", sky2: "#c4ecff", seaFar: "#a6eef4", seaMid: "#2fd0e0", seaNear: "#0aa4c8", tint: "#ffffff", far: "#7fbcc8", cloud: "#ffffff", sunc: "#ffe08a", n: 0, g: 0 };
+  const DAY = { sky1: "#2f8ff0", sky2: "#c4ecff", seaFar: "#3ed4ee", seaMid: "#1fc3e6", seaNear: "#0aa4d6", tint: "#ffffff", far: "#7fbcc8", cloud: "#ffffff", sunc: "#ffe08a", n: 0, g: 0 };
   const mk = (e, o) => Object.assign({ e }, o);
   const AM = [mk(-90, NIGHT), mk(-12, NIGHT),
     mk(-6, { sky1: "#252f72", sky2: "#e48aa8", seaFar: "#b08ab8", seaMid: "#3c5a96", seaNear: "#1a4a7c", tint: "#a294d6", far: "#4a3f80", cloud: "#e2a6c6", sunc: "#ff8a5c", n: 0.85, g: 0.2 }),
