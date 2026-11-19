@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Aloha Lounge 🌺</title>
-<meta name="description" content="A glowing Y2K tiki lounge: meet Kai the bartender, get a random tropical cocktail, and hear a cheesy island joke." />
+<meta name="description" content="A glowing Y2K tiki lounge: meet Emul the bartender, get a random tropical cocktail, and hear a cheesy island joke." />
 <meta name="theme-color" content="#0b1033" />
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌺</text></svg>" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -847,7 +847,7 @@ footer small { display: block; margin-top: 8px; color: #8fb6d9; font-size: .82re
   <!-- ================= TIKI BAR ================= -->
   <section id="bar" aria-labelledby="bar-title">
     <h2 class="section-title" id="bar-title">The Tiki Bar 🍹</h2>
-    <p class="section-sub">Meet Kai, our resident mixologist. Give him a tap (or hit the button) and he'll shake up a tropical surprise.</p>
+    <p class="section-sub">Meet Emul, our resident mixologist. Give her a tap (or hit the button) and she'll shake up a tropical surprise.</p>
 
     <div class="bar">
       <div class="bar-wall bamboo"></div>
@@ -856,81 +856,94 @@ footer small { display: block; margin-top: 8px; color: #8fb6d9; font-size: .82re
 
       <div class="bar-roof thatch"></div>
       <div class="lights" id="barLights" style="top:58px;height:46px"></div>
-      <div class="bar-sign">~ Kai's Tiki Tiki Bar ~</div>
+      <div class="bar-sign">~ Emul's Tiki Tiki Bar ~</div>
       <div class="lantern" style="left:9%;--c:#ff8a3c;--d:4.2s"><div class="lamp"></div></div>
       <div class="lantern" style="right:9%;--c:#ff4fa3;--d:3.6s"><div class="lamp"></div></div>
       <div class="lantern mid" style="left:30%;top:52px;width:30px;height:38px;--c:#45ead9;--d:5s"><div class="lamp"></div></div>
       <div class="lantern mid" style="right:30%;top:52px;width:30px;height:38px;--c:#b45cff;--d:4.6s"><div class="lamp"></div></div>
 
-      <button class="bartender" id="bartender" type="button" aria-label="Kai the bartender. Click to mix a drink">
+      <button class="bartender" id="bartender" type="button" aria-label="Emul the bartender. Click to mix a drink">
         <svg viewBox="0 0 200 270" aria-hidden="true">
           <defs>
-            <pattern id="aloha" width="38" height="38" patternUnits="userSpaceOnUse" patternTransform="rotate(14)">
-              <rect width="38" height="38" fill="#0fa3a0" />
-              <path d="M2 34 Q8 20 22 22 Q14 30 2 34Z" fill="#086b5c" />
-              <path d="M24 36 Q30 28 38 30 Q32 36 24 36Z" fill="#086b5c" />
-              <use href="#hibiscus" x="17" y="1" width="18" height="18" style="color:#ff5fae" />
-              <use href="#hibiscus" x="1" y="4" width="11" height="11" style="color:#ffd84a" />
-              <circle cx="30" cy="27" r="2" fill="#fff3c4" />
+            <pattern id="dress" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(-12)">
+              <rect width="40" height="40" fill="#e8417a" />
+              <path d="M2 36 Q9 22 24 24 Q15 32 2 36Z" fill="#1f9e74" />
+              <path d="M26 38 Q32 30 40 32 Q34 38 26 38Z" fill="#1f9e74" />
+              <use href="#hibiscus" x="18" y="1" width="20" height="20" style="color:#fff4d6" />
+              <use href="#hibiscus" x="2" y="5" width="12" height="12" style="color:#ffd84a" />
+              <circle cx="31" cy="28" r="2" fill="#fff4d6" />
             </pattern>
             <radialGradient id="skin" cx=".4" cy=".35" r=".7">
               <stop offset="0" stop-color="#f7c697" /><stop offset="1" stop-color="#d48a55" />
             </radialGradient>
+            <linearGradient id="hairGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#6b4429" /><stop offset="1" stop-color="#4a2c19" />
+            </linearGradient>
             <linearGradient id="steel" x1="0" x2="1">
               <stop offset="0" stop-color="#8a96a8" /><stop offset=".35" stop-color="#ffffff" /><stop offset=".6" stop-color="#c3ccd8" /><stop offset="1" stop-color="#6b7688" />
             </linearGradient>
           </defs>
           <g class="bt-body">
-            <rect x="88" y="140" width="24" height="32" rx="8" fill="#d99460" />
-            <path d="M38 270 L45 198 Q52 168 100 164 Q148 168 155 198 L162 270Z" fill="url(#aloha)" stroke="#06504e" stroke-width="2.5" />
-            <path d="M100 186 V270" stroke="#06504e" stroke-width="1.5" />
-            <circle cx="100" cy="206" r="2.6" fill="#fff3c4" /><circle cx="100" cy="230" r="2.6" fill="#fff3c4" /><circle cx="100" cy="254" r="2.6" fill="#fff3c4" />
-            <path d="M80 167 L100 192 L90 164Z" fill="#14c7c1" stroke="#06504e" stroke-width="1.5" />
-            <path d="M120 167 L100 192 L110 164Z" fill="#14c7c1" stroke="#06504e" stroke-width="1.5" />
-            <g id="lei"></g>
-            <rect x="118" y="206" width="28" height="13" rx="3" fill="#fff4d6" stroke="#c98a1b" stroke-width="1.5" />
-            <text x="132" y="215.5" font-size="8" text-anchor="middle" font-family="Kavoon, cursive" fill="#b02a6b">KAI</text>
+            <!-- long hair behind -->
+            <path d="M54 104 Q48 58 100 54 Q152 58 146 104 Q150 150 162 200 Q150 212 134 204 L66 204 Q50 212 38 200 Q50 150 54 104Z" fill="url(#hairGrad)" stroke="#3a2214" stroke-width="2" />
+            <rect x="88" y="140" width="24" height="44" rx="8" fill="#d99460" />
+            <g transform="translate(0 -9)">
+            <!-- shoulders -->
+            <path d="M42 270 L47 206 Q52 184 80 180 L120 180 Q148 184 153 206 L158 270Z" fill="url(#skin)" />
+            <!-- hawaiian dress -->
+            <path d="M70 193 L77 178 M130 193 L123 178" stroke="#e8417a" stroke-width="5" stroke-linecap="round" />
+            <path d="M52 270 L56 210 Q58 196 70 192 Q86 188 94 198 Q100 205 106 198 Q114 188 130 192 Q142 196 144 210 L148 270Z" fill="url(#dress)" stroke="#8a1846" stroke-width="2" stroke-linejoin="round" />
+            <path d="M57 204 Q60 194 70 192 Q86 188 94 198 Q100 205 106 198 Q114 188 130 192 Q140 194 143 204" fill="none" stroke="#fff4d6" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="1 4" />
+
+            </g>
 
             <g class="arms-idle">
-              <path d="M52 190 Q34 198 28 216 L48 222 Q52 208 62 202Z" fill="url(#aloha)" stroke="#06504e" stroke-width="2" />
-              <circle cx="34" cy="220" r="10" fill="url(#skin)" />
-              <path d="M148 190 Q166 198 172 216 L152 222 Q148 208 138 202Z" fill="url(#aloha)" stroke="#06504e" stroke-width="2" />
-              <circle cx="166" cy="220" r="10" fill="url(#skin)" />
+              <path d="M56 196 Q38 202 28 216 L46 224 Q52 210 64 205Z" fill="url(#skin)" stroke="#c07a48" stroke-width="1.2" />
+              <circle cx="34" cy="220" r="9.5" fill="url(#skin)" />
+              <path d="M144 196 Q162 202 172 216 L154 224 Q148 210 136 205Z" fill="url(#skin)" stroke="#c07a48" stroke-width="1.2" />
+              <circle cx="166" cy="220" r="9.5" fill="url(#skin)" />
+              <circle cx="40" cy="214" r="2.6" fill="#ffd84a" /><circle cx="44" cy="217" r="2.6" fill="#45ead9" /><circle cx="36" cy="211" r="2.6" fill="#ff4fa3" />
+            </g>
+            <g class="bt-head">
+              <circle cx="100" cy="106" r="44" fill="url(#skin)" />
+              <!-- side-swept bangs -->
+              <path d="M55 106 Q50 56 100 54 Q150 56 145 106 Q140 82 126 74 Q116 92 96 88 Q80 92 72 80 Q60 90 55 106Z" fill="url(#hairGrad)" stroke="#3a2214" stroke-width="1.5" />
+              <!-- long side locks over the shoulders -->
+              <path d="M58 92 Q44 140 50 184 Q54 206 68 214 Q60 188 66 156 Q70 124 66 98Z" fill="url(#hairGrad)" stroke="#3a2214" stroke-width="1.5" />
+              <path d="M142 92 Q156 140 150 184 Q146 206 132 214 Q140 188 134 156 Q130 124 134 98Z" fill="url(#hairGrad)" stroke="#3a2214" stroke-width="1.5" />
+              <path d="M74 66 Q96 58 120 64 M52 140 Q50 166 56 190 M148 140 Q150 166 144 190" stroke="#8a5a36" stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".7" />
+              <!-- hibiscus in her hair -->
+              <ellipse cx="150" cy="84" rx="12" ry="5" fill="#1f9e74" transform="rotate(35 150 84)" />
+              <use href="#hibiscus" x="118" y="52" width="40" height="40" style="color:#ff4fa3" />
+              <path d="M75 93 Q82 89 89 92" stroke="#4a2c19" stroke-width="2.5" fill="none" stroke-linecap="round" />
+              <path d="M111 92 Q118 89 125 93" stroke="#4a2c19" stroke-width="2.5" fill="none" stroke-linecap="round" />
+              <g class="eyes">
+                <ellipse cx="82" cy="106" rx="6.5" ry="8" fill="#b98250" stroke="#3a2214" stroke-width="1.5" />
+                <ellipse cx="118" cy="106" rx="6.5" ry="8" fill="#b98250" stroke="#3a2214" stroke-width="1.5" />
+                <circle cx="82" cy="107" r="3.4" fill="#2a1508" /><circle cx="118" cy="107" r="3.4" fill="#2a1508" />
+                <circle cx="84.5" cy="103" r="2.2" fill="#fff" /><circle cx="120.5" cy="103" r="2.2" fill="#fff" />
+                <path d="M75 101 l-5 -3 M76.5 98.5 l-3 -4 M125 101 l5 -3 M123.5 98.5 l3 -4" stroke="#2a1508" stroke-width="2" stroke-linecap="round" />
+              </g>
+              <ellipse cx="70" cy="122" rx="8" ry="5" fill="#ff6fa0" opacity=".5" />
+              <ellipse cx="130" cy="122" rx="8" ry="5" fill="#ff6fa0" opacity=".5" />
+              <path d="M99 111 Q103 116 99 118" stroke="#b8743f" stroke-width="2.2" fill="none" stroke-linecap="round" />
+              <path class="mouth-smile" d="M87 127 Q100 142 113 127 Q100 133 87 127Z" fill="#d6476b" stroke="#a8304f" stroke-width="1.5" stroke-linejoin="round" />
+              <ellipse class="mouth-o" cx="100" cy="132" rx="6" ry="7" fill="#b8324f" />
             </g>
             <g class="arms-shake">
-              <path d="M148 192 Q168 182 170 160 L154 156 Q150 172 138 180Z" fill="url(#aloha)" stroke="#06504e" stroke-width="2" />
-              <path d="M54 192 Q84 172 122 160 L126 174 Q92 184 66 202Z" fill="url(#aloha)" stroke="#06504e" stroke-width="2" />
+              <path d="M146 194 Q168 182 170 160 L156 156 Q152 172 138 182Z" fill="url(#skin)" stroke="#c07a48" stroke-width="1.2" />
+              <path d="M56 196 Q84 172 122 160 L126 172 Q92 184 68 204Z" fill="url(#skin)" stroke="#c07a48" stroke-width="1.2" />
               <g>
                 <rect x="139" y="104" width="24" height="48" rx="6" fill="url(#steel)" stroke="#5b6577" stroke-width="1.5" />
                 <rect x="142" y="94" width="18" height="13" rx="3" fill="url(#steel)" stroke="#5b6577" stroke-width="1.5" />
                 <rect x="146" y="87" width="10" height="8" rx="2" fill="url(#steel)" stroke="#5b6577" stroke-width="1.5" />
                 <rect x="143" y="118" width="16" height="10" rx="2" fill="#ff4fa3" opacity=".85" />
               </g>
-              <circle cx="160" cy="150" r="10" fill="url(#skin)" />
-              <circle cx="132" cy="122" r="10" fill="url(#skin)" />
+              <circle cx="160" cy="150" r="9.5" fill="url(#skin)" />
+              <circle cx="132" cy="122" r="9.5" fill="url(#skin)" />
               <path d="M174 100 l8 -6 M178 118 l10 0 M128 96 l-8 -6" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".8" />
             </g>
 
-            <g class="bt-head">
-              <circle cx="57" cy="112" r="10" fill="#d99460" />
-              <circle cx="143" cy="112" r="10" fill="#d99460" />
-              <circle cx="100" cy="106" r="44" fill="url(#skin)" />
-              <path d="M56 102 Q52 58 100 56 Q148 58 144 102 Q138 80 120 78 Q112 92 96 86 Q80 94 66 84 Q58 92 56 102Z" fill="#3a1f12" />
-              <path d="M78 66 Q96 58 116 64" stroke="#6b3a20" stroke-width="3" fill="none" stroke-linecap="round" opacity=".7" />
-              <use href="#hibiscus" x="124" y="62" width="34" height="34" style="color:#ff4fa3" />
-              <path d="M73 93 Q81 87 90 92" stroke="#3a1f12" stroke-width="3.5" fill="none" stroke-linecap="round" />
-              <path d="M110 92 Q119 87 127 93" stroke="#3a1f12" stroke-width="3.5" fill="none" stroke-linecap="round" />
-              <g class="eyes">
-                <ellipse cx="82" cy="106" rx="5.5" ry="7" fill="#24130a" />
-                <ellipse cx="118" cy="106" rx="5.5" ry="7" fill="#24130a" />
-                <circle cx="84" cy="103" r="2" fill="#fff" /><circle cx="120" cy="103" r="2" fill="#fff" />
-              </g>
-              <ellipse cx="70" cy="122" rx="8" ry="5" fill="#ff6fa0" opacity=".5" />
-              <ellipse cx="130" cy="122" rx="8" ry="5" fill="#ff6fa0" opacity=".5" />
-              <path d="M98 108 Q105 115 98 120" stroke="#a8622f" stroke-width="2.5" fill="none" stroke-linecap="round" />
-              <path class="mouth-smile" d="M84 127 Q100 145 116 127 Q100 134 84 127Z" fill="#7a1f2b" stroke="#5a1520" stroke-width="1.5" stroke-linejoin="round" />
-              <ellipse class="mouth-o" cx="100" cy="133" rx="7" ry="8" fill="#7a1f2b" />
-            </g>
           </g>
         </svg>
       </button>
@@ -951,7 +964,7 @@ footer small { display: block; margin-top: 8px; color: #8fb6d9; font-size: .82re
     <div class="drink-card" id="drinkCard" aria-live="polite">
       <div class="drink-kicker">Tonight's special</div>
       <h3 class="drink-name" id="drinkName">Your drink awaits…</h3>
-      <p class="drink-desc" id="drinkDesc">Kai's polishing glasses and humming a ukulele tune. Click him or the button above and he'll mix you something tropical from his menu of 18 island cocktails.</p>
+      <p class="drink-desc" id="drinkDesc">Emul's polishing glasses and humming a ukulele tune. Click her or the button above and she'll mix you something tropical from her menu of 18 island cocktails.</p>
       <div class="chips" id="drinkChips"></div>
       <p class="glass-note" id="glassNote"></p>
       <div class="drink-count" id="drinkCount"></div>
@@ -991,7 +1004,7 @@ footer small { display: block; margin-top: 8px; color: #8fb6d9; font-size: .82re
     <svg viewBox="0 0 220 400"><use href="#palm" /></svg>
   </div>
   <p>Made with aloha 🌴</p>
-  <small>Kai's Tiki Tiki Bar · open every night under the full moon</small>
+  <small>Emul's Tiki Tiki Bar · open every night under the full moon</small>
   <div class="footer-wave"><div class="wave" style="top:0;--o:.6;--d:5s"></div></div>
 </footer>
 
@@ -1083,22 +1096,6 @@ footer small { display: block; margin-top: 8px; color: #8fb6d9; font-size: .82re
   fillShelf($("shelf1"), narrowShelf ? 9 : 14);
   fillShelf($("shelf2"), narrowShelf ? 8 : 12);
 
-  /* ---------- lei on Kai ---------- */
-  (function buildLei() {
-    const lei = $("lei");
-    const colors = ["#ff4fa3", "#ffd84a", "#b45cff", "#ff8a3c", "#ff6fb5"];
-    let out = "";
-    const n = 15;
-    for (let i = 0; i < n; i++) {
-      const t = i / (n - 1);
-      const x = (1 - t) * (1 - t) * 70 + 2 * t * (1 - t) * 100 + t * t * 130;
-      const y = (1 - t) * (1 - t) * 166 + 2 * t * (1 - t) * 222 + t * t * 166;
-      out += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="6" fill="${colors[i % colors.length]}" stroke="rgba(0,0,0,.25)"/>`;
-      out += `<circle cx="${(x - 1.5).toFixed(1)}" cy="${(y - 1.5).toFixed(1)}" r="1.6" fill="#fff" opacity=".7"/>`;
-    }
-    lei.innerHTML = out;
-  })();
-
   /* ================= COCKTAILS ================= */
   const COCKTAILS = [
     { name: "Blue Hawaiian", glass: "hurricane", layers: ["#a9f1ff", "#2fc3ea", "#0a7fc2"], garnish: "pineapple", umbrella: "#ff4fa3", straw: "#ffd84a",
@@ -1120,7 +1117,7 @@ footer small { display: block; margin-top: 8px; color: #8fb6d9; font-size: .82re
       desc: "If you like getting caught in the rain, this frosty classic is your soulmate in a glass.",
       ingredients: ["White rum", "Pineapple juice", "Cream of coconut", "Crushed ice"] },
     { name: "Zombie", glass: "mug", layers: ["#ff9a3c", "#e8601c", "#b23a0e"], mug: "#1f9e8f", garnish: "lime", umbrella: "#b45cff", straw: "#ffd84a",
-      desc: "Three rums, a secret spice blend and a strict two-per-guest limit. Kai will be watching.",
+      desc: "Three rums, a secret spice blend and a strict two-per-guest limit. Emul will be watching.",
       ingredients: ["Three rums", "Falernum", "Grapefruit", "Cinnamon syrup", "Lime"] },
     { name: "Hibiscus Sunset", glass: "highball", layers: ["#ffe14d", "#ff8a2e", "#e8174f", "#7d0f45"], garnish: "orange", umbrella: "#45ead9", straw: "#45ead9", ice: true,
       desc: "A whole tropical sunset poured in layers, from golden sky down to deep hibiscus dusk.",
@@ -1321,7 +1318,7 @@ footer small { display: block; margin-top: 8px; color: #8fb6d9; font-size: .82re
   let speechTimer;
 
   const shakeLines = ["Shake shake shake! 🎶", "Ooh, a fancy one…", "Mixing up some magic ✨", "Hold onto your lei!", "Little bit of this… little bit of that…"];
-  const serveLines = ["One {d}, coming right up!", "Ta-da! A {d} for you 🌺", "Fresh {d}! Mahalo!", "Your {d}, my friend 🍹", "{d}! Kai's specialty."];
+  const serveLines = ["One {d}, coming right up!", "Ta-da! A {d} for you 🌺", "Fresh {d}! Mahalo!", "Your {d}, my friend 🍹", "{d}! Emul's specialty."];
 
   function say(text, ms) {
     clearTimeout(speechTimer);
